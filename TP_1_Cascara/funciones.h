@@ -21,6 +21,11 @@ int restador(int primerTermino, int segundoTermino)
 
 float dividir(float dividendo, float divisor)
 {
+    if(divisor == 0)
+    {
+        return -1;
+    }
+
     return dividendo / divisor;
 }
 
