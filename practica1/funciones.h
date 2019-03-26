@@ -1,16 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef FUNCIONES_H_INCLUDED
+#define FUNCIONES_H_INCLUDED
 #define CANTIDAD_INGRESOS 5
 
-int cargarNumeros();
-int calculadorMaximoMinimo(int valor, int *numeroMaximo, int *numeroMinimo);
-int sumaNumeros(int *sumador, int numero);
 
-int main()
-{
-    cargarNumeros();
-    return 0;
-}
 int cargarNumeros()
 {
     int i;
@@ -36,24 +28,6 @@ int cargarNumeros()
     printf("\nEl Minimo es: %d", minimo);
     return 0;
 }
-int calculadorMaximoMinimo(int valor, int *numeroMaximo, int *numeroMinimo)
-{
-    if(valor > *numeroMaximo)
-    {
-        *numeroMaximo = valor;
-    }
-    else
-    {
-        if(valor < *numeroMinimo)
-        {
-            *numeroMinimo = valor;
-        }
-    }
 
-    return 0;
-}
-int sumaNumeros(int *sumador, int numero)
-{
-    *sumador += numero;
-    return 0;
-}
+
+#endif // FUNCIONES_H_INCLUDED

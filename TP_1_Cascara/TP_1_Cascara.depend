@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1553565444 source:/home/skoivan/Documentos/LABO-PROG 1/TP1 - FECHA --/TP_1_Cascara/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1553565370 /home/skoivan/Documentos/LABO-PROG 1/TP1 - FECHA --/TP_1_Cascara/funciones.h
+
