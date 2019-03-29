@@ -1,59 +1,190 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define CANTIDAD_INGRESOS 5
 
-int cargarNumeros();
-int calculadorMaximoMinimo(int valor, int *numeroMaximo, int *numeroMinimo);
-int sumaNumeros(int *sumador, int numero);
+/**hacer funcion que valide ,maximo, minimo, cantidad de reintentos,
+validaciones: preguntar si el puntero no e NULL. Reintentos tiene que ser >= 0
+**/
+
+int getInt(char *mensaje,
+    char *mensajeError,
+    int minimo, int maximo,
+    int reintentos,
+    int *resultado);
+
+int getFloat(
+    char *mensaje,
+    char *mensajeError,
+    float minimo,
+    float maximo,
+    int reintentos,
+    float *resultado);
+
+int getChar(
+    char *mensaje,
+    char *mensajeError,
+    char minimo,
+    char maximo,
+    int reintentos,
+    char *resultado);
+
+
+int isValidInt(int numero, int maximo, int minimo);
+int isValidFloat(float numero, float maximo, float minimo);
+int isValidChar(char letra, char maximo, char minimo);
 
 int main()
 {
-    cargarNumeros();
+    int valor;
+    float altura;
+    char letra;
+    //getInt("Ingrese su edad:\n", "ERROR!\n", 0, 150, 3, &valor);
+    //getFloat("\nIngrese su altura en metros:", "ERROR!\n", 0, 3.5, 3, &altura);
+    getChar("\nIngrese una letra:", "\nERROR!", 'z', 'a', 3, &letra);
     return 0;
 }
-int cargarNumeros()
+
+int isValidInt(int numero, int maximo, int minimo) //las funcionjes con is devuelven "TRUE" or "FALSE"
 {
+    if(numero >= minimo && numero <=maximo)
+    {
+        return 1;
+    }
+        return 0;
+
+
+}
+
+int getInt(
+    char *mensaje,
+    char *mensajeError,
+    int minimo,
+    int maximo,
+    int reintentos,
+    int *resultado)
+{
+    int buffer; //variables que no estan validadas = buffer
+    int retorno = -1;
     int i;
-    int numero;
-    int sumaTotal=0;
-    int maximo;
-    int minimo;
 
-    for(i=0;i<CANTIDAD_INGRESOS;i++)
+    if(mensaje != NULL && mensajeError != NULL && resultado != NULL && maximo >= minimo && reintentos >= 0)
     {
-        printf("Ingrese %d numeros:",CANTIDAD_INGRESOS);
-        scanf("%d", &numero);
-        sumaNumeros(&sumaTotal, numero);
-        if(i == 0)
+        for(i=0; i<= reintentos; i++)
         {
-            maximo = numero;
-            minimo = numero;
+
+            printf("%s", mensaje);//imprimir mensaje
+            scanf("%d", &buffer);
+
+            if(isValidInt(buffer, maximo, minimo))
+            {
+                *resultado = buffer;
+                retorno = 0;
+                break;
+            }
+            else
+            {
+                printf("%s", mensajeError);
+            }
         }
-        calculadorMaximoMinimo(numero, &maximo, &minimo);
-    }
-    printf("\nEl promedio es %.2f", (float)sumaTotal/CANTIDAD_INGRESOS);
-    printf("\nEl Maximo es: %d", maximo);
-    printf("\nEl Minimo es: %d", minimo);
-    return 0;
-}
-int calculadorMaximoMinimo(int valor, int *numeroMaximo, int *numeroMinimo)
-{
-    if(valor > *numeroMaximo)
-    {
-        *numeroMaximo = valor;
-    }
-    else
-    {
-        if(valor < *numeroMinimo)
-        {
-            *numeroMinimo = valor;
-        }
+
     }
 
-    return 0;
+    return retorno;
 }
-int sumaNumeros(int *sumador, int numero)
+
+
+
+int getFloat(
+char *mensaje,
+char *mensajeError,
+float minimo,
+float maximo,
+int reintentos,
+float *resultado)
 {
-    *sumador += numero;
+    float buffer;
+    int retorno = -1;
+
+    if(mensaje != NULL && mensajeError != NULL && resultado != NULL && maximo >= minimo && reintentos >= 0)
+    {
+        do
+        {
+            printf("%s", mensaje);
+            scanf("%f", &buffer);
+            if(isValidInt(buffer, maximo, minimo))
+            {
+                *resultado = buffer;
+                retorno = 0;
+                break;
+            }
+            else
+            {
+                printf("%s", mensajeError);
+            }
+            reintentos--;
+
+        }while(reintentos >=0);
+    }
+
+    return retorno;
+
+}
+
+int isValidFloat(float numero, float maximo, float minimo)
+{
+    if(numero >= minimo && numero <= maximo)
+    {
+        return 1;
+    }
+
     return 0;
 }
+
+int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int reintentos, char *resultado)
+{
+    char buffer;
+    int retorno = -1;
+
+    if(mensaje != NULL && mensajeError != NULL && resultado != NULL && maximo >= minimo && reintentos >= 0)
+    {
+        do
+        {
+            printf("%s", mensaje);
+            scanf("%c", &buffer);
+            if(isValidChar(buffer, maximo, minimo))
+            {
+                *resultado = buffer;
+                retorno = 0;
+                break;
+            }
+            else
+            {
+                printf("%s", mensajeError);
+            }
+
+
+        }while(reintentos>=0);
+    }
+    return retorno;
+}
+
+int isValidChar(char letra, char maximo, char minimo)
+{
+    if(letra >= minimo && letra <= maximo)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
