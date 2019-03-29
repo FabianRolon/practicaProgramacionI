@@ -104,6 +104,7 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
         {
             printf("%s", mensaje);
             scanf("%c", &buffer);
+            fflush(stdin);
             if(isValidChar(buffer, maximo, minimo))
             {
                 *resultado = buffer;
@@ -115,7 +116,7 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
                 printf("%s", mensajeError);
             }
 
-
+            reintentos--;
         }while(reintentos>=0);
     }
     return retorno;
