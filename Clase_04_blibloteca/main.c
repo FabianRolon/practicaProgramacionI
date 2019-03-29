@@ -14,7 +14,7 @@ int main()
     char letra;
     getInt("Ingrese su edad:\n", "ERROR!\n", 0, 150, 3, &valor);
     getFloat("\nIngrese su altura en metros:", "ERROR!\n", 0, 3.5, 3, &altura);
-    //getChar("\nIngrese una letra:", "\nERROR!", 'z', 'a', 3, &letra);
+    getChar("\nIngrese una letra:", "\nERROR!", 'z', 'a', 3, &letra);
     return 0;
 }
 
