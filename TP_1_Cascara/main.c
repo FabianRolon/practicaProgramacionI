@@ -46,11 +46,11 @@ int main()
         switch(opcion)
         {
             case 1:
-                A = ingresarNumero("\nIngrese 1er operando:");
+                getInt("\nIngrese 1er operando: ", "\nEl dato ingresado es invalido\n", -999999, 999999, 3, &A);
                 break;
 
             case 2:
-                B = ingresarNumero("\nIngrese 2do operando:");
+                 getInt("\nIngrese 2do operando: ", "\nEl dato ingresado es invalido\n", -999999, 999999, 3, &B);;
                 break;
 
             case 3:

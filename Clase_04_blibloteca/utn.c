@@ -45,8 +45,6 @@ int getInt(
     return retorno;
 }
 
-
-
 int getFloat(
 char *mensaje,
 char *mensajeError,
@@ -75,12 +73,9 @@ float *resultado)
                 printf("%s", mensajeError);
             }
             reintentos--;
-
         }while(reintentos >=0);
     }
-
     return retorno;
-
 }
 
 int isValidFloat(float numero, float maximo, float minimo)
@@ -89,7 +84,6 @@ int isValidFloat(float numero, float maximo, float minimo)
     {
         return 1;
     }
-
     return 0;
 }
 
@@ -116,7 +110,6 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
             {
                 printf("%s", mensajeError);
             }
-
             reintentos--;
         }while(reintentos>=0);
     }

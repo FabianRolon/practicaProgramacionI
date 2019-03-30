@@ -2,7 +2,7 @@
 #define UTN_H_INCLUDED
 
 
-    int getInt(char *mensaje,
+int getInt(char *mensaje,
     char *mensajeError,
     int minimo, int maximo,
     int reintentos,

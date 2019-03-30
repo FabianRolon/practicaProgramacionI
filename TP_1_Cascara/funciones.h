@@ -1,37 +1,17 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
-int ingresarNumero(char mensaje[])
-{
-    int auxiliar;
-    printf("%s",mensaje);
-    scanf("%d",&auxiliar);
-    return auxiliar;
-}
+int getInt(char *mensaje,
+    char *mensajeError,
+    int minimo, int maximo,
+    int reintentos,
+    int *resultado);
 
-int sumador(int primerTermino, int segundoTermino)
-{
-    return primerTermino + segundoTermino;
-}
+int isValidInt(int numero, int maximo, int minimo);
 
-int restador(int primerTermino, int segundoTermino)
-{
-    return primerTermino - segundoTermino;
-}
-
-float dividir(float dividendo, float divisor)
-{
-    if(divisor == 0)
-    {
-        return -1;
-    }
-
-    return dividendo / divisor;
-}
-
-int multiplicador(int primerTermino, int segundoTermino)
-{
-    return primerTermino * segundoTermino;
-}
+int sumador(int primerTermino, int segundoTermino);
+int restador(int primerTermino, int segundoTermino);
+float dividir(float dividendo, float divisor);
+int multiplicador(int primerTermino, int segundoTermino);
 
 #endif // FUNCIONES_H_INCLUDED
