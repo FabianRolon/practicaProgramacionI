@@ -11,7 +11,8 @@ int isValidInt(int numero, int maximo, int minimo);
 
 int sumador(int primerTermino, int segundoTermino);
 int restador(int primerTermino, int segundoTermino);
-float dividir(float dividendo, float divisor);
+float dividir(float dividendo, float divisor, char *mensajeError);
 int multiplicador(int primerTermino, int segundoTermino);
+int calculaFactorial(int valor,long int *factorial, char *mensajeError);
 
 #endif // FUNCIONES_H_INCLUDED

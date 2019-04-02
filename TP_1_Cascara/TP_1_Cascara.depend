@@ -24,3 +24,15 @@
 	<stdio.h>
 	<stdlib.h>
 
+1554174717 source:/home/skoivan/Documentos/practicaProgramacionI/TP_1_Cascara/funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+
+1554174016 source:/home/skoivan/Documentos/practicaProgramacionI/TP_1_Cascara/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1554173954 /home/skoivan/Documentos/practicaProgramacionI/TP_1_Cascara/funciones.h
+

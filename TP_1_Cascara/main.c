@@ -6,18 +6,19 @@ int main()
 {
     char seguir='s';
     int opcion=0;
-    int A=0;
-    int B=0;
+    int A='s';
+    int B='s';
     int suma;
     int resta;
     float division;
     int multiplicacion;
+    long int factorial;
 
     while(seguir=='s')
     {
 
 
-        if(A == 0)
+        if(A == 's')
         {
             printf("\n1- Ingresar 1er operando (A=x)\n");
         }
@@ -25,7 +26,7 @@ int main()
         {
             printf("\n1- Ingresar 1er operando (A=%d)\n", A);
         }
-        if(B == 0)
+        if(B == 's')
         {
             printf("2- Ingresar 2do operando (B=y)\n");
         }
@@ -39,7 +40,7 @@ int main()
             printf("6- Calcular la multiplicacion (A*B)\n");
             printf("7- Calcular el factorial (A!)\n");
             printf("8- Calcular todas las operacione\n");
-            printf("9- Salir\n");
+            printf("9- Salir\n\n");
 
             scanf("%d",&opcion);
 
@@ -64,7 +65,7 @@ int main()
                 break;
 
             case 5:
-                division = dividir(A, B);
+                division = dividir(A, B, "\nERROR! La division por cero es imposible!\n");
                 printf("\nLa division es: %.2f\n\n", division);
                 break;
 
@@ -73,6 +74,8 @@ int main()
                 printf("\nLa multiplicacion es: %d\n\n", multiplicacion);
                 break;
             case 7:
+                calculaFactorial(A, &factorial, "A debe ser mayor igual a cero");
+                printf("\nEl factorial de A es: %li\n", factorial);
                 break;
             case 8:
                 break;
