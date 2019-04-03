@@ -44,6 +44,15 @@ int getInt(
     return retorno;
 }
 
+int isValidFloat(float numero, float maximo, float minimo)
+{
+    if(numero >= minimo && numero <= maximo)
+    {
+        return 1;
+    }
+    return 0;
+}
+
 int getFloat(
 char *mensaje,
 char *mensajeError,
@@ -56,13 +65,13 @@ float *resultado)
     int retorno = -1;
 
     if(mensaje != NULL && mensajeError != NULL && resultado != NULL &&
-        maximo >= minimo && reintentos >= 0)
+       maximo >= minimo && reintentos >= 0)
     {
         do
         {
             printf("%s", mensaje);
             scanf("%f", &buffer);
-            if(isValidInt(buffer, maximo, minimo))
+            if(isValidFloat(buffer, maximo, minimo))
             {
                 *resultado = buffer;
                 retorno = 0;
@@ -78,14 +87,7 @@ float *resultado)
     return retorno;
 }
 
-int isValidFloat(float numero, float maximo, float minimo)
-{
-    if(numero >= minimo && numero <= maximo)
-    {
-        return 1;
-    }
-    return 0;
-}
+
 
 int sumador(int primerTermino, int segundoTermino)
 {
