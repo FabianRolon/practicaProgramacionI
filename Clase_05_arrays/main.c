@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define CANTIDAD_ALUMNOS 5000
+#define CANTIDAD_ALUMNOS 10
 #include "utn.h"
-
- int getArrayInt(   char* Msg,
-                    char* msgError,
-                    int maximo,
-                    int minimo,
-                    int reintentos,
-                    int* arrayResultado,
-                    int limite);
 
 int main()
 {
@@ -27,7 +19,8 @@ int main()
     getArrayInt("Ingrese el valor array", "ERROR", CANTIDAD_ALUMNOS, 0, 3, &aEdades);
 
 **/
-int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
+int aEdades[CANTIDAD_ALUMNOS];
+getArrayInt("Ingrese el valor: ", "\nError", CANTIDAD_ALUMNOS, 1, 3, aEdades, 10);
 
 ordenarArray(aEdades, 10);
 printArrayInt(aEdades, 10);
