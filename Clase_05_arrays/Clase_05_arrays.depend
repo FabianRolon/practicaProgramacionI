@@ -12,14 +12,24 @@
 
 1554426170 /home/alumno/Rolon/practicaProgramacionI/Clase_05_arrays/utn.h
 
+<<<<<<< HEAD
 1554616220 source:c:\users\f_a_o\documents\programacion\practicaprogramacioni\clase_05_arrays\main.c
+=======
+1554493493 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\clase_05_arrays\utn.c
+>>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"
 
+<<<<<<< HEAD
 1554432455 c:\users\f_a_o\documents\programacion\practicaprogramacioni\clase_05_arrays\utn.h
 
 1554616122 source:c:\users\f_a_o\documents\programacion\practicaprogramacioni\clase_05_arrays\utn.c
+=======
+1554493510 c:\users\calidad\desktop\programas\program\practicaprogramacioni\clase_05_arrays\utn.h
+
+1554493522 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\clase_05_arrays\main.c
+>>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"

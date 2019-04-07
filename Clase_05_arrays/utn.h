@@ -39,6 +39,6 @@ int isValidArrayInt(int numero, int maximo, int minimo);
 
 int hacerSwap(int* primerValor, int* segundoValor);
 int ordenarArray(int* vector, int limite);
-void printArrayInt(int* arrayResultado, int limite);
+int printArrayInt(int* arrayResultado, int limite);
 
 #endif // UTN_H_INCLUDED

@@ -29,7 +29,11 @@ int getInt(
         for(i=0; i<= reintentos; i++)
         {
             printf("%s", mensaje);//imprimir mensaje
+<<<<<<< HEAD
             //fflush(stdin);
+=======
+            fflush(stdin);
+>>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
             //__fpurge(stdin);
             scanf("%d", &buffer);
             if(isValidInt(buffer, maximo, minimo))
@@ -99,7 +103,11 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
         do
         {
             printf("%s", mensaje);
+<<<<<<< HEAD
             //__fpurge(stdin);
+=======
+//            __fpurge(stdin);
+>>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
             scanf("%c", &buffer);
 
             if(isValidChar(buffer, maximo, minimo))
@@ -153,7 +161,17 @@ int getArrayInt(    char* msg,
 
     if(msg != NULL && msgError != NULL && arrayResultado != NULL && maximo >= minimo && reintentos >= 0 && limite > 0)
     {
+<<<<<<< HEAD
 
+=======
+            for(j = 0; j < limite; j++)
+            {
+                getInt(msg,msgError,minimo, maximo, reintentos, &buffer);
+
+                *(arrayResultado+j) = buffer;
+                retorno = 0;
+            }
+>>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
 
                 for(j = 0; j < limite; j++)
                 {
@@ -173,13 +191,14 @@ int getArrayInt(    char* msg,
     return retorno;
 }
 
-void printArrayInt(int* arrayResultado, int limite)
+int printArrayInt(int* arrayResultado, int limite)
 {
     int i;
     for(i = 0; i<limite; i++)
     {
         printf("%d\n", arrayResultado[i]);
     }
+    return 0;
 }
 
 int hacerSwap(int* primerValor, int* segundoValor)
@@ -201,7 +220,12 @@ int ordenarArray(int* vector, int limite)
         flagSwap = 0;
         for(i = 0; i <limite-1; i++)     //int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
         {
+<<<<<<< HEAD
             if(*(vector+i) > *(vector+i+1))
+=======
+            flagSwap = 0;
+            if(*(vector+i) > *(vector+(i+1)))
+>>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
             {
                 hacerSwap(&vector[i], &vector[i+1]);
                 flagSwap = 1;
