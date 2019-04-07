@@ -22,13 +22,7 @@ int main()
     int aEdades[CANTIDAD_ALUMNOS];
 
 
-<<<<<<< HEAD
     getArrayInt("Ingrese el valor array: ", "ERROR!\n", CANTIDAD_ALUMNOS, 1, 3, aEdades, CANTIDAD_ALUMNOS);
-=======
-**/
-int aEdades[CANTIDAD_ALUMNOS];
-getArrayInt("Ingrese el valor: ", "\nError", CANTIDAD_ALUMNOS, 1, 3, aEdades, 10);
->>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
 
     printArrayInt(aEdades, CANTIDAD_ALUMNOS);
     printf("\n\n");
