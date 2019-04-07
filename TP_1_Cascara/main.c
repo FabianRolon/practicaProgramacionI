@@ -16,8 +16,6 @@ int main()
 
     while(seguir=='s')
     {
-
-
         if(A == 's')
         {
             printf("\n1- Ingresar 1er operando (A=x)\n");
@@ -39,7 +37,7 @@ int main()
             printf("5- Calcular la division (A/B)\n");
             printf("6- Calcular la multiplicacion (A*B)\n");
             printf("7- Calcular el factorial (A!)\n");
-            printf("8- Calcular todas las operacione\n");
+            printf("8- Calcular todas las operaciones\n");
             printf("9- Salir\n\n");
 
             scanf("%d",&opcion);
@@ -47,25 +45,28 @@ int main()
         switch(opcion)
         {
             case 1:
-                getFloat("\nIngrese 1er operando: ", "\nEl dato ingresado es invalido\n", -999999999999999999, 99999999999999999, 3, &A);
+                getFloat( "\nIngrese 1er operando: ",
+                        "\nEl dato ingresado es invalido\n",
+                        -999999999999999999,
+                        99999999999999999, 3, &A);
                 break;
-
             case 2:
-                getFloat("\nIngrese 2do operando: ", "\nEl dato ingresado es invalido\n", -999999999999999999, 99999999999999999, 3, &B);
+                getFloat("\nIngrese 2do operando: ",
+                         "\nEl dato ingresado es invalido\n",
+                         -999999999999999999,
+                         99999999999999999, 3, &B);
                 break;
-
             case 3:
                 suma = sumador(A, B);
                 printf("\nLa suma es: %.2f\n\n", suma);
                 break;
-
             case 4:
                 resta = restador(A, B);
                 printf("\nLa resta es: %.2f\n\n", resta);
                 break;
-
             case 5:
-                division = dividir(A, B, "\nERROR! La division por cero es imposible!\n");
+                division = dividir(A, B,
+                "\nERROR! La division por cero es imposible!\n");
                 printf("\nLa division es: %.2f\n\n", division);
                 break;
 
@@ -82,18 +83,19 @@ int main()
                 printf("\nLa suma es: %.2f\n\n", suma);
                 resta = restador(A, B);
                 printf("\nLa resta es: %.2f\n\n", resta);
-                division = dividir(A, B, "\nERROR! La division por cero es imposible!\n");
+                division = dividir(A, B,
+                "\nERROR! La division por cero es imposible!\n");
                 printf("\nLa division es: %.2f\n\n", division);
                 multiplicacion = multiplicador(A, B);
                 printf("\nLa multiplicacion es: %.2f\n\n", multiplicacion);
-                calculaFactorial(A, &factorial, "A debe ser mayor igual a cero");
+                calculaFactorial(A, &factorial,
+                "A debe ser mayor igual a cero");
                 printf("\nEl factorial de A es: %li\n", factorial);
                 break;
             case 9:
                 seguir = 'n';
                 break;
         }
-
     }
     return 0;
 }

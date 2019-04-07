@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdio_ext.h>
+//#include <stdio_ext.h>
 #include "utn.h"
 
 int isValidInt(int numero, int maximo, int minimo) //las funcionjes con is devuelven "TRUE" or "FALSE"
@@ -29,7 +29,8 @@ int getInt(
         for(i=0; i<= reintentos; i++)
         {
             printf("%s", mensaje);//imprimir mensaje
-            __fpurge(stdin);
+            //fflush(stdin);
+            //__fpurge(stdin);
             scanf("%d", &buffer);
             if(isValidInt(buffer, maximo, minimo))
             {
@@ -98,7 +99,7 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
         do
         {
             printf("%s", mensaje);
-            __fpurge(stdin);
+            //__fpurge(stdin);
             scanf("%c", &buffer);
 
             if(isValidChar(buffer, maximo, minimo))
@@ -148,19 +149,26 @@ int getArrayInt(    char* msg,
     int retorno = -1;
     int j = 0;
     int buffer;
+    int controlError;
 
-    if(msg != NULL && msgError != NULL && arrayResultado != NULL && maximo >= minimo && reintentos <= 0 && limite > 0)
+    if(msg != NULL && msgError != NULL && arrayResultado != NULL && maximo >= minimo && reintentos >= 0 && limite > 0)
     {
-            for(j = 0; j < limite; j++)
-            {
-                getInt(msg,msgError,minimo, maximo, reintentos, &buffer);
 
-                *(arrayResultado+j) = buffer;
-                retorno = 0;
-                break;
 
-            }
+                for(j = 0; j < limite; j++)
+                {
+                    controlError = getInt(msg, msgError ,minimo, maximo, reintentos, &buffer);
+                    if(controlError == 0)
+                    {
+                        *(arrayResultado+j) = buffer;
+                        retorno = 0;
+                    }
+                    else
+                    {
+                      break;
+                    }
 
+                }
     }
     return retorno;
 }
@@ -180,7 +188,6 @@ int hacerSwap(int* primerValor, int* segundoValor)
     aux = *primerValor;
     *primerValor = *segundoValor;
     *segundoValor = aux;
-
     return 0;
 }
 
@@ -191,16 +198,16 @@ int ordenarArray(int* vector, int limite)
 
     do
     {
-        for(i = 0; i <limite-1; i++)
+        flagSwap = 0;
+        for(i = 0; i <limite-1; i++)     //int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
         {
-            flagSwap = 0;
             if(*(vector+i) > *(vector+i+1))
             {
                 hacerSwap(&vector[i], &vector[i+1]);
                 flagSwap = 1;
             }
         }
-    }while(flagSwap == 0);
+    }while(flagSwap);
 
     return 0;
 }

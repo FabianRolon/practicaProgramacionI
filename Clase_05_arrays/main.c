@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define CANTIDAD_ALUMNOS 5000
+#define CANTIDAD_ALUMNOS 10
 #include "utn.h"
-
- int getArrayInt(   char* Msg,
-                    char* msgError,
-                    int maximo,
-                    int minimo,
-                    int reintentos,
-                    int* arrayResultado,
-                    int limite);
 
 int main()
 {
@@ -25,12 +17,17 @@ int main()
     bufferEdad = *(pEdades+188); //la version mickey mouse es bufferEdad = aEdades[100];, es lo mismo
 
     getArrayInt("Ingrese el valor array", "ERROR", CANTIDAD_ALUMNOS, 0, 3, &aEdades);
+    **/
 
-**/
-int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
+    int aEdades[CANTIDAD_ALUMNOS];
 
-ordenarArray(aEdades, 10);
-printArrayInt(aEdades, 10);
 
-return 0;
+    getArrayInt("Ingrese el valor array: ", "ERROR!\n", CANTIDAD_ALUMNOS, 1, 3, aEdades, CANTIDAD_ALUMNOS);
+
+    printArrayInt(aEdades, CANTIDAD_ALUMNOS);
+    printf("\n\n");
+    ordenarArray(aEdades, CANTIDAD_ALUMNOS);
+    printArrayInt(aEdades, CANTIDAD_ALUMNOS);
+
+    return 0;
 }
