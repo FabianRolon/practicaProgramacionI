@@ -46,11 +46,7 @@ int main()
 }
 
 
-
-
-
-
-int sValidName(char* sName, int sLength)
+int sValidName(char *sName, int sLength)
 {
    int i;
    int retorno = 1;

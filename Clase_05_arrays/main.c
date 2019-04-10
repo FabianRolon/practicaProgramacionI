@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio_ext.h>
 #define CANTIDAD_ALUMNOS 10
 #include "utn.h"
 

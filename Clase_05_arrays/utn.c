@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <stdio_ext.h>
+#include <stdio_ext.h>
+#include <string.h>
 #include "utn.h"
 
 int isValidInt(int numero, int maximo, int minimo) //las funcionjes con is devuelven "TRUE" or "FALSE"
@@ -29,12 +30,8 @@ int getInt(
         for(i=0; i<= reintentos; i++)
         {
             printf("%s", mensaje);//imprimir mensaje
-<<<<<<< HEAD
             //fflush(stdin);
-=======
-            fflush(stdin);
->>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
-            //__fpurge(stdin);
+            __fpurge(stdin);
             scanf("%d", &buffer);
             if(isValidInt(buffer, maximo, minimo))
             {
@@ -103,11 +100,9 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
         do
         {
             printf("%s", mensaje);
-<<<<<<< HEAD
-            //__fpurge(stdin);
-=======
-//            __fpurge(stdin);
->>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
+
+            __fpurge(stdin);
+
             scanf("%c", &buffer);
 
             if(isValidChar(buffer, maximo, minimo))
@@ -146,52 +141,35 @@ int isValidArrayInt(int numero, int maximo, int minimo) //las funcionjes con is 
 
 
 
-int getArrayInt(    char* msg,
-                    char* msgError,
+int getArrayInt(    char *msg,
+                    char *msgError,
                     int maximo,
                     int minimo,
                     int reintentos,
-                    int* arrayResultado,
+                    int *arrayResultado,
                     int limite)
 {
     int retorno = -1;
     int j = 0;
     int buffer;
-    int controlError;
 
     if(msg != NULL && msgError != NULL && arrayResultado != NULL && maximo >= minimo && reintentos >= 0 && limite > 0)
     {
-<<<<<<< HEAD
 
-=======
-            for(j = 0; j < limite; j++)
-            {
-                getInt(msg,msgError,minimo, maximo, reintentos, &buffer);
+        for(j = 0; j < limite; j++)
+        {
+            getInt(msg,msgError,minimo, maximo, reintentos, &buffer);
+            *(arrayResultado+j) = buffer;
+            retorno = 0;
+        }
 
-                *(arrayResultado+j) = buffer;
-                retorno = 0;
-            }
->>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
-
-                for(j = 0; j < limite; j++)
-                {
-                    controlError = getInt(msg, msgError ,minimo, maximo, reintentos, &buffer);
-                    if(controlError == 0)
-                    {
-                        *(arrayResultado+j) = buffer;
-                        retorno = 0;
-                    }
-                    else
-                    {
-                      break;
-                    }
-
-                }
     }
     return retorno;
 }
 
-int printArrayInt(int* arrayResultado, int limite)
+
+
+int printArrayInt(int *arrayResultado, int limite)
 {
     int i;
     for(i = 0; i<limite; i++)
@@ -201,7 +179,7 @@ int printArrayInt(int* arrayResultado, int limite)
     return 0;
 }
 
-int hacerSwap(int* primerValor, int* segundoValor)
+int hacerSwap(int *primerValor, int *segundoValor)
 {
     int aux;
     aux = *primerValor;
@@ -210,7 +188,7 @@ int hacerSwap(int* primerValor, int* segundoValor)
     return 0;
 }
 
-int ordenarArray(int* vector, int limite)
+int ordenarArray(int *vector, int limite)
 {
     int i;
     int flagSwap;
@@ -220,12 +198,8 @@ int ordenarArray(int* vector, int limite)
         flagSwap = 0;
         for(i = 0; i <limite-1; i++)     //int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
         {
-<<<<<<< HEAD
-            if(*(vector+i) > *(vector+i+1))
-=======
             flagSwap = 0;
             if(*(vector+i) > *(vector+(i+1)))
->>>>>>> 818e9a782261d8cfbc196c7e973c3a3df068668a
             {
                 hacerSwap(&vector[i], &vector[i+1]);
                 flagSwap = 1;
@@ -236,6 +210,47 @@ int ordenarArray(int* vector, int limite)
     return 0;
 }
 
+
+int getString(char *mensaje, char *mensajeError, int minimo, int maximo, int reintentos, char *sString)
+{
+    int retorno = -1;
+    char buffer[maximo];
+
+    if(mensaje != NULL && mensajeError != NULL && maximo >= minimo && minimo >= 0 && reintentos >= 0 && sString != NULL)
+    {
+        do
+        {
+            printf("%s", mensaje);
+            fgets(buffer, sizeof(buffer), stdin);
+            if(isValidString(buffer, minimo, maximo))
+            {
+                strncpy(sString, buffer,sizeof(sString));
+                retorno = 0;
+            }
+            else
+            {
+                printf("%s", mensajeError);
+            }
+            reintentos--;
+        }while(reintentos>=0);
+
+    }
+    printf("%s", mensajeError);
+    return retorno;
+}
+
+int isValidString(char* buffer, int minimo, int maximo)
+{
+    int retorno = 1;
+    int lengthBuffer;
+    lengthBuffer = strlen(buffer);
+
+    if(lengthBuffer < minimo && lengthBuffer > maximo)
+    {
+        retorno = 0;
+    }
+    return retorno;
+}
 
 
 
