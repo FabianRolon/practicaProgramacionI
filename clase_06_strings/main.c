@@ -60,3 +60,8 @@ int sValidName(char *sName, int sLength)
     }
     return retorno;
 }
+
+int utn_isValidNumber(char *str)
+{
+ return 1;
+}
