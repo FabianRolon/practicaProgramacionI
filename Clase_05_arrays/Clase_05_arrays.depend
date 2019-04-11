@@ -1,17 +1,18 @@
 # depslib dependency file v1.0
-1554853266 source:/home/alumno/Rolon/practicaProgramacionI/Clase_05_arrays/main.c
+1555021469 source:/home/alumno/Rolon/practicaProgramacionI/Clase_05_arrays/main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdio_ext.h>
 	"utn.h"
 
-1554856299 source:/home/alumno/Rolon/practicaProgramacionI/Clase_05_arrays/utn.c
+1555022915 source:/home/alumno/Rolon/practicaProgramacionI/Clase_05_arrays/utn.c
 	<stdio.h>
 	<stdlib.h>
 	<stdio_ext.h>
+	<string.h>
 	"utn.h"
 
-1554856322 /home/alumno/Rolon/practicaProgramacionI/Clase_05_arrays/utn.h
+1555019862 /home/alumno/Rolon/practicaProgramacionI/Clase_05_arrays/utn.h
 
 1554493493 D
 

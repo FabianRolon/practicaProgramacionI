@@ -211,12 +211,22 @@ int ordenarArray(int *vector, int limite)
 }
 
 
-int getString(char *mensaje, char *mensajeError, int minimo, int maximo, int reintentos, char *sString)
+int getString(  char *mensaje,
+                char *mensajeError,
+                int minimo,
+                int maximo,
+                int reintentos,
+                char *sString)
 {
     int retorno = -1;
     char buffer[maximo];
 
-    if(mensaje != NULL && mensajeError != NULL && maximo >= minimo && minimo >= 0 && reintentos >= 0 && sString != NULL)
+    if( mensaje != NULL &&
+        mensajeError != NULL &&
+        maximo >= minimo &&
+        minimo >= 0 &&
+        reintentos >= 0 &&
+        sString != NULL)
     {
         do
         {
@@ -226,6 +236,7 @@ int getString(char *mensaje, char *mensajeError, int minimo, int maximo, int rei
             {
                 strncpy(sString, buffer,sizeof(sString));
                 retorno = 0;
+                break;
             }
             else
             {
@@ -235,20 +246,24 @@ int getString(char *mensaje, char *mensajeError, int minimo, int maximo, int rei
         }while(reintentos>=0);
 
     }
-    printf("%s", mensajeError);
+    else
+    {
+        printf("%s", mensajeError);
+    }
     return retorno;
 }
 
 int isValidString(char* buffer, int minimo, int maximo)
 {
-    int retorno = 1;
+    int retorno = 0;
     int lengthBuffer;
     lengthBuffer = strlen(buffer);
 
-    if(lengthBuffer < minimo && lengthBuffer > maximo)
+    if(lengthBuffer > minimo && lengthBuffer < maximo)
     {
-        retorno = 0;
+        retorno = 1;
     }
+
     return retorno;
 }
 

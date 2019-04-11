@@ -19,7 +19,7 @@ int main()
 
     getArrayInt("Ingrese el valor array", "ERROR", CANTIDAD_ALUMNOS, 0, 3, &aEdades);
     **/
-
+/**
     int aEdades[CANTIDAD_ALUMNOS];
 
 
@@ -28,7 +28,13 @@ int main()
     printArrayInt(aEdades, CANTIDAD_ALUMNOS);
     printf("\n\n");
     ordenarArray(aEdades, CANTIDAD_ALUMNOS);
-    printArrayInt(aEdades, CANTIDAD_ALUMNOS);
+    printArrayInt(aEdades, CANTIDAD_ALUMNOS);*/
+
+    char sName[CANTIDAD_ALUMNOS];
+
+    getString("Ingrese un nombre: ", "\nERROR!", 2, CANTIDAD_ALUMNOS, 2, sName);
+
+    printf("%s", sName);
 
     return 0;
 }

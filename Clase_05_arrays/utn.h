@@ -24,13 +24,21 @@ int getChar(
     int reintentos,
     char *resultado);
 
-    int getArrayInt(    char* msg,
+    int getArrayInt(char* msg,
                     char* msgError,
                     int maximo,
                     int minimo,
                     int reintentos,
                     int* arrayResultado,
                     int limite);
+
+    int getString(  char *mensaje,
+                    char *mensajeError,
+                    int minimo,
+                    int maximo,
+                    int reintentos,
+                    char *sString);
+
 
 int isValidInt(int numero, int maximo, int minimo);
 int isValidFloat(float numero, float maximo, float minimo);
