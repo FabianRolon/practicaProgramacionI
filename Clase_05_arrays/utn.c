@@ -230,7 +230,7 @@ int getString(  char *mensaje,
         do
         {
             printf("%s", mensaje);
-            fgets(buffer, maximo+1, stdin);
+            fgets(buffer, sizeof(buffer), stdin);
             buffer[strlen(buffer)-1] = '\0';
             if(!isValidLengthString(buffer, minimo, maximo))
             {
