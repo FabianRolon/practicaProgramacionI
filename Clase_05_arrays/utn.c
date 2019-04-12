@@ -115,8 +115,7 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
             {
                 printf("%s", mensajeError);
             }
-            reintentos--;
-        }while(reintentos>=0);
+        }while(reintentos--);
     }
     return retorno;
 }
@@ -243,8 +242,7 @@ int getString(  char *mensaje,
             {
                 printf("%s", mensajeError);
             }
-            reintentos--;
-        }while(reintentos>=0);
+        }while(reintentos--);
 
     }
     else
