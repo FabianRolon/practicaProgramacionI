@@ -44,8 +44,8 @@ int isValidInt(int numero, int maximo, int minimo);
 int isValidFloat(float numero, float maximo, float minimo);
 int isValidChar(char letra, char maximo, char minimo);
 int isValidArrayInt(int numero, int maximo, int minimo);
-int isValidString(char* buffer, int minimo, int maximo);
-int hacerSwap(int* primerValor, int* segundoValor);
+int isValidLengthString(char* buffer, int minimo, int maximo);
+int doSwap(int* primerValor, int* segundoValor);
 int ordenarArray(int* vector, int limite);
 int printArrayInt(int* arrayResultado, int limite);
 

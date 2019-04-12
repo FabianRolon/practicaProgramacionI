@@ -3,7 +3,7 @@
 #include <string.h>
 #define TAMANO_ARRAY 7
 
-int sValidName(char* sName, int sLength);
+int isValidName(char* sName);
 
 int main()
 {
@@ -27,13 +27,12 @@ int main()
 
     char nombre[TAMANO_ARRAY];
     char buffer[TAMANO_ARRAY];
-    int lengthBuffer;
 
     printf("Ingrese su nombre querido usuario: ");
     fgets(buffer, sizeof(buffer), stdin);
-    lengthBuffer = strlen(buffer);
+    buffer[strlen(buffer)-1] = '\0';
 
-    if(sValidName(buffer, lengthBuffer))
+    if(isValidName(buffer))
     {
         strncpy(nombre, buffer,sizeof(nombre));
         printf("\n%s",nombre);
@@ -46,16 +45,17 @@ int main()
 }
 
 
-int sValidName(char *sName, int sLength)
+int isValidName(char *sName)
 {
    int i;
    int retorno = 1;
 
-    for(i=0; i < sLength; i++)
+    for(i = 0; *(sName+i) != '\0'; i++)
     {
-        if((sName[i] != ' ') && (sName[i] < 'a' || sName[i] > 'z') && (sName[i] < 'A' || sName[i] > 'Z'))
+        if((*(sName+i) != ' ') && (*(sName+i) < 'a' || *(sName+i) > 'z') && (*(sName+i) < 'A' || *(sName+i) > 'Z'))
         {
             retorno = 0;
+            break;
         }
     }
     return retorno;

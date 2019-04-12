@@ -179,7 +179,7 @@ int printArrayInt(int *arrayResultado, int limite)
     return 0;
 }
 
-int hacerSwap(int *primerValor, int *segundoValor)
+int doSwap(int *primerValor, int *segundoValor)
 {
     int aux;
     aux = *primerValor;
@@ -201,7 +201,7 @@ int ordenarArray(int *vector, int limite)
             flagSwap = 0;
             if(*(vector+i) > *(vector+(i+1)))
             {
-                hacerSwap(&vector[i], &vector[i+1]);
+                doSwap(&vector[i], &vector[i+1]);
                 flagSwap = 1;
             }
         }
@@ -219,7 +219,7 @@ int getString(  char *mensaje,
                 char *sString)
 {
     int retorno = -1;
-    char buffer[maximo];
+    char buffer[4096];
 
     if( mensaje != NULL &&
         mensajeError != NULL &&
@@ -231,10 +231,11 @@ int getString(  char *mensaje,
         do
         {
             printf("%s", mensaje);
-            fgets(buffer, sizeof(buffer), stdin);
-            if(isValidString(buffer, minimo, maximo))
+            fgets(buffer, maximo+1, stdin);
+            buffer[strlen(buffer)-1] = '\0';
+            if(!isValidLengthString(buffer, minimo, maximo))
             {
-                strncpy(sString, buffer,sizeof(sString));
+                strncpy(sString, buffer, maximo);
                 retorno = 0;
                 break;
             }
@@ -253,15 +254,15 @@ int getString(  char *mensaje,
     return retorno;
 }
 
-int isValidString(char* buffer, int minimo, int maximo)
+int isValidLengthString(char* buffer, int minimo, int maximo)
 {
-    int retorno = 0;
+    int retorno = 1;
     int lengthBuffer;
     lengthBuffer = strlen(buffer);
 
-    if(lengthBuffer > minimo && lengthBuffer < maximo)
+    if(lengthBuffer >= minimo && lengthBuffer < maximo)
     {
-        retorno = 1;
+        retorno = 0;
     }
 
     return retorno;

@@ -34,7 +34,7 @@ int main()
 
     getString("Ingrese un nombre: ", "\nERROR!", 2, CANTIDAD_ALUMNOS, 2, sName);
 
-    printf("%s", sName);
+    printf("\n%s", sName);
 
     return 0;
 }
