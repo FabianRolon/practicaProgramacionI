@@ -48,5 +48,10 @@ int isValidLengthString(char* buffer, int minimo, int maximo);
 int doSwap(int* primerValor, int* segundoValor);
 int ordenarArray(int* vector, int limite);
 int printArrayInt(int* arrayResultado, int limite);
+int encontrarNombre(char sArray[][50],char *nombre , int limite);
+int encontrarVacio(char sArray[][50], int limite);
+int inicializar(char sArray[][50], int limite);
+
+
 
 #endif // UTN_H_INCLUDED

@@ -267,4 +267,46 @@ int isValidLengthString(char* buffer, int minimo, int maximo)
 }
 
 
+int encontrarNombre(char sArray[][50],char *nombre , int limite)
+{
+    int i;
+    int retorno = -1;
+
+    for(i = 0; i < limite; i++)
+    {
+        if(strcmp(sArray[i], nombre) == 0)
+        {
+            retorno = i;
+        }
+    }
+    return retorno;
+}
+
+
+int encontrarVacio(char sArray[][50], int limite)
+{
+    int i;
+    int retorno = -1;
+
+    for(i = 0; i < limite; i++)
+    {
+        if(strcmp(sArray[i], "\0") == 0)
+        {
+            retorno = i;
+            break;
+        }
+    }
+    return retorno;
+}
+
+int inicializar(char sArray[][50], int limite)
+{
+    int i;
+    for(i = 0; i < limite; i++)
+    {
+        strncpy(sArray[i], "\0", limite);
+    }
+
+    return 0;
+}
 

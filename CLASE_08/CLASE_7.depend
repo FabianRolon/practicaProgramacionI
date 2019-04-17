@@ -12,15 +12,16 @@
 
 1555023504 /home/profesor/Descargas/CLASE_7/utn.h
 
-1555030248 source:/home/alumno/Documentos/practicaProgramacionI/CLASE_08/utn.c
-	<string.h>
+1555460645 source:/home/alumno/Documentos/practicaProgramacionI/CLASE_08/utn.c
 	<stdio.h>
 	<stdlib.h>
+	<stdio_ext.h>
+	<string.h>
 	"utn.h"
 
-1555023504 /home/alumno/Documentos/practicaProgramacionI/CLASE_08/utn.h
+1555460643 /home/alumno/Documentos/practicaProgramacionI/CLASE_08/utn.h
 
-1555459144 source:/home/alumno/Documentos/practicaProgramacionI/CLASE_08/main.c
+1555461461 source:/home/alumno/Documentos/practicaProgramacionI/CLASE_08/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

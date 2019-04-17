@@ -3,95 +3,58 @@
 #include <string.h>
 #include "utn.h"
 #define QTY_EMPLEADOS 10
+#define LONGITUD_CADENA 50
 
-int printArray(char aString[][50], int limite);
-int inicializar(char sArray[][50], int limite);
-int encontrarVacio(char sArray[][50], int limite);
-int encontrarNombre(char sArray[][50],char *nombre , int limite);
+
 
 int main()
 {
-    char auxName[500] = "test";
+    char seguir = 's';
+    int choice = 0;
+    char aNombre[QTY_EMPLEADOS][LONGITUD_CADENA];
+    inicializar(aNombre, LONGITUD_CADENA);
+    int posicionArray;
 
-    char arrayNombre[QTY_EMPLEADOS][50];
-
-    strncpy(arrayNombre[0], "JUAN", 50);
-    strncpy(arrayNombre[1], "PEDRO", 50);
-    strncpy(arrayNombre[2], "LALO", 50);
-    strncpy(arrayNombre[3], "asdf", 50);
-    strncpy(arrayNombre[4], "ahjjk", 50);
-    strncpy(arrayNombre[5], "\0", 50);
-
-    printf("%d\n", encontrarNombre(arrayNombre,"PEDRO", 50));
-
-
-    if(getName( "Nombre?: ",
-                "Error",
-                2,
-                5,
-                2,
-                auxName) == 0)
+    while(seguir == 's')
     {
-        printf("OK: %s",auxName);
-    }
-    else
-    {
-        printf("ER: %s",auxName);
-    }
-    return 0;
-}
 
-int printArray(char aString[][50], int limite)
-{
-    int i;
+        printf("Base datos de Nombre\n\n\n");
+        printf("1- Dar de alta a un usuario\n");
+        printf("2- Dar de baja a un usuario\n");
+        printf("3- Modificar a un usuario\n");
+        printf("4- Ordenar\n");
+        printf("5- Mostrar\n");
+        printf("6- Finalizar\n");
 
-    for (i = 0; i < limite; i++)
-    {
-        printf("%s\n", aString[i]);
-    }
-    return 0;
-}
+        getInt("\n","ERROR! Su eleccion no es correcta.\n", 1, 6, 3, &choice);
 
-int inicializar(char sArray[][50], int limite)
-{
-    int i;
-    for(i = 0; i < limite; i++)
-    {
-        strncpy(sArray[i], "\0", limite);
-    }
 
-    return 0;
-}
-
-int encontrarVacio(char sArray[][50], int limite)
-{
-    int i;
-    int retorno = -1;
-
-    for(i = 0; i < limite; i++)
-    {
-        if(strcmp(sArray[i], "\0") == 0)
+        switch(choice)
         {
-            retorno = i;
-            break;
+            case 1:
+                inicializar(aNombre, LONGITUD_CADENA);
+                posicionArray = encontrarVacio(aNombre, LONGITUD_CADENA);
+                getString("Ingrese el nombre del usuario\n", "ERROR! Ingrese un nombre valido", 2, LONGITUD_CADENA, 2, &aNombre[posicionArray][LONGITUD_CADENA]);
+
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+                seguir = 'n';
+                break;
         }
     }
-    return retorno;
+    return 0;
 }
 
-int encontrarNombre(char sArray[][50],char *nombre , int limite)
-{
-    int i;
-    int retorno = -1;
 
-    for(i = 0; i < limite; i++)
-    {
-        if(strcmp(sArray[i], nombre) == 0)
-        {
-            retorno = i;
-        }
-    }
-    return retorno;
-}
 
 
