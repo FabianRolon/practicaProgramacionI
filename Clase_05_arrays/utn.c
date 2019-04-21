@@ -197,7 +197,6 @@ int ordenarArray(int *vector, int limite)
         flagSwap = 0;
         for(i = 0; i <limite-1; i++)     //int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
         {
-            flagSwap = 0;
             if(*(vector+i) > *(vector+(i+1)))
             {
                 doSwap(&vector[i], &vector[i+1]);

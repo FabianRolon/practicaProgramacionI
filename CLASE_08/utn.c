@@ -29,7 +29,7 @@ int getInt(
     {
         for(i=0; i<= reintentos; i++)
         {
-            printf("%s", mensaje);//imprimir mensaje
+            printf("%s\n", mensaje);//imprimir mensaje
             //fflush(stdin);
             __fpurge(stdin);
             scanf("%d", &buffer);
@@ -197,7 +197,6 @@ int ordenarArray(int *vector, int limite)
         flagSwap = 0;
         for(i = 0; i <limite-1; i++)     //int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
         {
-            flagSwap = 0;
             if(*(vector+i) > *(vector+(i+1)))
             {
                 doSwap(&vector[i], &vector[i+1]);
@@ -230,6 +229,7 @@ int getString(  char *mensaje,
         do
         {
             printf("%s", mensaje);
+            __fpurge(stdin);
             fgets(buffer, sizeof(buffer), stdin);
             buffer[strlen(buffer)-1] = '\0';
             if(!isValidLengthString(buffer, minimo, maximo))
@@ -290,7 +290,7 @@ int encontrarVacio(char sArray[][50], int limite)
 
     for(i = 0; i < limite; i++)
     {
-        if(strcmp(sArray[i], "\0") == 0)
+        if((strcmp(sArray[i], "\0") == 0))
         {
             retorno = i;
             break;

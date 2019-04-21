@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1555295782 source:/home/fabianrolon/Documentos/practicaProgramacionI/madeByProfesor/CLASE_07/main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+
+1555295782 /home/fabianrolon/Documentos/practicaProgramacionI/madeByProfesor/CLASE_07/utn.h
+
+1555295782 source:/home/fabianrolon/Documentos/practicaProgramacionI/madeByProfesor/CLASE_07/utn.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+

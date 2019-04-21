@@ -36,3 +36,18 @@
 
 1554493522 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\clase_05_arrays\main.c
 
+1555817726 source:/home/fabianrolon/Documentos/practicaProgramacionI/Clase_05_arrays/main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"utn.h"
+
+1555635877 /home/fabianrolon/Documentos/practicaProgramacionI/Clase_05_arrays/utn.h
+
+1555817789 source:/home/fabianrolon/Documentos/practicaProgramacionI/Clase_05_arrays/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	<string.h>
+	"utn.h"
+
