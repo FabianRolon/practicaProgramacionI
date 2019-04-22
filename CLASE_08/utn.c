@@ -187,19 +187,22 @@ int doSwap(int *primerValor, int *segundoValor)
     return 0;
 }
 
-int ordenarArray(int *vector, int limite)
+int ordenarArray(char *vector[10][50], int limite)
 {
     int i;
     int flagSwap;
+    char aux[1];
 
     do
     {
         flagSwap = 0;
         for(i = 0; i <limite-1; i++)     //int aEdades[10] = {8,1,0,4,9,5,2,3,6,7};
         {
-            if(*(vector+i) > *(vector+(i+1)))
+            if(strcmp(vector[i][0], vector[i+1][0]) > 0)
             {
-                doSwap(&vector[i], &vector[i+1]);
+                strncpy(aux, vector[i][0], limite);
+                strncpy(vector[i+1][0], vector[i][0], limite);
+                strncpy(vector[i][0],aux, limite);
                 flagSwap = 1;
             }
         }

@@ -63,7 +63,7 @@ int main()
                 break;
 
             case 4:
-
+                ordenarArray(aNombre, QTY_EMPLEADOS);
                 break;
 
             case 5:
