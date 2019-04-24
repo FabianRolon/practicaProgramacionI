@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1555023803 source:/home/profesor/Ernesto/LABO12019/Clase7/Clase7/main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+
+1555022033 source:/home/profesor/Ernesto/LABO12019/Clase7/Clase7/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1555021580 /home/profesor/Ernesto/LABO12019/Clase7/Clase7/utn.h
+
+1556055947 source:/home/alumno/Entregas/Clase7_en_clase/Clase7_en_clase/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1556055947 /home/alumno/Entregas/Clase7_en_clase/Clase7_en_clase/utn.h
+
+1556055947 source:/home/alumno/Rolon/practicaProgramacionI/Clase7_en_clase/Clase7_en_clase/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1556055947 /home/alumno/Rolon/practicaProgramacionI/Clase7_en_clase/Clase7_en_clase/utn.h
+
+1556061260 source:/home/alumno/Rolon/practicaProgramacionI/Clase7_en_clase/Clase7_en_clase/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

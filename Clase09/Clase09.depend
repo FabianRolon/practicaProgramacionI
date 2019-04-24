@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1556055978 source:/home/alumno/Rolon/practicaProgramacionI/Clase09/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	<string.h>
+	"utn.h"
+
+1556055978 /home/alumno/Rolon/practicaProgramacionI/Clase09/utn.h
+
+1556066255 source:/home/alumno/Rolon/practicaProgramacionI/Clase09/empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
+1556064137 /home/alumno/Rolon/practicaProgramacionI/Clase09/empleado.h
+
+1556066215 source:/home/alumno/Rolon/practicaProgramacionI/Clase09/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
