@@ -9,19 +9,19 @@
 
 int main()
 {
-    char seguir='s'; //MENU
+    char seguir = 's'; //MENU
     int opcion; //MENU
     int valor;
     int posLibre;
     Pantalla pantallas[CANTIDAD_PANTALLA];
 
-    valor=pan_Inicializar(pantallas, CANTIDAD_PANTALLA);
+    valor = pan_Inicializar(pantallas, CANTIDAD_PANTALLA);
 
-    if (valor==0)
+    if (valor == 0)
     {
         printf("Sistema inicializado correctamente\n\n\n");
     }
-    while (seguir=='s')
+    while (seguir == 's')
     {
         printf("\t\tMENU");
         printf("\n\n1-Alta pantalla");
@@ -30,13 +30,14 @@ int main()
         printf("\n\n4-Salir\n");
 
 
-            getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 4, 2, &opcion);
+        getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 4, 2, &opcion);
+        system("cls");
 
         switch (opcion)
         {
         case 1:
 
-            if(pan_buscarLibre(pantallas,CANTIDAD_PANTALLA, &posLibre)!=0)
+            if(pan_buscarLibre(pantallas,CANTIDAD_PANTALLA, &posLibre) != 0)
             {
                 printf("LLENO\n\n");
             }
@@ -45,11 +46,10 @@ int main()
                 switch (pan_AltaPantalla(pantallas, CANTIDAD_PANTALLA, posLibre))
                 {
                 case 0:
-                    printf("dato ingresado correctamente\n\n");
-
+                    printf("Dato ingresado correctamente\n\n");
                     break;
                 case 1:
-                    printf("dato ingresado INCORRECTAMENTE\n\n");
+                    printf("Dato ingresado INCORRECTAMENTE\n\n");
                     break;
                 }
             }
@@ -63,12 +63,12 @@ int main()
         case 3:
             if (pan_baja(pantallas, CANTIDAD_PANTALLA)==0)
             {
-                printf("exito");
+                printf("Exito");
             }
             break;
 
         case 4:
-            seguir='f';
+            seguir = 'f';
             break;
         }
     }

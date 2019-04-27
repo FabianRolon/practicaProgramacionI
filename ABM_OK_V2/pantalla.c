@@ -7,10 +7,12 @@
 
 int pan_Inicializar(Pantalla *arrayPantalla, int cantidad)
 {
-    int retorno=-1;
-    for (int i=0; i<cantidad;i++)
+    int retorno = -1;
+    int i;
+
+    for (i = 0; i < cantidad; i++)
     {
-        arrayPantalla[i].isEmpty=1;
+        arrayPantalla[i].isEmpty = 1;
         retorno=0;
     }
 
@@ -37,28 +39,40 @@ int pan_buscarLibre(Pantalla *arrayPantalla, int cantidad, int *devuelve)
 
 int pan_AltaPantalla(Pantalla *arrayPantalla, int cantidad, int posLibre)
 {
-    int retorno=-1;
-    if (getString(arrayPantalla[posLibre].nombre,"ingrese un nombre: ","error, vuelva a ingresar\n\n",2,20,2)==0)
+    int idGenerator = 1;
+    int retorno = -1;
+    int aux;
+
+    if (    getString(arrayPantalla[posLibre].nombre,"Ingrese un nombre: ","error, vuelva a ingresar\n\n",2,20,2) == 0 &&
+            getStringD(arrayPantalla[posLibre].direccion,"Ingrese la direccion: " ,"error, vuelva a ingresar\n\n",2,30,2) == 0 &&
+            getStringf(&arrayPantalla[posLibre].precio, "Ingrese precio: ","error, vuelva a ingresar\n\n",2,999999,2) == 0 &&
+            getChar("Ingrese tipo <LED = E/LCD = C: ","error, vuelva a ingresar\n\n",'A','Z',2,&arrayPantalla[posLibre].tipo) == 0)
     {
-        if (getStringD(arrayPantalla[posLibre].direccion,"ingrese la direccion" ,"error, vuelva a ingresar\n\n",2,30,2)==0)
+        if(arrayPantalla[posLibre].tipo != 'E' && arrayPantalla[posLibre].tipo != 'C')
         {
-            if(getStringf(&arrayPantalla[posLibre].precio, "ingrese precio","error, vuelva a ingresar\n\n",2,999999,2)==0)
+            printf("INGRESO INCORRECTO!!!");
+        }
+        else
+        {
+            if(posLibre == 0)
             {
-               if(getChar("ingrese tipo <LED = E/LCD = C>","error, vuelva a ingresar\n\n",'A','Z',2,&arrayPantalla[posLibre].tipo)==0)
-               {
-                    if(arrayPantalla[posLibre].tipo!='E' && arrayPantalla[posLibre].tipo!='C')
-                    {
-                        printf("INGRESO INCORRECTO");
-                    }
-                    arrayPantalla[posLibre].isEmpty=0;
-                    retorno=0;
-               }
+                arrayPantalla[posLibre].idPantalla = idGenerator;
+                arrayPantalla[posLibre].isEmpty  = 0;
+                retorno=0;
+            }
+            else
+            {
+                aux = (arrayPantalla[posLibre-1].idPantalla);
+                aux++;
+                arrayPantalla[posLibre].idPantalla = aux;
+                arrayPantalla[posLibre].isEmpty  = 0;
+                retorno=0;
             }
         }
     }
     else
     {
-        retorno=1;
+        retorno = 1;
     }
 
     return retorno;
@@ -68,18 +82,20 @@ void pan_mostrarArray(Pantalla *arrayPantalla, int cantidad)
 {
     int i;
 
-    for (i=0; i<cantidad;i++)
-    {
-        if(arrayPantalla[i].isEmpty==0)
-        {
-            printf("Posicion | Estado |      Nombre         |      Direccion         |    Precio      | Tipo |\n\n");
-            printf("%d", i);
-            printf(   "         %d    ", arrayPantalla[i].isEmpty);
+    printf("\n\n\t\t\t\t||Lista de Pantallas||\n\n");
 
-            printf(                    "  %s", arrayPantalla[i].nombre);
-            printf(                        "                %s", arrayPantalla[i].direccion);
-            printf(                                                              "     %.2f", arrayPantalla[i].precio);
-            printf(                                                                      "       %c\n", arrayPantalla[i].tipo);
+    for (i = 0; i < cantidad ;i++)
+    {
+        if(arrayPantalla[i].isEmpty == 0)
+        {
+
+            printf("ID Pantalla: %d\n", arrayPantalla[i].idPantalla);
+            printf("Posicion: %d\n", i);
+            printf("Estado: %d\n", arrayPantalla[i].isEmpty);
+            printf("Nombre: %s\n", arrayPantalla[i].nombre);
+            printf("Direccion: %s\n", arrayPantalla[i].direccion);
+            printf("Precio: $%.2f\n", arrayPantalla[i].precio);
+            printf("Tipo: %c\n\n", arrayPantalla[i].tipo);
         }
 
         //printf("Press 'Enter' to continue: ... ");
