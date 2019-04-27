@@ -112,7 +112,7 @@
 	"funciones_string.h"
 	"empleado.h"
 
-1556229117 source:/home/alumno/Entregas/ABM_OK_V2/empleado.c
+1556229117 source:/home/alumno/zanoni/zanoni_primer_cuatrimestre/ABM_OK_V2/empleado.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -120,12 +120,12 @@
 	"funciones_string.h"
 	"empleado.h"
 
-1556229117 /home/alumno/Entregas/ABM_OK_V2/funciones_string.h
+1556229117 /home/alumno/zanoni/zanoni_primer_cuatrimestre/ABM_OK_V2/funciones_string.h
 	"empleado.h"
 
-1556229117 /home/alumno/Entregas/ABM_OK_V2/empleado.h
+1556229117 /home/alumno/zanoni/zanoni_primer_cuatrimestre/ABM_OK_V2/empleado.h
 
-1556229117 source:/home/alumno/Entregas/ABM_OK_V2/funciones_string.c
+1556229117 source:/home/alumno/zanoni/zanoni_primer_cuatrimestre/ABM_OK_V2/funciones_string.c
 	<stdio.h>
 	<stdio_ext.h>
 	<stdlib.h>
@@ -133,40 +133,58 @@
 	<ctype.h>
 	"funciones_string.h"
 
-1556229117 source:/home/alumno/Entregas/ABM_OK_V2/main.c
+1556237738 source:/home/alumno/zanoni/zanoni_primer_cuatrimestre/ABM_OK_V2/main.c
 	<stdio.h>
 	<ctype.h>
 	<stdlib.h>
 	<string.h>
-	"empleado.h"
+	"pantalla.h"
 	"funciones_string.h"
 
-1556229117 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/empleado.c
+1556238939 /home/alumno/zanoni/zanoni_primer_cuatrimestre/ABM_OK_V2/pantalla.h
+
+1556239807 source:/home/alumno/zanoni/zanoni_primer_cuatrimestre/ABM_OK_V2/pantalla.c
+	<string.h>
 	<stdio.h>
 	<stdlib.h>
-	<ctype.h>
-	<string.h>
-	"funciones_string.h"
-	"empleado.h"
-
-1556229117 /home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/funciones_string.h
-	"empleado.h"
-
-1556229117 /home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/empleado.h
-
-1556229117 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/funciones_string.c
-	<stdio.h>
 	<stdio_ext.h>
+	"pantalla.h"
+	"funciones_string.h"
+
+1556358517 source:c:\users\calidad\desktop\programas\program\zanoni\zanoni_primer_cuatrimestre\abm_ok_v2\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones_string.h"
+	"empleado.h"
+
+1556358517 c:\users\calidad\desktop\programas\program\zanoni\zanoni_primer_cuatrimestre\abm_ok_v2\funciones_string.h
+	"empleado.h"
+
+1556358517 c:\users\calidad\desktop\programas\program\zanoni\zanoni_primer_cuatrimestre\abm_ok_v2\empleado.h
+
+1556359875 source:c:\users\calidad\desktop\programas\program\zanoni\zanoni_primer_cuatrimestre\abm_ok_v2\funciones_string.c
+	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	"funciones_string.h"
 
-1556229117 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/main.c
+1556369053 source:c:\users\calidad\desktop\programas\program\zanoni\zanoni_primer_cuatrimestre\abm_ok_v2\main.c
 	<stdio.h>
 	<ctype.h>
 	<stdlib.h>
 	<string.h>
-	"empleado.h"
+	"pantalla.h"
+	"funciones_string.h"
+
+1556365600 c:\users\calidad\desktop\programas\program\zanoni\zanoni_primer_cuatrimestre\abm_ok_v2\pantalla.h
+
+1556367991 source:c:\users\calidad\desktop\programas\program\zanoni\zanoni_primer_cuatrimestre\abm_ok_v2\pantalla.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"pantalla.h"
 	"funciones_string.h"
 

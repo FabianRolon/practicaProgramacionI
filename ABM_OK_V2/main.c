@@ -2,10 +2,10 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include "empleado.h"
+#include "pantalla.h"
 #include "funciones_string.h"
 
-#define CANTEMPLEADOS 10
+#define CANTIDAD_PANTALLA 10
 
 int main()
 {
@@ -13,40 +13,36 @@ int main()
     int opcion; //MENU
     int valor;
     int posLibre;
-    Empleado empleados[CANTEMPLEADOS];
+    Pantalla pantallas[CANTIDAD_PANTALLA];
 
-    valor=empleado_Inicializar(empleados, CANTEMPLEADOS);
+    valor=pan_Inicializar(pantallas, CANTIDAD_PANTALLA);
 
     if (valor==0)
     {
-        printf("Empleados inicializados correctamente\n\n\n");
+        printf("Sistema inicializado correctamente\n\n\n");
     }
     while (seguir=='s')
     {
         printf("\t\tMENU");
-        printf("\n\n1-Alta empleado");
-        printf("\n\n2-Mostrar empleado");
-        printf("\n\n3-Borrar nombre");
+        printf("\n\n1-Alta pantalla");
+        printf("\n\n2-Mostrar antallas");
+        printf("\n\n3-Borrar pantalla");
         printf("\n\n4-Salir\n");
 
-        do
-        {
-            printf("\n\t\tingrese opcion: ");
-            scanf("\n%d",&opcion);
-        }
-        while (opcion<1 || opcion>4);
+
+            getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 4, 2, &opcion);
 
         switch (opcion)
         {
         case 1:
 
-            if(empleado_buscarLibre(empleados, CANTEMPLEADOS, &posLibre)!=0)
+            if(pan_buscarLibre(pantallas,CANTIDAD_PANTALLA, &posLibre)!=0)
             {
                 printf("LLENO\n\n");
             }
             else
             {
-                switch (empleado_Altaempleado(empleados, CANTEMPLEADOS, posLibre))
+                switch (pan_AltaPantalla(pantallas, CANTIDAD_PANTALLA, posLibre))
                 {
                 case 0:
                     printf("dato ingresado correctamente\n\n");
@@ -61,11 +57,11 @@ int main()
 
         case 2:
 
-            empleado_mostrarArray(empleados, CANTEMPLEADOS);
+            pan_mostrarArray(pantallas, CANTIDAD_PANTALLA);
             break;
 
         case 3:
-            if (empleado_baja(empleados, CANTEMPLEADOS)==0)
+            if (pan_baja(pantallas, CANTIDAD_PANTALLA)==0)
             {
                 printf("exito");
             }
