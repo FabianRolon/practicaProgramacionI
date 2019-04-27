@@ -107,23 +107,24 @@ int pan_baja(Pantalla *arrayPantalla, int cantidad)
 {
 
     int posPantalla;
-    switch (pan_buscarEnArray(arrayPantalla, cantidad,&posPantalla,"ingrese nombre de pantalla a eliminar"))
+
+    pan_mostrarArray(arrayPantalla, cantidad);
+    switch (pan_buscarEnArray(arrayPantalla, cantidad,&posPantalla,"Ingrese nombre de pantalla a eliminar: "))
     {
     case 0:
         if (arrayPantalla[posPantalla].isEmpty==0)
         {
-            printf("hubo coincidencia\n\n");
+            printf("Hubo coincidencia\n\n");
             arrayPantalla[posPantalla].isEmpty=1;
-            printf("la pantalla borrada es: %s\n\n",arrayPantalla[posPantalla].nombre);
-
+            printf("La pantalla borrada es: %s\n\n",arrayPantalla[posPantalla].nombre);
         }
         break;
     case 1:
-        printf("no se encontro el nombre y no entro al if");
+        printf("No se encontro el nombre y no entro al if\n\n");
         break;
 
     default:
-        printf("ingreso al if pero no encontro el nombre");
+        printf("Ingreso al if pero no encontro el nombre");
         break;
     }
     return 1;
@@ -155,14 +156,15 @@ int pan_buscarEnArray (Pantalla *arrayPantalla, int cantidad, int *pantallaEncon
 int pan_modificacion(Pantalla *arrayPantalla, int cantidad)
 {
 
-     int posPantalla;
-    switch (pan_buscarEnArray(arrayPantalla, cantidad,&posPantalla,"ingrese el nombre de la pantalla a modificar"))
+    int posPantalla;
+    pan_mostrarArray(arrayPantalla, cantidad);
+    switch (pan_buscarEnArray(arrayPantalla, cantidad,&posPantalla,"Ingrese el Id de la pantalla a modificar: "))
     {
     case 0:
         if (arrayPantalla[posPantalla].isEmpty==0)
         {
             printf("hubo coincidencia\n\n");
-            if (getString(arrayPantalla[posPantalla].nombre,"ingrese el nuevo nombre de la pantalla","error",2,20,2)==0)
+            if (getString(arrayPantalla[posPantalla].nombre,"Ingrese el nuevo nombre de la pantalla","error",2,20,2)==0)
             {
                 printf("la pantalla modificada es: %s\n\n",arrayPantalla[posPantalla].nombre);
             }
