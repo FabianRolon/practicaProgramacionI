@@ -14,7 +14,7 @@ typedef struct
 
 int pan_Inicializar(Pantalla *arrayPantalla, int cantidad);
 int pan_buscarLibre(Pantalla *arrayPantalla, int cantidad, int *devuelve);
-int pan_AltaPantalla(Pantalla *arrayPantalla, int cantidad, int posLibre);
+int pan_AltaPantalla(Pantalla *arrayPantalla, int cantidad, int posLibre, int id);
 void pan_mostrarArray(Pantalla *arrayPantalla, int cantidad);
 int pan_baja(Pantalla *arrayPantalla, int cantidad);
 int pan_buscarEnArray (Pantalla *arrayPantalla, int cantidad, int *pantallaEncontrada,char *textoAMostrar);
@@ -31,6 +31,8 @@ int getInt(
     int reintentos,
     int *resultado);
 int isValidInt(int numero, int maximo, int minimo);
+int pan_buscarEnArrayPorId (Pantalla *arrayPantalla, int cantidad, int *pantallaEncontrada,char *textoAMostrar);
+int pan_modificacion(Pantalla *arrayPantalla, int cantidad);
 
 
 #endif // PANTALLA_H_INCLUDED

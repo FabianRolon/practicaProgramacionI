@@ -5,7 +5,7 @@
 	"funciones_string.h"
 	"empleado.h"
 
-1555549243 h"
+1556358517 h"
 
 1555546090 /home/alumno/Descargas/Laboratorio-master (1)/clase8_17-04/empleado.h
 
@@ -16,7 +16,7 @@
 	<ctype.h>
 	"funciones_string.h"
 
-1556132989 _string.h"
+1556390379 _string.h"
 
 1555548458 /home/alumno/Descargas/Laboratorio-master (1)/clase8_17-04/funciones_string.h
 	"empleado.h"
@@ -222,6 +222,37 @@
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
+	"pantalla.h"
+	"funciones_string.h"
+
+1556479851 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.c
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones_string.h"
+
+1556479464 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.h
+	"empleado.h"
+
+1556479464 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.h
+
+1556487992 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/main.c
+	<stdio.h>
+	<ctype.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"funciones_string.h"
+
+1556488021 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.h
+
+1556488547 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
 	"pantalla.h"
 	"funciones_string.h"
 

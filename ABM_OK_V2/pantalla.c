@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <stdio_ext.h>
+#include <stdio_ext.h>
 #include "pantalla.h"
 #include "funciones_string.h"
 
@@ -37,16 +37,14 @@ int pan_buscarLibre(Pantalla *arrayPantalla, int cantidad, int *devuelve)
     return retorno;
 }
 
-int pan_AltaPantalla(Pantalla *arrayPantalla, int cantidad, int posLibre)
+int pan_AltaPantalla(Pantalla *arrayPantalla, int cantidad, int posLibre, int id)
 {
-    int idGenerator = 1;
     int retorno = -1;
-    int aux;
 
     if (    getString(arrayPantalla[posLibre].nombre,"Ingrese un nombre: ","error, vuelva a ingresar\n\n",2,20,2) == 0 &&
             getStringD(arrayPantalla[posLibre].direccion,"Ingrese la direccion: " ,"error, vuelva a ingresar\n\n",2,30,2) == 0 &&
             getStringf(&arrayPantalla[posLibre].precio, "Ingrese precio: ","error, vuelva a ingresar\n\n",2,999999,2) == 0 &&
-            getChar("Ingrese tipo <LED = E/LCD = C: ","error, vuelva a ingresar\n\n",'A','Z',2,&arrayPantalla[posLibre].tipo) == 0)
+            getChar("Ingrese tipo <LED = E/LCD = C: ","Error, vuelva a ingresar\n\n",'A','Z',2,&arrayPantalla[posLibre].tipo) == 0)
     {
         if(arrayPantalla[posLibre].tipo != 'E' && arrayPantalla[posLibre].tipo != 'C')
         {
@@ -54,20 +52,9 @@ int pan_AltaPantalla(Pantalla *arrayPantalla, int cantidad, int posLibre)
         }
         else
         {
-            if(posLibre == 0)
-            {
-                arrayPantalla[posLibre].idPantalla = idGenerator;
-                arrayPantalla[posLibre].isEmpty  = 0;
-                retorno=0;
-            }
-            else
-            {
-                aux = (arrayPantalla[posLibre-1].idPantalla);
-                aux++;
-                arrayPantalla[posLibre].idPantalla = aux;
-                arrayPantalla[posLibre].isEmpty  = 0;
-                retorno=0;
-            }
+            arrayPantalla[posLibre].idPantalla = id;
+            arrayPantalla[posLibre].isEmpty  = 0;
+            retorno=0;
         }
     }
     else
@@ -109,18 +96,18 @@ int pan_baja(Pantalla *arrayPantalla, int cantidad)
     int posPantalla;
 
     pan_mostrarArray(arrayPantalla, cantidad);
-    switch (pan_buscarEnArray(arrayPantalla, cantidad,&posPantalla,"Ingrese nombre de pantalla a eliminar: "))
+    switch (pan_buscarEnArrayPorId(arrayPantalla, cantidad,&posPantalla,"Ingrese el Id de la pantalla a dar de baja: "))
     {
     case 0:
         if (arrayPantalla[posPantalla].isEmpty==0)
         {
             printf("Hubo coincidencia\n\n");
             arrayPantalla[posPantalla].isEmpty=1;
-            printf("La pantalla borrada es: %s\n\n",arrayPantalla[posPantalla].nombre);
+            printf("La pantalla borrada es: %d\n\n",arrayPantalla[posPantalla].idPantalla);
         }
         break;
     case 1:
-        printf("No se encontro el nombre y no entro al if\n\n");
+        printf("No se encontro el Id y no entro al if\n\n");
         break;
 
     default:
@@ -156,31 +143,78 @@ int pan_buscarEnArray (Pantalla *arrayPantalla, int cantidad, int *pantallaEncon
 int pan_modificacion(Pantalla *arrayPantalla, int cantidad)
 {
 
+    int retorno = -1;
+    int opcion;
     int posPantalla;
+    char seguir = 's';
+
     pan_mostrarArray(arrayPantalla, cantidad);
-    switch (pan_buscarEnArray(arrayPantalla, cantidad,&posPantalla,"Ingrese el Id de la pantalla a modificar: "))
+
+    switch (pan_buscarEnArrayPorId(arrayPantalla, cantidad,&posPantalla,"Ingrese el Id de la pantalla a modificar: "))
     {
     case 0:
-        if (arrayPantalla[posPantalla].isEmpty==0)
+        if (arrayPantalla[posPantalla].isEmpty == 0)
         {
-            printf("hubo coincidencia\n\n");
-            if (getString(arrayPantalla[posPantalla].nombre,"Ingrese el nuevo nombre de la pantalla","error",2,20,2)==0)
-            {
-                printf("la pantalla modificada es: %s\n\n",arrayPantalla[posPantalla].nombre);
-            }
+            printf("Hubo coincidencia\n\n");
 
+            while(seguir == 's')
+            {
+                printf("Elija el dato que desea modificar\n\n");
+
+                printf("\n\n1-Nombre");
+                printf("\n\n2-Direccion");
+                printf("\n\n3-Precio");
+                printf("\n\n4-Tipo");
+                printf("\n\n5-Salir de la modificacion");
+
+                getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 6, 2, &opcion);
+
+
+                switch(opcion)
+                {
+                    case 1:
+                        if (getString(arrayPantalla[posPantalla].nombre,"Ingrese el nuevo nombre de la pantalla: ","error",2,20,2)==0)
+                        {
+                            printf("El dato fue modificado con exito.\n\n");
+                        }
+                        break;
+                    case 2:
+                        if (getStringD(arrayPantalla[posPantalla].direccion,"Ingrese la nueva direccion: " ,"error, vuelva a ingresar\n\n",2,30,2)==0)
+                        {
+                            printf("El dato fue modificado con exito.\n\n");
+                        }
+                        break;
+                    case 3:
+                        if(getStringf(&arrayPantalla[posPantalla].precio, "Ingrese el nuevo precio: ","error, vuelva a ingresar\n\n",2,999999,2) == 0)
+                        {
+                            printf("El dato fue modificado con exito.\n\n");
+                        }
+                        break;
+                    case 4:
+                        if(getChar("Ingrese el nuevo tipo <LED = E/LCD = C: ","error, vuelva a ingresar\n\n",'A','Z',2,&arrayPantalla[posPantalla].tipo) == 0)
+                        {
+                            printf("El dato fue modificado con exito.\n\n");
+                        }
+                        break;
+                    case 5:
+                        seguir = 'n';
+                        retorno = 0;
+                        break;
+                }
+            }
         }
         break;
 
     case 1:
-        printf("no se encontro el nombre y no entro al if");
+        printf("No se encontro el Id de la pantalla");
         break;
 
     default:
-        printf("ingreso al if pero no encontro el nombre");
+        printf("Ingreso al if pero no encontro el nombre");
         break;
-    }
-    return 1;
+        }
+
+    return retorno;
 }
 
 int getStringf(float *pResult, char *pMsg, char *pMsgError, int min, int max, int intentos)
@@ -189,9 +223,9 @@ int getStringf(float *pResult, char *pMsg, char *pMsgError, int min, int max, in
     float arrayAuxiliar;
     while(intentos>0)
     {
-        printf(pMsg);
-        fflush( stdin ); //LIMPIA BUFFER WINDOWS
-       // __fpurge(stdin); //LIMPIA BUFFER LINUX
+        printf("%s",pMsg);
+        //fflush( stdin ); //LIMPIA BUFFER WINDOWS
+        __fpurge(stdin); //LIMPIA BUFFER LINUX
         scanf("%f", &arrayAuxiliar);
         if( pResult != NULL && arrayAuxiliar >= min && arrayAuxiliar <= max)
         {
@@ -202,7 +236,7 @@ int getStringf(float *pResult, char *pMsg, char *pMsgError, int min, int max, in
         }
         else
         {
-            printf(pMsgError);
+            printf("%s",pMsgError);
         }
         intentos--;
     }
@@ -215,9 +249,9 @@ int getStringD(char *pResult, char *pMsg, char *pMsgError, int min, int max, int
     char arrayAuxiliar[50];
     while(intentos>0)
     {
-        printf(pMsg);
-        fflush( stdin ); //LIMPIA BUFFER WINDOWS
-       // __fpurge(stdin); //LIMPIA BUFFER LINUX
+        printf("%s",pMsg);
+        //fflush( stdin ); //LIMPIA BUFFER WINDOWS
+        __fpurge(stdin); //LIMPIA BUFFER LINUX
         fgets(arrayAuxiliar,sizeof(arrayAuxiliar),stdin);
         arrayAuxiliar[strlen(arrayAuxiliar)-1] = '\0';
         if( pResult != NULL && strlen(arrayAuxiliar) >= min && strlen(arrayAuxiliar) <= max && !(isValidsAlphaNum(arrayAuxiliar))==0)
@@ -229,7 +263,7 @@ int getStringD(char *pResult, char *pMsg, char *pMsgError, int min, int max, int
         }
         else
         {
-            printf(pMsgError);
+            printf("%s",pMsgError);
         }
         intentos--;
     }
@@ -263,7 +297,8 @@ int getChar(char *mensaje, char *mensajeError, char minimo, char maximo, int rei
         {
             printf("%s", mensaje);
 
-            fflush( stdin );
+            //fflush( stdin );
+            __fpurge(stdin);
 
             scanf("%c", &buffer);
 
@@ -308,8 +343,8 @@ int getInt(
         for(i=0; i<= reintentos; i++)
         {
             printf("%s", mensaje);//imprimir mensaje
-            fflush(stdin);
-            //__fpurge(stdin);
+            //fflush(stdin);
+            __fpurge(stdin);
             scanf("%d", &buffer);
             if(isValidInt(buffer, maximo, minimo))
             {
@@ -326,7 +361,7 @@ int getInt(
     return retorno;
 }
 
-int isValidInt(int numero, int maximo, int minimo) //las funcionjes con is devuelven "TRUE" or "FALSE"
+int isValidInt(int numero, int maximo, int minimo) //las funciones con is devuelven "TRUE" or "FALSE"
 {
     if(numero >= minimo && numero <=maximo)
     {
@@ -334,3 +369,25 @@ int isValidInt(int numero, int maximo, int minimo) //las funcionjes con is devue
     }
         return 0;
 }
+
+int pan_buscarEnArrayPorId (Pantalla *arrayPantalla, int cantidad, int *pantallaEncontrada,char *textoAMostrar)
+{
+    int i;
+    int retorno = 1;
+    Pantalla auxPantalla;
+
+    if (getInt(textoAMostrar, "Ingreso incorrecto\n", 1, 100, 2, &auxPantalla.idPantalla) == 0)
+    {
+        for(i=0; i < cantidad; i++)
+        {
+            if (arrayPantalla[i].idPantalla == auxPantalla.idPantalla)
+            {
+                retorno=0;
+                *pantallaEncontrada=i;
+                break;
+            }
+        }
+    }
+    return retorno;
+}
+

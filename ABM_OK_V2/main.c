@@ -9,6 +9,7 @@
 
 int main()
 {
+    int idGenerator = 1;
     char seguir = 's'; //MENU
     int opcion; //MENU
     int valor;
@@ -25,14 +26,16 @@ int main()
     {
         printf("\t\tMENU");
         printf("\n\n1-Alta pantalla");
-        printf("\n\n2-Mostrar antallas");
-        printf("\n\n3-Borrar pantalla");
-        printf("\n\n4-Salir\n");
+        printf("\n\n2-Baja pantalla");
+        printf("\n\n3-Modificar pantalla");
+        printf("\n\n4-Mostrar pantallas");
+
+        printf("\n\n5-Salir\n");
 
 
-        getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 4, 2, &opcion);
-        system("cls");
-
+        getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 6, 2, &opcion);
+        //system("cls"); //limpia la pantalla en windows
+        system("clear"); //limpia pantalla en linux
         switch (opcion)
         {
         case 1:
@@ -43,10 +46,11 @@ int main()
             }
             else
             {
-                switch (pan_AltaPantalla(pantallas, CANTIDAD_PANTALLA, posLibre))
+                switch (pan_AltaPantalla(pantallas, CANTIDAD_PANTALLA, posLibre, idGenerator))
                 {
                 case 0:
                     printf("Dato ingresado correctamente\n\n");
+                    idGenerator++;
                     break;
                 case 1:
                     printf("Dato ingresado INCORRECTAMENTE\n\n");
@@ -55,20 +59,23 @@ int main()
             }
             break;
 
-        case 2:
+        case 4:
 
             pan_mostrarArray(pantallas, CANTIDAD_PANTALLA);
             break;
 
-        case 3:
+        case 2:
             if (pan_baja(pantallas, CANTIDAD_PANTALLA)==0)
             {
                 printf("Exito");
             }
             break;
 
-        case 4:
+        case 5:
             seguir = 'f';
+            break;
+        case 3:
+            if(pan_modificacion(pantallas, CANTIDAD_PANTALLA) == 0)
             break;
         }
     }

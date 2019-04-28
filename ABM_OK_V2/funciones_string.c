@@ -1,5 +1,5 @@
 #include <stdio.h>
-//#include <stdio_ext.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -30,9 +30,9 @@ int getString(char *pResult, char *pMsg, char *pMsgError, int min, int max, int 
     char arrayAuxiliar[20];
     while(intentos>0)
     {
-        printf(pMsg);
-        fflush( stdin ); //LIMPIA BUFFER WINDOWS
-       // __fpurge(stdin); //LIMPIA BUFFER LINUX
+        printf("%s",pMsg);
+        //fflush( stdin ); //LIMPIA BUFFER WINDOWS
+        __fpurge(stdin); //LIMPIA BUFFER LINUX
         fgets(arrayAuxiliar,sizeof(arrayAuxiliar),stdin);
         arrayAuxiliar[strlen(arrayAuxiliar)-1] = '\0';
         if( pResult != NULL && strlen(arrayAuxiliar) >= min && strlen(arrayAuxiliar) <= max && validarLetra(arrayAuxiliar)==0)
@@ -44,7 +44,7 @@ int getString(char *pResult, char *pMsg, char *pMsgError, int min, int max, int 
         }
         else
         {
-            printf(pMsgError);
+            printf("%s",pMsgError);
         }
         intentos--;
     }
