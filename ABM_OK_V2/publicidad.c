@@ -145,15 +145,17 @@ int isValidsNum(char *sAlphaNum)
     return retorno;
 }
 
-int pub_baja(Publicidad *arrayPublicidad, int cantidad)
+int pub_baja(Publicidad *arrayPublicidad, Pantalla *arrayPantalla, int cantidadPantalla, int cantidadPublicidad)
 {
 
-    int posPublicidad;
+    int idPublicidad;
+    int posicionArray;
 
-    switch (pan_buscarEnArrayPorId(arrayPantalla, cantidad,&posPantalla,"Ingrese el Id de la pantalla a dar de baja: "))
+   pub_mostrarArray(publicidades, pantallas, CANTIDAD_PANTALLA, CANTIDAD_PUBLICIDAD);
+    switch (pub_buscarEnArrayPorCuit(arrayPublicidad, cantidadPublicidad, &idPublicidad, &posicionArray))
     {
     case 0:
-        if (arrayPantalla[posPantalla].isEmpty==0)
+        if (arrayPublicidad[posicionArray].isEmpty==0)
         {
             printf("Hubo coincidencia\n\n");
             arrayPantalla[posPantalla].isEmpty=1;
@@ -171,7 +173,7 @@ int pub_baja(Publicidad *arrayPublicidad, int cantidad)
     return 1;
 }
 
-int pub_buscarEnArrayPorCuit (Publicidad* arrayPublicidad, int cantidad, int* idPantallaEncontrado)
+int pub_buscarEnArrayPorCuit (Publicidad* arrayPublicidad, int cantidad, int* idPantallaEncontrado, int *posArray)
 {
     int i;
     int retorno = 1;
@@ -186,6 +188,7 @@ int pub_buscarEnArrayPorCuit (Publicidad* arrayPublicidad, int cantidad, int* id
             {
                 retorno = 0;
                 *idPantallaEncontrado = arrayPublicidad[i].idPublicidad;
+                *posArray = i;
                 break;
             }
         }
