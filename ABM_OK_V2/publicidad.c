@@ -144,3 +144,51 @@ int isValidsNum(char *sAlphaNum)
     }
     return retorno;
 }
+
+int pub_baja(Publicidad *arrayPublicidad, int cantidad)
+{
+
+    int posPublicidad;
+
+    switch (pan_buscarEnArrayPorId(arrayPantalla, cantidad,&posPantalla,"Ingrese el Id de la pantalla a dar de baja: "))
+    {
+    case 0:
+        if (arrayPantalla[posPantalla].isEmpty==0)
+        {
+            printf("Hubo coincidencia\n\n");
+            arrayPantalla[posPantalla].isEmpty=1;
+            printf("La pantalla borrada es: %d\n\n",arrayPantalla[posPantalla].idPantalla);
+        }
+        break;
+    case 1:
+        printf("No se encontro el Id y no entro al if\n\n");
+        break;
+
+    default:
+        printf("Ingreso al if pero no encontro el nombre");
+        break;
+    }
+    return 1;
+}
+
+int pub_buscarEnArrayPorCuit (Publicidad* arrayPublicidad, int cantidad, int* idPantallaEncontrado)
+{
+    int i;
+    int retorno = 1;
+    Publicidad auxPublicidad;
+
+    if (getStringCuit(auxPublicidad.cuitCliente,"Ingrese el CUIT del cliente: ", "Ingreso incorrecto\n", 11, 20, 2)==0)
+    {
+        retorno = -1;
+        for(i = 0; i < cantidad; i++)
+        {
+            if (strcmp(arrayPublicidad[i].cuitCliente, auxPublicidad.cuitCliente)==0)
+            {
+                retorno = 0;
+                *idPantallaEncontrado = arrayPublicidad[i].idPublicidad;
+                break;
+            }
+        }
+    }
+    return retorno;
+ }

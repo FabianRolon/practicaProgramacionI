@@ -108,6 +108,9 @@ int main()
         case 7:
             pub_mostrarArray(publicidades, pantallas, CANTIDAD_PANTALLA, CANTIDAD_PUBLICIDAD);
             break;
+        case 6:
+
+            break;
         }
     }
     return 0;
