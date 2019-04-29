@@ -26,8 +26,8 @@ int isValidChar(char letra, char maximo, char minimo);
 int getInt(
     char *mensaje,
     char *mensajeError,
-    int minimo,
-    int maximo,
+    long minimo,
+    long maximo,
     int reintentos,
     int *resultado);
 int isValidInt(int numero, int maximo, int minimo);

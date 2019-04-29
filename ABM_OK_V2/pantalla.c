@@ -277,7 +277,7 @@ int isValidsAlphaNum(char *sAlphaNum)
 
     for(i = 0; *(sAlphaNum+i) != '\0'; i++)
     {
-        if((*(sAlphaNum+i) != ' ') && (*(sAlphaNum+i) < 'a' || *(sAlphaNum+i) > 'z') && (*(sAlphaNum+i) < 'A' || *(sAlphaNum+i) > 'Z') && (*(sAlphaNum+i) < '0' || *(sAlphaNum+i) > '9'))
+        if((*(sAlphaNum+i) != '.') && (*(sAlphaNum+i) != ' ') && (*(sAlphaNum+i) < 'a' || *(sAlphaNum+i) > 'z') && (*(sAlphaNum+i) < 'A' || *(sAlphaNum+i) > 'Z') && (*(sAlphaNum+i) < '0' || *(sAlphaNum+i) > '9'))
         {
             retorno = 0;
             break;
@@ -329,8 +329,8 @@ int isValidChar(char letra, char maximo, char minimo)
 int getInt(
     char *mensaje,
     char *mensajeError,
-    int minimo,
-    int maximo,
+    long minimo,
+    long maximo,
     int reintentos,
     int *resultado)
 {
