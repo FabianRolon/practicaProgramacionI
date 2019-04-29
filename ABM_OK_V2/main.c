@@ -80,7 +80,7 @@ int main()
             }
             break;
 
-        case 7:
+        case 8:
             seguir = 'f';
             break;
         case 3:
@@ -105,7 +105,7 @@ int main()
                 }
             }
             break;
-        case 6:
+        case 7:
             pub_mostrarArray(publicidades, pantallas, CANTIDAD_PANTALLA, CANTIDAD_PUBLICIDAD);
             break;
         }

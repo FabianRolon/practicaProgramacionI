@@ -31,10 +31,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="empleado.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="empleado.h" />
 		<Unit filename="funciones_string.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +42,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pantalla.h" />
+		<Unit filename="publicidad.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="publicidad.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
