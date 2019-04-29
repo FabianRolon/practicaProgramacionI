@@ -11,7 +11,7 @@ int pub_AltaPublicidad(Publicidad *arrayPublicidad, int cantidad, int posLibre)
     int retorno = -1;
 
     if (    getInt("Ingrese el Id de la pantalla a contratar: ", "Ingreso incorrecto\n", 1, 100, 2, &arrayPublicidad[posLibre].idPublicidad) == 0 &&
-            getInt("Ingrese el CUIT del cliente: ", "Ingreso incorrecto\n", 10000000000, 99999999999, 2, &arrayPublicidad[posLibre].cuitCliente) == 0 &&
+            getStringCuit(arrayPublicidad[posLibre].cuitCliente,"Ingrese el CUIT del cliente: ", "Ingreso incorrecto\n", 11, 20, 2) == 0 &&
             getInt("Ingrese la cantidad de dias contratados: ", "Ingreso incorrecto\n", 1, 365, 2, &arrayPublicidad[posLibre].cantDias) == 0 &&
             getStringD(arrayPublicidad[posLibre].nombreVideo,"Ingrese el nombre del archivo de video: " ,"error, vuelva a ingresar\n\n",2,30,2) == 0)
     {
@@ -57,7 +57,7 @@ void pub_mostrarArray(Publicidad *arrayPublicidad, Pantalla *arrayPantalla,int c
             printf("Estado: %d\n", arrayPublicidad[i].isEmpty);
             printf("Nombre del video: %s\n", arrayPublicidad[i].nombreVideo);
             printf("Cantidad de dias: %d\n", arrayPublicidad[i].cantDias);
-            printf("Cuit del cliente: $%d\n", arrayPublicidad[i].cuitCliente);
+            printf("Cuit del cliente: %s\n", arrayPublicidad[i].cuitCliente);
         }
 
         //printf("Press 'Enter' to continue: ... ");
@@ -99,5 +99,48 @@ int pub_buscarPosicionPantallaPorId (Pantalla *arrayPantalla, int cantidad, int 
             }
         }
 
+    return retorno;
+}
+
+int getStringCuit(char *pResult, char *pMsg, char *pMsgError, int min, int max, int intentos)
+{
+    int retorno=-1;
+    char arrayAuxiliar[30];
+    while(intentos > 0)
+    {
+        printf("%s",pMsg);
+        //fflush( stdin ); //LIMPIA BUFFER WINDOWS
+        __fpurge(stdin); //LIMPIA BUFFER LINUX
+        fgets(arrayAuxiliar,sizeof(arrayAuxiliar),stdin);
+        arrayAuxiliar[strlen(arrayAuxiliar)-1] = '\0';
+        if( pResult != NULL && strlen(arrayAuxiliar) >= min && strlen(arrayAuxiliar) <= max && !(isValidsNum(arrayAuxiliar))==0)
+        {
+            strncpy(pResult,arrayAuxiliar,max);
+
+            retorno=0;
+            break;
+        }
+        else
+        {
+            printf("%s",pMsgError);
+        }
+        intentos--;
+    }
+    return retorno;
+}
+
+int isValidsNum(char *sAlphaNum)
+{
+   int i;
+   int retorno = 1;
+
+    for(i = 0; *(sAlphaNum+i) != '\0'; i++)
+    {
+        if((*(sAlphaNum+i) != '-') && (*(sAlphaNum+i) < '0' || *(sAlphaNum+i) > '9'))
+        {
+            retorno = 0;
+            break;
+        }
+    }
     return retorno;
 }

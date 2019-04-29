@@ -36,10 +36,12 @@ int main()
         printf("\n\n3-Modificar pantalla");
         printf("\n\n4-Mostrar pantallas");
         printf("\n\n5-Contratar una publicidad");
-        printf("\n\n6-Salir\n");
+        printf("\n\n6-Cancelar Publicidad");
+        printf("\n\n7-Mostrar publicidades");
+        printf("\n\n8-Salir\n");
 
 
-        getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 6, 2, &opcion);
+        getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 7, 2, &opcion);
         //system("cls"); //limpia la pantalla en windows
         system("clear"); //limpia pantalla en linux
 
@@ -78,7 +80,7 @@ int main()
             }
             break;
 
-        case 6:
+        case 7:
             seguir = 'f';
             break;
         case 3:
@@ -86,8 +88,6 @@ int main()
             break;
         case 5:
             pan_mostrarArray(pantallas, CANTIDAD_PANTALLA);
-
-
             if(pub_buscarLibre(publicidades, CANTIDAD_PANTALLA, &posLibrePublicidad) != 0)
             {
                 printf("LLENO\n\n");
@@ -104,6 +104,9 @@ int main()
                     break;
                 }
             }
+            break;
+        case 6:
+            pub_mostrarArray(publicidades, pantallas, CANTIDAD_PANTALLA, CANTIDAD_PUBLICIDAD);
             break;
         }
     }

@@ -238,7 +238,7 @@
 
 1556479464 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.h
 
-1556496537 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/main.c
+1556498744 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/main.c
 	<stdio.h>
 	<ctype.h>
 	<stdlib.h>
@@ -257,7 +257,7 @@
 	"pantalla.h"
 	"funciones_string.h"
 
-1556490342 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.c
+1556498384 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -266,5 +266,5 @@
 	"publicidad.h"
 	"funciones_string.h"
 
-1556496629 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.h
+1556498772 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.h
 
