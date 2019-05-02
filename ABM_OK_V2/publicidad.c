@@ -4,6 +4,7 @@
 #include <stdio_ext.h>
 #include "pantalla.h"
 #include "publicidad.h"
+#include "contrataciones.h"
 #include "funciones_string.h"
 
 int pub_AltaPublicidad(Publicidad *arrayPublicidad, int cantidad, int posLibre)
@@ -151,14 +152,14 @@ int pub_baja(Publicidad *arrayPublicidad, Pantalla *arrayPantalla, int cantidadP
     int idPublicidad;
     int posicionArray;
 
-   pub_mostrarArray(publicidades, pantallas, CANTIDAD_PANTALLA, CANTIDAD_PUBLICIDAD);
+   pub_mostrarArray(arrayPublicidad, arrayPantalla, cantidadPantalla, cantidadPublicidad);
     switch (pub_buscarEnArrayPorCuit(arrayPublicidad, cantidadPublicidad, &idPublicidad, &posicionArray))
     {
     case 0:
         if (arrayPublicidad[posicionArray].isEmpty==0)
         {
             printf("Hubo coincidencia\n\n");
-            arrayPantalla[posPantalla].isEmpty=1;
+            pan_mostrarArray(arrayPantalla, cantidadPantalla);
             printf("La pantalla borrada es: %d\n\n",arrayPantalla[posPantalla].idPantalla);
         }
         break;
@@ -173,7 +174,7 @@ int pub_baja(Publicidad *arrayPublicidad, Pantalla *arrayPantalla, int cantidadP
     return 1;
 }
 
-int pub_buscarEnArrayPorCuit (Publicidad* arrayPublicidad, int cantidad, int* idPantallaEncontrado, int *posArray)
+int pub_buscarEnArrayPorCuit(Publicidad* arrayPublicidad, int cantidad, int* idPantallaEncontrado, int *posArray)
 {
     int i;
     int retorno = 1;

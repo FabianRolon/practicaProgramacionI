@@ -225,7 +225,7 @@
 	"pantalla.h"
 	"funciones_string.h"
 
-1556479851 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.c
+1556677573 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.c
 	<stdio.h>
 	<stdio_ext.h>
 	<stdlib.h>
@@ -233,12 +233,12 @@
 	<ctype.h>
 	"funciones_string.h"
 
-1556479464 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.h
+1556677573 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.h
 	"empleado.h"
 
-1556479464 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.h
+1556677573 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.h
 
-1556508689 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/main.c
+1556677573 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/main.c
 	<stdio.h>
 	<ctype.h>
 	<stdlib.h>
@@ -247,9 +247,9 @@
 	"publicidad.h"
 	"funciones_string.h"
 
-1556490523 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.h
+1556677573 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.h
 
-1556490524 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.c
+1556677573 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -266,7 +266,7 @@
 	"publicidad.h"
 	"funciones_string.h"
 
-1556508689 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.h
+1556756849 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.h
 
 1556479464 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.c
 	<stdio.h>
@@ -275,4 +275,16 @@
 	<string.h>
 	"funciones_string.h"
 	"empleado.h"
+
+1556756864 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/contrataciones.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"pantalla.h"
+	"publicidad.h"
+	"contrataciones.h"
+	"funciones_string.h"
+
+1556756857 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/contrataciones.h
 

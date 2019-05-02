@@ -16,7 +16,7 @@ int pub_buscarPosicionPantallaPorId (Pantalla *arrayPantalla, int cantidad, int 
 int isValidsNum(char *sAlphaNum);
 int getStringCuit(char *pResult, char *pMsg, char *pMsgError, int min, int max, int intentos);
 void pub_mostrarArray(Publicidad *arrayPublicidad, Pantalla *arrayPantalla,int cantidadPan, int cantidadPub);
-int pub_buscarEnArrayPorCuit (Publicidad* arrayPublicidad, int cantidad, int* PosCuitEncontrado);
+int pub_buscarEnArrayPorCuit(Publicidad* arrayPublicidad, int cantidad, int* idPantallaEncontrado, int *posArray);
 
 
 #endif // PUBLICIDAD_H_INCLUDED

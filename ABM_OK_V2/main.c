@@ -4,6 +4,7 @@
 #include <string.h>
 #include "pantalla.h"
 #include "publicidad.h"
+#include "contrataciones.h"
 #include "funciones_string.h"
 
 #define CANTIDAD_PANTALLA 10
@@ -16,13 +17,16 @@ int main()
     int opcion; //MENU
     int valor1;
     int valor2;
+    int valor3;
     int posLibrePantallas;
     int posLibrePublicidad;
     Pantalla pantallas[CANTIDAD_PANTALLA];
     Publicidad publicidades[CANTIDAD_PUBLICIDAD];
+    Contrataciones contratacion[CANTIDAD_PUBLICIDAD];
 
     valor1 = pan_Inicializar(pantallas, CANTIDAD_PANTALLA);
     valor2 = pub_Inicializar(publicidades, CANTIDAD_PUBLICIDAD);
+    valor3 = con_Inicializar(contratacion, CANTIDAD_PUBLICIDAD);
 
     if (valor1 == 0 && valor2 == 0)
     {
