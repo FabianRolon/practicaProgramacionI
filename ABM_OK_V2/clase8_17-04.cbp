@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="contrataciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="contrataciones.h" />
 		<Unit filename="funciones_string.c">
 			<Option compilerVar="CC" />
 		</Unit>

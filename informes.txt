@@ -1,0 +1,123 @@
+A. Realizar un solo listado de las pantallas ordenadas por los siguientes criterios:
+   o Precio (descendentemente)
+   
+
+
+
+
+
+
+
+
+
+A. Realizar un solo listado de las publicidades ordenadas por los siguientes criterios:
+   o dias (descendentemente)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+o Nombre (ascendentemente)
+
+
+
+
+
+
+
+
+B.  Todas las pantallas que 
+su valor es menor o igual a 10.
+
+
+
+
+
+
+
+
+
+
+C.  Todas las pantallas que su valor es mayor a 10.
+
+
+
+
+
+
+
+
+
+
+
+D.  
+Todas las pantallas que superan el promedio de los precios.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+E.  Todas las pantallas que 
+no superan el promedio de los precios.
+
+
+
+
+
+
+
+
+
+F.  Todas las contrataciones cuya cantidad de  es 
+menor o igual a 10 dias,
+    indicando nombre de la pantalla contratada, precio unitario, 
+dias y precio total de la contratacion
+
+
+
+
+
+
+
+
+
+
+
+
+G.  Listado de clientes en el cual se indique la 
+cantidad de contrataciones que ha realizado
+    y por que importe. Ordenado por los siguientes criterios:
+  
+      o Importe (descendentemente)
+        o Cuit (ascendentemente)
+
+H. La o las pantallas con mas contrataciones.
+
+I. 
+La o las pantallas con mas clientes.
+
+J. La o las pantallas que mas ha facturado.
+
+K. La o las pantallas que han facturado

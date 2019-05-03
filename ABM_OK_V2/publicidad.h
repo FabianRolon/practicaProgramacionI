@@ -1,5 +1,7 @@
 #ifndef PUBLICIDAD_H_INCLUDED
 #define PUBLICIDAD_H_INCLUDED
+#include "contrataciones.h"
+
 typedef struct
 {
     int idPublicidad;
@@ -9,7 +11,7 @@ typedef struct
     char nombreVideo[50];
 }Publicidad;
 
-int pub_AltaPublicidad(Publicidad *arrayPublicidad, int cantidad, int posLibre);
+int pub_AltaPublicidad(Publicidad *arrayPublicidad, Contrataciones *arrayContratacion, int cantidad, int posLibrePublicidad, int posLibreContratacion);
 int pub_Inicializar(Publicidad *arrayPublicidad, int cantidad);
 int pub_buscarLibre(Publicidad *arrayPublicidad, int cantidad, int *devuelve);
 int pub_buscarPosicionPantallaPorId (Pantalla *arrayPantalla, int cantidad, int *pantallaEncontrada, int id);

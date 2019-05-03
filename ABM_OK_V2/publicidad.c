@@ -7,18 +7,20 @@
 #include "contrataciones.h"
 #include "funciones_string.h"
 
-int pub_AltaPublicidad(Publicidad *arrayPublicidad, int cantidad, int posLibre)
+int pub_AltaPublicidad(Publicidad *arrayPublicidad, Contrataciones *arrayContratacion, int cantidad, int posLibrePublicidad, int posLibreContratacion)
 {
     int retorno = -1;
 
-    if (    getInt("Ingrese el Id de la pantalla a contratar: ", "Ingreso incorrecto\n", 1, 100, 2, &arrayPublicidad[posLibre].idPublicidad) == 0 &&
-            getStringCuit(arrayPublicidad[posLibre].cuitCliente,"Ingrese el CUIT del cliente: ", "Ingreso incorrecto\n", 11, 20, 2) == 0 &&
-            getInt("Ingrese la cantidad de dias contratados: ", "Ingreso incorrecto\n", 1, 365, 2, &arrayPublicidad[posLibre].cantDias) == 0 &&
-            getStringD(arrayPublicidad[posLibre].nombreVideo,"Ingrese el nombre del archivo de video: " ,"error, vuelva a ingresar\n\n",2,30,2) == 0)
-    {
-            arrayPublicidad[posLibre].isEmpty  = 0;
+    if(    getInt("Ingrese el Id de la pantalla a contratar: ", "Ingreso incorrecto\n",0 , 100, 2, &arrayContratacion[posLibreContratacion].idPantalla) == 0 &&
+            getStringCuit(arrayPublicidad[posLibrePublicidad].cuitCliente,"Ingrese el CUIT del cliente: ", "Ingreso incorrecto\n", 11, 20, 2) == 0 &&
+            getInt("Ingrese la cantidad de dias contratados: ", "Ingreso incorrecto\n", 1, 365, 2, &arrayPublicidad[posLibrePublicidad].cantDias) == 0 &&
+            getStringD(arrayPublicidad[posLibrePublicidad].nombreVideo,"Ingrese el nombre del archivo de video: " ,"error, vuelva a ingresar\n\n",2,30,2) == 0)
+        {
+            strncpy(arrayContratacion[posLibreContratacion].cuitCliente, arrayPublicidad[posLibrePublicidad].cuitCliente, cantidad);
+
+            arrayPublicidad[posLibrePublicidad].isEmpty  = 0;
             retorno=0;
-    }
+        }
     else
     {
         retorno = 1;
@@ -58,7 +60,7 @@ void pub_mostrarArray(Publicidad *arrayPublicidad, Pantalla *arrayPantalla,int c
             printf("Estado: %d\n", arrayPublicidad[i].isEmpty);
             printf("Nombre del video: %s\n", arrayPublicidad[i].nombreVideo);
             printf("Cantidad de dias: %d\n", arrayPublicidad[i].cantDias);
-            printf("Cuit del cliente: %s\n", arrayPublicidad[i].cuitCliente);
+            printf("Cuit del cliente: %s\n\n", arrayPublicidad[i].cuitCliente);
         }
 
         //printf("Press 'Enter' to continue: ... ");
@@ -146,22 +148,18 @@ int isValidsNum(char *sAlphaNum)
     return retorno;
 }
 
-int pub_baja(Publicidad *arrayPublicidad, Pantalla *arrayPantalla, int cantidadPantalla, int cantidadPublicidad)
+int pub_baja(Contrataciones *arrayContratacion, Publicidad *arrayPublicidad, Pantalla *arrayPantalla, int cantidadPantalla, int cantidadPublicidad)
 {
 
     int idPublicidad;
     int posicionArray;
 
-   pub_mostrarArray(arrayPublicidad, arrayPantalla, cantidadPantalla, cantidadPublicidad);
-    switch (pub_buscarEnArrayPorCuit(arrayPublicidad, cantidadPublicidad, &idPublicidad, &posicionArray))
+    switch (con_buscarContratacionesPorCuit(arrayContratacion, arrayPantalla, cantidadPublicidad, cantidadPantalla))
     {
     case 0:
-        if (arrayPublicidad[posicionArray].isEmpty==0)
-        {
-            printf("Hubo coincidencia\n\n");
-            pan_mostrarArray(arrayPantalla, cantidadPantalla);
-            printf("La pantalla borrada es: %d\n\n",arrayPantalla[posPantalla].idPantalla);
-        }
+        getInt("\n\t\tIngrese el id de pantalla a cancelar: ", "Ingreso incorrecto\n", 1, 7, 2, &idPublicidad);
+        pub_buscarPosicionContratacionPorId(arrayContratacion, cantidadPublicidad, &posicionArray, idPublicidad);
+        arrayContratacion[posicionArray].isEmpty = 1;
         break;
     case 1:
         printf("No se encontro el Id y no entro al if\n\n");
