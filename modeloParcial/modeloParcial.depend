@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1557026296 source:/home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/asociado.c
+	<stdio.h>
+	<ctype.h>
+	<stdlib.h>
+	<string.h>
+	"asociado.h"
+
+1557026160 /home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/asociado.h
+

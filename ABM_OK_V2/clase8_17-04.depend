@@ -225,7 +225,7 @@
 	"pantalla.h"
 	"funciones_string.h"
 
-1556677573 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.c
+1556849333 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.c
 	<stdio.h>
 	<stdio_ext.h>
 	<stdlib.h>
@@ -233,23 +233,24 @@
 	<ctype.h>
 	"funciones_string.h"
 
-1556677573 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.h
+1556849333 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/funciones_string.h
 	"empleado.h"
 
-1556677573 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.h
+1556849333 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.h
 
-1556677573 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/main.c
+1556849333 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/main.c
 	<stdio.h>
 	<ctype.h>
 	<stdlib.h>
 	<string.h>
 	"pantalla.h"
 	"publicidad.h"
+	"contrataciones.h"
 	"funciones_string.h"
 
-1556677573 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.h
+1556849333 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.h
 
-1556677573 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.c
+1556849333 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/pantalla.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -257,26 +258,7 @@
 	"pantalla.h"
 	"funciones_string.h"
 
-1556498384 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.c
-	<string.h>
-	<stdio.h>
-	<stdlib.h>
-	<stdio_ext.h>
-	"pantalla.h"
-	"publicidad.h"
-	"funciones_string.h"
-
-1556756849 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.h
-
-1556479464 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.c
-	<stdio.h>
-	<stdlib.h>
-	<ctype.h>
-	<string.h>
-	"funciones_string.h"
-	"empleado.h"
-
-1556756864 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/contrataciones.c
+1556849333 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -286,7 +268,28 @@
 	"contrataciones.h"
 	"funciones_string.h"
 
-1556756857 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/contrataciones.h
+1556849333 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/publicidad.h
+	"contrataciones.h"
+
+1556479464 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones_string.h"
+	"empleado.h"
+
+1556849333 source:/home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/contrataciones.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"pantalla.h"
+	"publicidad.h"
+	"contrataciones.h"
+	"funciones_string.h"
+
+1556849333 /home/fabianrolon/Documentos/practicaProgramacionI/ABM_OK_V2/contrataciones.h
 
 1556832792 source:/home/alumno/Rolon/practicaProgramacionI/ABM_OK_V2/funciones_string.c
 	<stdio.h>

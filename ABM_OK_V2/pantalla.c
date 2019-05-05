@@ -376,7 +376,7 @@ int pan_buscarEnArrayPorId (Pantalla *arrayPantalla, int cantidad, int *pantalla
     int retorno = 1;
     Pantalla auxPantalla;
 
-    if (getInt(textoAMostrar, "Ingreso incorrecto\n", 1, 100, 2, &auxPantalla.idPantalla) == 0)
+    if (getInt(textoAMostrar, "Ingreso incorrecto\n", 0, 100, 2, &auxPantalla.idPantalla) == 0)
     {
         for(i=0; i < cantidad; i++)
         {

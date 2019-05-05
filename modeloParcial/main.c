@@ -11,11 +11,10 @@ int main()
     char seguir = 's'; //MENU
     int opcion; //MENU
     int valor1;
-    int valor2;
-    int valor3;
-    int posLibrePantallas;
-    int posLibrePublicidad;
-    int posLibreContratacion;
+//    int valor2;
+//    int valor3;
+    int posLibreAsociado;
+//    int posLibreContratacion;
     Asociado asociados[CANTIDAD_ASOCIADOS];
 
     valor1 = aso_Inicializar(asociados, CANTIDAD_ASOCIADOS);
@@ -51,13 +50,13 @@ int main()
         {
         case 1:
 
-            if(aso_buscarLibre(asociado,CANTIDAD_ASOCIADOS, &posLibreAsociado) != 0)
+            if(aso_buscarLibre(asociados,CANTIDAD_ASOCIADOS, &posLibreAsociado) != 0)
             {
                 printf("LLENO\n\n");
             }
             else
             {
-                switch (pan_AltaPantalla(asociado, CANTIDAD_ASOCIADOS, posLibreAsociado, idGeneratorAsociado))
+                switch (aso_altaAsociado(asociados, CANTIDAD_ASOCIADOS, posLibreAsociado, idGeneratorAsociado))
                 {
                 case 0:
                     printf("Dato ingresado correctamente\n\n");
@@ -72,11 +71,11 @@ int main()
 
         case 4:
 
-            pan_mostrarArray(asociado, CANTIDAD_ASOCIADOS);
+            aso_(asociados, CANTIDAD_ASOCIADOS);
             break;
 
         case 2:
-            if (pan_baja(asociado, CANTIDAD_ASOCIADOS)==0)
+            if (pan_baja(asociados, CANTIDAD_ASOCIADOS)==0)
             {
                 printf("Exito");
             }
@@ -86,10 +85,10 @@ int main()
             seguir = 'f';
             break;
         case 3:
-            if(pan_modificacion(asociado, CANTIDAD_ASOCIADOS) == 0)
+            if(pan_modificacion(asociados, CANTIDAD_ASOCIADOS) == 0)
             break;
         case 5:
-            pan_mostrarArray(asociado, CANTIDAD_ASOCIADOS);
+            pan_mostrarArray(asociados, CANTIDAD_ASOCIADOS);
             if( pub_buscarLibre(publicidades, CANTIDAD_PUBLICIDAD, &posLibrePublicidad) != 0 &&
                 con_buscarLibre(contratacion, CANTIDAD_PUBLICIDAD, &posLibreContratacion) != 0)
             {
