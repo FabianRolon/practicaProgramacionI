@@ -28,6 +28,11 @@ int isValidsAlphaNum(char *sAlphaNum);
 int getStringD(char *pResult, char *pMsg, char *pMsgError, int min, int max, int intentos);
 int getStringf(float *pResult, char *pMsg, char *pMsgError, int min, int max, int intentos);
 int aso_buscarEnArrayPorId (Asociado *arrayAsociado, int cantidad, int *asociadoEncontrado,char *textoAMostrar);
-
+int aso_baja(Asociado *arrayAsociado, int cantidad);
+int aso_modificaion(Asociado *arrayAsociado, int cantidad);
+int getString(char *pResult,char *pMsg,char *pMsgError,int min,int max,int intentos);
+int isValidChar(char letra, char maximo, char minimo);
+int validarLetra (char letras[]);
+void aso_mostrarArray(Asociado *arrayAsociado, int cantidad);
 
 #endif // ASOCIADO_H_INCLUDED
