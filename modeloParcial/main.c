@@ -4,21 +4,30 @@
 #include <string.h>
 #include <stdio_ext.h>
 #include "asociado.h"
+#include "llamada.h"
 #define CANTIDAD_ASOCIADOS 10
+#define CANTIDAD_LLAMADAS 100
+#define MOTIVO_1 'ACV'
+#define MOTIVO_2 'INFARTO'
+#define MOTIVO_3 'GRIPE'
+
 
 int main()
 {
     int idGeneratorAsociado = 1;
+    int idGeneratorLlamada = 1;
     char seguir = 's'; //MENU
     int opcion; //MENU
     int valor1;
-//    int valor2;
+    int valor2;
 //    int valor3;
     int posLibreAsociado;
-//    int posLibreContratacion;
+    int posLibreLlamadas;
     Asociado asociados[CANTIDAD_ASOCIADOS];
+    Llamada llamadas[CANTIDAD_LLAMADAS];
 
     valor1 = aso_Inicializar(asociados, CANTIDAD_ASOCIADOS);
+    valor2 = lla_Inicializar(llamadas, CANTIDAD_LLAMADAS);
 
     strcpy(asociados[0].apellido, "Rolon");
     strcpy(asociados[0].nombre, "Fabian");
@@ -42,7 +51,7 @@ int main()
     asociados[2].idAsociado = 3;
 
 
-    if (valor1 == 0)
+    if (valor1 == 0 && valor2 == 0)
     {
         printf("Sistema inicializado correctamente\n\n\n");
     }
@@ -57,8 +66,9 @@ int main()
         printf("\n\n1-Alta Asociado");
         printf("\n\n2-Baja Asociado");
         printf("\n\n3-Modificar Asociado");
-        printf("\n\n4-Listar asociados\n");
-        printf("\n\n5-Salir\n");
+        printf("\n\n4-Listar asociados");
+        printf("\n\n5-Nueva llamada");
+        printf("\n\n6-Salir\n");
 
 
         getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 10, 2, &opcion);
@@ -92,7 +102,7 @@ int main()
                 printf("Exito");
             }
             break;
-        case 5:
+        case 6:
             seguir = 'f';
             break;
         case 3:
@@ -100,6 +110,25 @@ int main()
             break;
         case 4:
             aso_mostrarArray(asociados, CANTIDAD_ASOCIADOS);
+            break;
+        case 5:
+            if(lla_buscarLibre(llamadas ,CANTIDAD_LLAMADAS, &posLibreLlamadas) != 0)
+            {
+                printf("LLENO\n\n");
+            }
+            else
+            {
+                switch (lla_altaLlamada(llamadas, CANTIDAD_LLAMADAS, posLibreLlamadas, idGeneratorLlamada))
+                {
+                case 0:
+                    printf("Dato ingresado correctamente\n\n");
+                    idGeneratorLlamada++;
+                    break;
+                case 1:
+                    printf("Dato ingresado INCORRECTAMENTE\n\n");
+                    break;
+                }
+            }
             break;
         }
     }

@@ -5,8 +5,6 @@
 #include <stdio_ext.h>
 #include "asociado.h"
 
-#define CANTIDAD_ASOCIADO 10
-
 int aso_Inicializar(Asociado *arrayAsociado, int cantidad)
 {
     int retorno = -1;

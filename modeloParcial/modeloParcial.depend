@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1557092275 source:/home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/asociado.c
+1557111343 source:/home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/asociado.c
 	<stdio.h>
 	<ctype.h>
 	<stdlib.h>
@@ -9,11 +9,23 @@
 
 1557092736 /home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/asociado.h
 
-1557092692 source:/home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/main.c
+1557111774 source:/home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/main.c
 	<stdio.h>
 	<ctype.h>
 	<stdlib.h>
 	<string.h>
 	<stdio_ext.h>
 	"asociado.h"
+	"llamada.h"
+
+1557112190 source:/home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/llamada.c
+	<stdio.h>
+	<ctype.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"asociado.h"
+	"llamada.h"
+
+1557112019 /home/fabianrolon/Documentos/practicaProgramacionI/modeloParcial/llamada.h
 
