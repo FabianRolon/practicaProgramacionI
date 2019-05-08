@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1557276182 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	<ctype.h>
+	"autores.h"
+	"libros.h"
+
+1557275157 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	<ctype.h>
+	"autores.h"
+
+1557275157 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.h
+
+1557276076 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/main.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"autores.h"
+	"libros.h"
+
+1557275321 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.h
+

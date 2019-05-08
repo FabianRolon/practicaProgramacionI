@@ -349,3 +349,61 @@
 	"contrataciones.h"
 	"funciones_string.h"
 
+1557266816 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/contrataciones.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"pantalla.h"
+	"publicidad.h"
+	"contrataciones.h"
+	"funciones_string.h"
+
+1557266816 /home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/pantalla.h
+
+1557266816 /home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/publicidad.h
+	"contrataciones.h"
+
+1557266816 /home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/contrataciones.h
+
+1557266816 /home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/funciones_string.h
+	"empleado.h"
+
+1557266816 /home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/empleado.h
+
+1557266816 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/funciones_string.c
+	<stdio.h>
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"funciones_string.h"
+
+1557266816 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/main.c
+	<stdio.h>
+	<ctype.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"publicidad.h"
+	"contrataciones.h"
+	"funciones_string.h"
+
+1557266816 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/pantalla.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"pantalla.h"
+	"funciones_string.h"
+
+1557266816 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/ABM_OK_V2/publicidad.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+	"pantalla.h"
+	"publicidad.h"
+	"contrataciones.h"
+	"funciones_string.h"
+
