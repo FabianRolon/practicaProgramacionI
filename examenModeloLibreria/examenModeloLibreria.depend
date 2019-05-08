@@ -8,7 +8,7 @@
 	"autores.h"
 	"libros.h"
 
-1557275157 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.c
+1557277140 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -18,7 +18,7 @@
 
 1557275157 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.h
 
-1557276076 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/main.c
+1557277596 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/main.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -26,5 +26,5 @@
 	"autores.h"
 	"libros.h"
 
-1557275321 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.h
+1557277338 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.h
 

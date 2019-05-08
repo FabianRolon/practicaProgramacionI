@@ -43,7 +43,7 @@ int aut_alta(Autores *arrayAutor, int cantidad, int posLibre, int id)
     int retorno = -1;
 
     if (    getString(arrayAutor[posLibre].nombre,"Ingrese un nombre: ","Error, vuelva a ingresar\n\n",2,20,2) == 0 &&
-            getString(arrayAutor[posLibre].apellido,"Ingrese el apellido: " ,"Error, vuelva a ingresar\n\n",2,30,2) == 0)
+            getString(arrayAutor[posLibre].apellido,"Ingrese el apellido: " ,"Error, vuelva a ingresar\n\n",2,20,2) == 0)
     {
 
         arrayAutor[posLibre].codigoAutor = id;
@@ -279,7 +279,6 @@ int aut_existeId (Autores *arrayAutor, int cantidad, int id)
 {
     int i;
     int retorno = 1;
-    Autores auxAutor;
 
         for(i=0; i < cantidad; i++)
         {

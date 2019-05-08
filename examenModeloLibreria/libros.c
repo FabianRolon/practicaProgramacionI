@@ -45,7 +45,7 @@ int lib_alta(Libros *arrayLibro, Autores *arrayAutor, int cantidadLibro, int can
     if (    getString(arrayLibro[posLibre].titulo,"Ingrese un titulo: ","Error, vuelva a ingresar\n\n",2,20,2) == 0 &&
             getInt("Ingrese el codigo de autor: ", "Ingreso incorrecto\n", 1, 10, 2, &arrayLibro[posLibre].codigoAutor) == 0)
     {
-        if(aut_existeId (arrayAutor, cantidadAutor, id) == 0)
+        if(aut_existeId (arrayAutor, cantidadAutor, arrayLibro[posLibre].codigoAutor) == 0)
         {
             arrayLibro[posLibre].codigoLibro = id;
             arrayLibro[posLibre].isEmpty  = 0;
@@ -53,9 +53,8 @@ int lib_alta(Libros *arrayLibro, Autores *arrayAutor, int cantidadLibro, int can
         }
         else
         {
-            retorno = 1;
+            retorno = 2;
         }
-
     }
     else
     {

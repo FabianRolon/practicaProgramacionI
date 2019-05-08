@@ -100,6 +100,9 @@ int main()
                     case 1:
                         printf("Dato ingresado INCORRECTAMENTE\n\n");
                         break;
+                    case 2:
+                        printf("El codigo de autor no existe\n\n");
+                        break;
                     }
                 }
             break;
