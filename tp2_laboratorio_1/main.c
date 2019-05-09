@@ -2,32 +2,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
-#include "autores.h"
-#include "libros.h"
-#define CANTIDAD_AUTORES 10
-#define CANTIDAD_LIBROS 10
+#include "ArrayEmployees.h"
+#define QUANTITY_EMPLOYEES 1000
 
 int main()
 {
-    int generadorCodigoAutor = 1;
-    int generadorCodigoLibro = 1;
+    int idEmployeeGenerator = 1;
     char seguir = 's'; //MENU
     int opcion; //MENU
-    int valor1;
-    int valor2;
-//    int valor3;
+    int value;
     int posicionLibreAutor;
-    int posLibreLibro;
-//    int posLibreContratacion;
-    Autores autor[CANTIDAD_AUTORES];
-    Libros libro[CANTIDAD_LIBROS];
+    Employee arrayEmployees[QUANTITY_EMPLOYEES];
 
-    valor1 = aut_Inicializar(autor, CANTIDAD_AUTORES);
-    valor2 = lib_Inicializar(libro, CANTIDAD_LIBROS);
 
-    if (valor1 == 0 && valor2 == 0)
+    value = initEmployees(arrayEmployees, QUANTITY_EMPLOYEES);
+
+    if (value == 0)
     {
-        printf("Sistema inicializado correctamente\n\n\n");
+        printf("System correctly initialized\n\n\n");
+    }
+    else
+    {
+        printf("Error initializing");
     }
 
 
@@ -35,9 +31,9 @@ int main()
     {
         printf("\t\t*MENU*");
         printf("\n\nAUTORES");
-        printf("\n\n1-Alta autor");
-        printf("\n\n2-Baja autor");
-        printf("\n\n3-Modificar autor");
+        printf("\n\n1-Alta arrayEmployees");
+        printf("\n\n2-Baja arrayEmployees");
+        printf("\n\n3-Modificar arrayEmployees");
         printf("\n\n4-Listar autores");
         printf("\n\nLIBROS");
         printf("\n\n5-Alta libro");
@@ -54,13 +50,13 @@ int main()
         switch (opcion)
         {
         case 1:
-            if(aut_buscarLibre(autor,CANTIDAD_AUTORES, &posicionLibreAutor) != 0)
+            if(aut_buscarLibre(arrayEmployees,QUANTITY_EMPLOYEES, &posicionLibreAutor) != 0)
             {
                 printf("LLENO\n\n");
             }
             else
             {
-                switch (aut_alta(autor, CANTIDAD_AUTORES, posicionLibreAutor, generadorCodigoAutor))
+                switch (aut_alta(arrayEmployees, QUANTITY_EMPLOYEES, posicionLibreAutor, generadorCodigoAutor))
                 {
                 case 0:
                     printf("Dato ingresado correctamente\n\n");
@@ -73,16 +69,16 @@ int main()
             }
             break;
         case 2:
-            if (aut_baja(autor, CANTIDAD_AUTORES) == 0)
+            if (aut_baja(arrayEmployees, QUANTITY_EMPLOYEES) == 0)
             {
                 printf("Exito");
             }
             break;
         case 3:
-            if(aut_modificacion(autor, CANTIDAD_AUTORES) == 0)
+            if(aut_modificacion(arrayEmployees, QUANTITY_EMPLOYEES) == 0)
             break;
         case 4:
-            aut_mostrarArray(autor, CANTIDAD_AUTORES);
+            aut_mostrarArray(arrayEmployees, QUANTITY_EMPLOYEES);
             break;
         case 5:
               if(lib_buscarLibre(libro,CANTIDAD_LIBROS, &posLibreLibro) != 0)
@@ -91,7 +87,7 @@ int main()
                 }
                 else
                 {
-                    switch (lib_alta(libro, autor, CANTIDAD_LIBROS, CANTIDAD_AUTORES, posLibreLibro, generadorCodigoLibro))
+                    switch (lib_alta(libro, arrayEmployees, CANTIDAD_LIBROS, QUANTITY_EMPLOYEES, posLibreLibro, generadorCodigoLibro))
                     {
                     case 0:
                         printf("Dato ingresado correctamente\n\n");
@@ -101,13 +97,13 @@ int main()
                         printf("Dato ingresado INCORRECTAMENTE\n\n");
                         break;
                     case 2:
-                        printf("El codigo de autor no existe\n\n");
+                        printf("El codigo de arrayEmployees no existe\n\n");
                         break;
                     }
                 }
             break;
         case 6:
-             if (aut_baja(autor, CANTIDAD_AUTORES) == 0)
+             if (aut_baja(arrayEmployees, QUANTITY_EMPLOYEES) == 0)
                 {
                     printf("Exito");
                 }

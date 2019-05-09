@@ -13,6 +13,8 @@ int lib_Inicializar(Libros *arrayLibro, int cantidad);
 int lib_buscarLibre(Libros *arrayLibro, int cantidad, int *devuelve);
 int lib_alta(Libros *arrayLibro, Autores *arrayAutor, int cantidadLibro, int cantidadAutor, int posLibre, int id);
 int lib_buscarEnArrayPorId (Libros *arrayLibro, int cantidad, int *libroEncontrado,char *textoAMostrar);
+void lib_mostrarArray(Libros *arrayLibro, int cantidad);
+int lib_baja(Libros *arrayLibro, int cantidad);
 
 
 

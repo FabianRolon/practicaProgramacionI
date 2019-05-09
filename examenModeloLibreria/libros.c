@@ -85,3 +85,46 @@ int lib_buscarEnArrayPorId (Libros *arrayLibro, int cantidad, int *libroEncontra
     return retorno;
 }
 
+int lib_baja(Libros *arrayLibro, int cantidad)
+{
+    int retorno = -1;
+    int posicionLibro;
+
+    lib_mostrarArray(arrayLibro, cantidad);
+    switch (lib_buscarEnArrayPorId(arrayLibro, cantidad,&posicionLibro,"Ingrese el codigo del libro a dar de baja: "))
+    {
+    case 0:
+        if (arrayLibro[posicionLibro].isEmpty == 0)
+        {
+            printf("Hubo coincidencia\n\n");
+            arrayLibro[posicionLibro].isEmpty = 2;
+            printf("El autor borrado es: %d\n\n",arrayLibro[posicionLibro].codigoAutor);
+            retorno = 0;
+        }
+        break;
+    case 1:
+        printf("No se encontro el codigo\n\n");
+        break;
+    }
+    return retorno;
+}
+
+void lib_mostrarArray(Libros *arrayLibro, int cantidad)
+{
+    int i;
+
+    printf("\n\n\t\t\t\t||Lista de Libros||\n\n");
+
+    for (i = 0; i < cantidad ;i++)
+    {
+        if(arrayLibro[i].isEmpty == 0)
+        {
+
+            printf("Codigo de autor: %d\n", arrayLibro[i].codigoAutor);
+            printf("Posicion: %d\n", i);
+            printf("Estado: %d\n", arrayLibro[i].isEmpty);
+            printf("Titulo: %s\n", arrayLibro[i].titulo);
+            printf("Codigo de Libro: %d\n", arrayLibro[i].codigoLibro);
+        }
+    }
+}
