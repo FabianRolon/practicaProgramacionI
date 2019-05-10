@@ -1,114 +1,90 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdio_ext.h>
+#include "utn.h"
 #include "ArrayEmployees.h"
-#define QUANTITY_EMPLOYEES 1000
+
+
+#define QTY_ARRAY_EMPLOYEE 10
+#define SORT_UP 1
+#define SORT_DOWN 0
 
 int main()
 {
-    int idEmployeeGenerator = 1;
-    char seguir = 's'; //MENU
-    int opcion; //MENU
-    int value;
-    int posicionLibreAutor;
-    Employee arrayEmployees[QUANTITY_EMPLOYEES];
+    int opcion;
+    int contadorIdemployee=0;                   //cambiar
+
+    Employee arrayEmployee[QTY_ARRAY_TIPO];                   //cambiar
+    employee_Inicializar(arrayEmployee,QTY_ARRAY_TIPO);                   //cambiar
+
+    //*******************************************************************
+    arrayEmployee[0].idEmployee=0;
+    arrayEmployee[0].isEmpty=0;
+    arrayEmployee[0].sector=0;
+    arrayEmployee[0].salary=0;
+    strcpy(arrayEmployee[0].lastName,"CCCCC");
+    strcpy(arrayEmployee[0].name,"CCCCC");
+    contadorIdemployee++;
+
+    arrayEmployee[1].idEmployee=1;
+    arrayEmployee[1].isEmpty=0;
+    arrayEmployee[1].sector=0;
+    arrayEmployee[1].salary=0;
+    strcpy(arrayEmployee[1].lastName,"AAAAA");
+    strcpy(arrayEmployee[1].name,"AAAAA");
+    contadorIdemployee++;
+
+    arrayEmployee[2].idEmployee=0;
+    arrayEmployee[2].isEmpty=0;
+    arrayEmployee[2].sector=0;
+    arrayEmployee[2].salary=20;
+    strcpy(arrayEmployee[2].lastName,"BBBBB");
+    strcpy(arrayEmployee[2].name,"BBBBBB");
+    contadorIdemployee++;
+
+    arrayEmployee[3].idEmployee=0;
+    arrayEmployee[3].isEmpty=0;
+    arrayEmployee[3].sector=0;
+    arrayEmployee[3].salary=10;
+    strcpy(arrayEmployee[3].lastName,"BBBBB");
+    strcpy(arrayEmployee[3].name,"BBBBBB");
+    contadorIdemployee++;
 
 
-    value = initEmployees(arrayEmployees, QUANTITY_EMPLOYEES);
+    //********************************************************************
 
-    if (value == 0)
+    do
     {
-        printf("System correctly initialized\n\n\n");
-    }
-    else
-    {
-        printf("Error initializing");
-    }
-
-
-    while (seguir == 's')
-    {
-        printf("\t\t*MENU*");
-        printf("\n\nAUTORES");
-        printf("\n\n1-Alta arrayEmployees");
-        printf("\n\n2-Baja arrayEmployees");
-        printf("\n\n3-Modificar arrayEmployees");
-        printf("\n\n4-Listar autores");
-        printf("\n\nLIBROS");
-        printf("\n\n5-Alta libro");
-        printf("\n\n6-Baja libro");
-        printf("\n\n7-Modificar libro");
-        printf("\n\n8-Listar libros");
-        printf("\n\n8-Salir\n");
-
-
-        getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 10, 2, &opcion);
-        //system("cls"); //limpia la pantalla en windows
-        system("clear"); //limpia pantalla en linux
-
-        switch (opcion)
+        utn_getUnsignedInt("\n\n1) Alta \n2) Modificar \n3) Baja \n4) Listar \n5) Ordenar \n6) Salir\n",                   //cambiar
+                      "\nError",1,sizeof(int),1,11,1,&opcion);
+        switch(opcion)
         {
-        case 1:
-            if(aut_buscarLibre(arrayEmployees,QUANTITY_EMPLOYEES, &posicionLibreAutor) != 0)
-            {
-                printf("LLENO\n\n");
-            }
-            else
-            {
-                switch (aut_alta(arrayEmployees, QUANTITY_EMPLOYEES, posicionLibreAutor, generadorCodigoAutor))
-                {
-                case 0:
-                    printf("Dato ingresado correctamente\n\n");
-                    generadorCodigoAutor++;
-                    break;
-                case 1:
-                    printf("Dato ingresado INCORRECTAMENTE\n\n");
-                    break;
-                }
-            }
-            break;
-        case 2:
-            if (aut_baja(arrayEmployees, QUANTITY_EMPLOYEES) == 0)
-            {
-                printf("Exito");
-            }
-            break;
-        case 3:
-            if(aut_modificacion(arrayEmployees, QUANTITY_EMPLOYEES) == 0)
-            break;
-        case 4:
-            aut_mostrarArray(arrayEmployees, QUANTITY_EMPLOYEES);
-            break;
-        case 5:
-              if(lib_buscarLibre(libro,CANTIDAD_LIBROS, &posLibreLibro) != 0)
-                {
-                    printf("LLENO\n\n");
-                }
-                else
-                {
-                    switch (lib_alta(libro, arrayEmployees, CANTIDAD_LIBROS, QUANTITY_EMPLOYEES, posLibreLibro, generadorCodigoLibro))
-                    {
-                    case 0:
-                        printf("Dato ingresado correctamente\n\n");
-                        generadorCodigoLibro++;
-                        break;
-                    case 1:
-                        printf("Dato ingresado INCORRECTAMENTE\n\n");
-                        break;
-                    case 2:
-                        printf("El codigo de arrayEmployees no existe\n\n");
-                        break;
-                    }
-                }
-            break;
-        case 6:
-             if (aut_baja(arrayEmployees, QUANTITY_EMPLOYEES) == 0)
-                {
-                    printf("Exito");
-                }
-            break;
+            case 1: //Alta
+                employee_alta(arrayEmployee,QTY_ARRAY_TIPO,&contadorIdemployee);                   //cambiar
+                break;
+
+            case 2: //Modificar
+                employee_modificar(arrayEmployee,QTY_ARRAY_TIPO);                   //cambiar
+                break;
+
+            case 3: //Baja
+                employee_baja(arrayEmployee,QTY_ARRAY_TIPO);                   //cambiar
+                break;
+
+            case 4://Listar
+                employee_listar(arrayEmployee,QTY_ARRAY_TIPO);                   //cambiar
+                break;
+
+            case 5://Ordenar
+                employee_ordenarPorDobleCriterio(arrayEmployee,QTY_ARRAY_TIPO,SORT_UP,SORT_DOWN);                   //cambiar
+                break;
+
+            case 6://Salir
+                break;
+            default:
+                printf("\nOpcion no valida");
         }
     }
+    while(opcion!=6);
     return 0;
 }
