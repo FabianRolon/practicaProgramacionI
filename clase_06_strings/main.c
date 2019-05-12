@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define TAMANO_ARRAY 7
+#define TAMANO_ARRAY 10
 
 int isValidName(char* sName);
 

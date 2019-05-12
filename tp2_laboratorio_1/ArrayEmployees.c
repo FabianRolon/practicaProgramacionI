@@ -1,26 +1,29 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "ArrayEmployees.h"
 #include <stdio_ext.h>
+#include "utn.h"
+#include "ArrayEmployees.h"
+
+#define TAMANO_STRING 51
+
 
 /** \brief  To indicate that all position in the array are empty,
  *          this function put the flag (isEmpty) in TRUE in all
  *          position of the array
- * \param list Employee* Pointer to array of employees
- * \param len int Array length
+ * \param arrayEmployee Employee* Pointer to array of employees
+ * \param cantidad int Array length
  * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
  *
  */
-int initEmployees(Employee* list, int len)
+int initEmployees(Employee *arrayEmployee, int cantidad)
 {
-
     int retorno = -1;
     int i;
 
     for (i = 0; i < cantidad; i++)
     {
-        arrayLibro[i].isEmpty = 1;
+        arrayEmployee[i].isEmpty = 1;
         retorno=0;
     }
 
@@ -81,7 +84,7 @@ int emp_buscarEmpty(Employee array[], int size, int* posicion)
     return retorno;
 }
 
-/** \brief add in a existing list of employees the values received as parameters
+/** \brief add in a existing arrayEmployee of employees the values received as parameters
  *     in the first empty position
  * \param array employee Array de employee
  * \param size int
@@ -90,27 +93,28 @@ int emp_buscarEmpty(Employee array[], int size, int* posicion)
  * \return int Return (-1) if Error [Invalid length or NULL pointer or without free space] - (0) if Ok
  *
  */
-  int addEmployee(Employee array[], int size, int* contadorID)
+  int addEmployee(Employee *arrayEmployee, int cantidad, int* contadorID)
 {
     int retorno=-1;
     int posicion;
-    if(array!=NULL && size>0 && contadorID!=NULL)
+    if(arrayEmployee!=NULL && cantidad>0 && contadorID!=NULL)
     {
-        if(emp_buscarEmpty(array,size,&posicion)==-1)
+        if(emp_buscarEmpty(arrayEmployee,cantidad,&posicion)==-1)
         {
             printf("\nNo hay lugares vacios");
         }
         else
         {
-            (*contadorID)++;
-            array[posicion].idEmployee=*contadorID;
-            array[posicion].isEmpty=0;
-            utn_getName("\nIngrese el nombre: ","\nError",1,TEXT_SIZE,1,array[posicion].name);
-            utn_getName("\nIngrese el apellido: ","\nError",1,TEXT_SIZE,1,array[posicion].lastName);
-            utn_getFloat("\nIngrese el salario: ","\nError",1,sizeof(float),0,1,1,&array[posicion].salary);
-            utn_getUnsignedInt("\nIngrese el sector: ","\nError",1,sizeof(int),1,10,1,&array[posicion].sector);
+
+            arrayEmployee[posicion].idEmployee=*contadorID;
+            arrayEmployee[posicion].isEmpty=0;
+            utn_getName("\nIngrese el nombre: ","\nError",1,TAMANO_STRING,1,arrayEmployee[posicion].name);
+            utn_getName("\nIngrese el apellido: ","\nError",1,TAMANO_STRING,1,arrayEmployee[posicion].lastName);
+            utn_getFloat("\nIngrese el salario: ","\nError",1,sizeof(float),0,1,1,&arrayEmployee[posicion].salary);
+            utn_getUnsignedInt("\nIngrese el sector: ","\nError",1,sizeof(int),1,10,1,&arrayEmployee[posicion].sector);
             printf("\n Posicion: %d\n ID: %d\n Sector: %d\n Salario: %f\n Nombre: %s\n Apellido: %s",
-                   posicion, array[posicion].idEmployee,array[posicion].sector,array[posicion].salary,array[posicion].name,array[posicion].lastName);
+                   posicion, arrayEmployee[posicion].idEmployee,arrayEmployee[posicion].sector,arrayEmployee[posicion].salary,arrayEmployee[posicion].name,arrayEmployee[posicion].lastName);
+            (*contadorID)++;
             retorno=0;
         }
     }
@@ -118,127 +122,87 @@ int emp_buscarEmpty(Employee array[], int size, int* posicion)
 }
 
 /*****************************************
-//Baja valor unico
-/** \brief Borra un elemento del array por ID
+/ ** \brief Borra un elemento del array por ID
 * \param array employee Array de employee
 * \param size int Tamaño del array
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
 *
 */
-int removeEmployee(Employee array[], int sizeArray)
+int removeEmployee(Employee *arrayEmployee, int sizeArray)
 {
     int retorno=-1;
     int posicion;
     int id;
-    if(array!=NULL && sizeArray>0)
+    if(arrayEmployee!=NULL && sizeArray>0)
     {
         utn_getUnsignedInt("\nID a cancelar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);
-        if(findEmployeeById(array,sizeArray,id,&posicion)==-1)
+        if(findEmployeeById(arrayEmployee,sizeArray,id,&posicion)==-1)
+        {
             printf("\nNo existe este ID");
         }
         else
         {
-            array[posicion].isEmpty=1;
-            array[posicion].idEmployee=0;
-            array[posicion].sector=0;
-            array[posicion].salary=0;
-            strcpy(array[posicion].name,"");
-            strcpy(array[posicion].lastName,"");
+            arrayEmployee[posicion].isEmpty=2;
             retorno=0;
         }
     }
     return retorno;
 }
 
-//Baja valor repetido
-/** \brief Borra todos los elemento del array que contengan el valor buscado
-* \param array employee Array de employee
-* \param size int Tamaño del array
-* \param valorBuscado int Valor a buscar en el array
-* \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se elimina el elemento exitosamente
-*
-*/
-int employee_bajaValorRepetidoInt(Employee array[], int sizeArray, int valorBuscado) //cuando hay que dar de baja todas las posiciones en las que se encuentra ese int
-{
-    int retorno=-1;
-    int i;
-    if(array!=NULL && sizeArray>0)
-    {
-        for(i=0;i<sizeArray;i++)
-        {
-            if(array[i].idEmployee==valorBuscado)                                                        //cambiar si no se busca por ID
-            {
-                array[i].isEmpty=1;
-                array[i].idEmployee=0;                                                                   //cambiar campo id
-                array[i].sector=0;                                                               //cambiar campo sector
-                array[i].salary=0;                                                             //cambiar campo salary
-                strcpy(array[i].name,"");                                                   //cambiar campo name
-                strcpy(array[i].lastName,"");                                               //cambiar campo lastName
-            }
-        }
-        retorno=0;
-    }
-    return retorno;
-}
 
-
-
-//*****************************************
-//Modificar
 /** \brief Busca un elemento por ID y modifica sus campos
 * \param array employee Array de employee
 * \param size int Tamaño del array
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no encuentra elementos con el valor buscado] - (0) si se modifica el elemento exitosamente
 *
 */
-int employee_modificar(Employee array[], int sizeArray)                                //cambiar employee
+int modifyEmployee(Employee *arrayEmployee, int sizeArray)
 {
     int retorno=-1;
     int posicion;
-    int id;                                                                                         //cambiar si no se busca por ID
-    char opcion;
-    if(array!=NULL && sizeArray>0)
+    int id;
+    int opcion;
+    if(arrayEmployee!=NULL && sizeArray>0)
     {
-        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);         //cambiar si no se busca por ID
-        if(employee_buscarID(array,sizeArray,id,&posicion)==-1)                                   //cambiar si no se busca por ID
+        printEmployees(arrayEmployee, sizeArray);
+        utn_getUnsignedInt("\nID a modificar: ","\nError",1,sizeof(int),1,sizeArray,1,&id);
+        if(findEmployeeById(arrayEmployee,sizeArray,id,&posicion)==-1)
         {
-            printf("\nNo existe este ID");                                                          //cambiar si no se busca por ID
+            printf("\nNo existe este ID");
         }
         else
         {
             do
-            {       //copiar printf de alta
+            {
                 printf("\n Posicion: %d\n ID: %d\n Sector: %d\n Salario: %f\n Nombre: %s\n Apellido: %s",
-                   posicion, array[posicion].idEmployee,array[posicion].sector,array[posicion].salary,array[posicion].name,array[posicion].lastName);
-                utn_getChar("\nModificar: A B C D S(salir)","\nError",'A','Z',1,&opcion);
+                   posicion, arrayEmployee[posicion].idEmployee,arrayEmployee[posicion].sector,arrayEmployee[posicion].salary,arrayEmployee[posicion].name,arrayEmployee[posicion].lastName);
+                utn_getUnsignedInt("\n\nModificar: \n\n1-Sector \n2-Salario \n3-Nombre \n4-Apellido \n5-Salir y volver al menu anterior\n","\nError",1,5,1,5,2,&opcion);
                 switch(opcion)
                 {
-                    case 'A':
-                        utn_getUnsignedInt("\n: ","\nError",1,sizeof(int),1,1,1,&array[posicion].sector);           //mensaje + cambiar campo sector
+                    case 1:
+                        utn_getUnsignedInt("\nIngrese el sector: ","\nError",1,sizeof(int),1,10,1,&arrayEmployee[posicion].sector);
                         break;
-                    case 'B':
-                        utn_getFloat("\n: ","\nError",1,sizeof(float),0,1,1,&array[posicion].salary);             //mensaje + cambiar campo salary
+                    case 2:
+                        utn_getFloat("\nIngrese el salario: ","\nError",1,sizeof(float),0,1,1,&arrayEmployee[posicion].salary);
                         break;
-                    case 'C':
-                        utn_getName("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].name);                      //mensaje + cambiar campo name
+                    case 3:
+                        utn_getName("\nIngrese el nombre: ","\nError",1,TAMANO_STRING,1,arrayEmployee[posicion].name);
                         break;
-                    case 'D':
-                        utn_getTexto("\n: ","\nError",1,TEXT_SIZE,1,array[posicion].lastName);             //mensaje + cambiar campo lastName
+                    case 4:
+                        utn_getName("\nIngrese el apellido: ","\nError",1,TAMANO_STRING,1,arrayEmployee[posicion].lastName);
                         break;
-                    case 'S':
+                    case 5:
                         break;
                     default:
                         printf("\nOpcion no valida");
                 }
-            }while(opcion!='S');
+            }while(opcion != 5);
             retorno=0;
         }
     }
     return retorno;
 }
 
-//*****************************************
-//Ordenar
 /** \brief Ordena por campo XXXXX los elementos de un array ante la igualdad de estos ordena por el campo ZZZZZZ
 * \param array employee Array de employee
 * \param size int Tamaño del array
@@ -248,37 +212,37 @@ int employee_modificar(Employee array[], int sizeArray)                         
 * \return int Return (-1) si Error [largo no valido o NULL pointer] - (0) si se ordena exitosamente
 *
 */
-int employee_ordenarPorDobleCriterio(Employee array[],int size, int orderFirst, int orderSecond)                              //cambiar employee
+int sortEmployees(Employee *arrayEmployee,int size, int orderFirst, int orderSecond)                              //cambiar employee
 {
     int retorno=-1;
     int i;
     Employee buffer;
     int flagSwap;
 
-    if(array!=NULL && size>=0)
+    if(arrayEmployee!=NULL && size>=0)
     {
         do
         {
             flagSwap=0;
             for (i = 1; i < size-1; i++)
             {
-                if( ((strcmp(array[i].name,array[i+1].name) < 0) && orderFirst) ||
-                    ((strcmp(array[i].name,array[i+1].name) > 0) && !orderFirst) )
+                if( ((strcmp(arrayEmployee[i].lastName,arrayEmployee[i+1].lastName) < 0) && orderFirst) ||
+                    ((strcmp(arrayEmployee[i].lastName,arrayEmployee[i+1].lastName) > 0) && !orderFirst) )
                 {
                     flagSwap=1;
-                    buffer = array[i];
-                    array[i] = array[i+1];
-                    array[i+1] = buffer;
+                    buffer = arrayEmployee[i];
+                    arrayEmployee[i] = arrayEmployee[i+1];
+                    arrayEmployee[i+1] = buffer;
                 }
-                else if(strcmp(array[i].name,array[i+1].name) == 0)
+                else if(strcmp(arrayEmployee[i].lastName,arrayEmployee[i+1].lastName) == 0)
                 {
-                    if( ((array[i].salary < array[i+1].salary) && orderSecond) ||
-                        ((array[i].salary > array[i+1].salary) && !orderSecond) )
+                    if( ((arrayEmployee[i].sector < arrayEmployee[i+1].sector) && orderSecond) ||
+                        ((arrayEmployee[i].sector > arrayEmployee[i+1].sector) && !orderSecond) )
                     {
                         flagSwap=1;
-                        buffer = array[i];
-                        array[i] = array[i+1];
-                        array[i+1] = buffer;
+                        buffer = arrayEmployee[i];
+                        arrayEmployee[i] = arrayEmployee[i+1];
+                        arrayEmployee[i+1] = buffer;
                     }
                 }
             }
@@ -288,12 +252,10 @@ int employee_ordenarPorDobleCriterio(Employee array[],int size, int orderFirst, 
     return retorno;
 }
 
-//*****************************************
-//Listar
 /** \brief Lista los elementos de un array
 * \param array employee Array de employee
 * \param size int Tamaño del array
-* \return int Return (-1) si Error [largo no valido o NULL pointer] - (0) si se lista exitosamente
+* \return int Return (-1) si Error [largo no valido o NULL pointer] - (0) si se arrayEmployeea exitosamente
 *
 */
 int printEmployees(Employee array[], int size)
@@ -307,12 +269,45 @@ int printEmployees(Employee array[], int size)
             if(array[i].isEmpty==1)
                 continue;
             else
-                printf("\n Posicion: %d\n ID: %d\n Sector: %d\n Salario: %f\n Nombre: %s\n Apellido: %s",
-                   posicion, array[posicion].idEmployee,array[posicion].sector,array[posicion].salary,array[posicion].name,array[posicion].lastName);
+                printf("\n Posicion: %d\n ID: %d\n Sector: %d\n Salario: %f\n Nombre: %s\n Apellido: %s\n\n",
+                   i, array[i].idEmployee,array[i].sector,array[i].salary,array[i].name,array[i].lastName);
         }
         retorno=0;
     }
     return retorno;
 }
 
+int emp_isValidNotEmpty(Employee array[], int size)
+{
+    int retorno=-1;
+    int i;
+    if(array!= NULL && size>=0)
+    {
+        for(i=0;i<size;i++)
+        {
+            if(array[i].isEmpty==0)
+            {
+                retorno=0;
+                break;
+            }
+        }
+    }
+    return retorno;
+}
 
+int promedioSalario(Employee *arrayEmployee, int size, float *cantidadSalarios, float *suma)
+{
+    int retorno = -1;
+    int i;
+    int sumador = 0;
+    int contador = 0;
+    for(i = 0;i < size;i++)
+    {
+        if(arrayEmployee[i].isEmpty == 0)
+        {
+            sumador += arrayEmployee[i].salary;
+            contador++;
+        }
+    }
+    return retorno;
+}

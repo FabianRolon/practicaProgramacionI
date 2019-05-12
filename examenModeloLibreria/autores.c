@@ -61,9 +61,9 @@ int aut_alta(Autores *arrayAutor, int cantidad, int posLibre, int id)
 
 int getString(char *pResult, char *pMsg, char *pMsgError, int min, int max, int intentos)
 {
-    int ret=-1;
-    char arrayAuxiliar[20];
-    while(intentos>0)
+    int retorno = -1;
+    char arrayAuxiliar[31];
+    while(intentos > 0)
     {
         printf("%s",pMsg);
         //fflush( stdin ); //LIMPIA BUFFER WINDOWS
@@ -74,7 +74,7 @@ int getString(char *pResult, char *pMsg, char *pMsgError, int min, int max, int 
         {
             strncpy(pResult,arrayAuxiliar,max);
 
-            ret=0;
+            retorno = 0;
             break;
         }
         else
@@ -83,16 +83,16 @@ int getString(char *pResult, char *pMsg, char *pMsgError, int min, int max, int 
         }
         intentos--;
     }
-    return ret;
+    return retorno;
 }
 
 int validarLetra (char letras[])
 {
-    int ret=0;
+    int retorno=0;
     int i=0;
-    int CantidadLetras;
-    CantidadLetras=strlen(letras);
-    while (i<CantidadLetras && ret==0)
+    int cantidadLetras;
+    cantidadLetras=strlen(letras);
+    while (i<cantidadLetras && retorno==0)
     {
         if (isalpha(letras[i])!=0)
         {
@@ -100,10 +100,10 @@ int validarLetra (char letras[])
         }
         else
         {
-            ret=1;
+            retorno=1;
         }
     }
-    return ret;
+    return retorno;
 }
 
 int getInt(
@@ -288,5 +288,43 @@ int aut_existeId (Autores *arrayAutor, int cantidad, int id)
                 break;
             }
         }
+    return retorno;
+}
+
+int utn_getChar(char* msg, char* msgError, int min, int max, int reintentos, char* resultado)
+{
+    int retorno=-1;
+    char bufferChar[1];
+
+    if(msg!=NULL && msgError!=NULL && min<=max && reintentos>=0 && resultado!=NULL)
+    {
+        do
+        {
+            if(!getString(bufferChar,msg,msgError,1,3,reintentos)) //==0
+            {
+                if(isValidChar(bufferChar[0])==1)
+                {
+                    *resultado=bufferChar[0];
+                    retorno=0;
+                    break;
+                }
+                else
+                {
+                    reintentos--;
+                }
+            }
+        }
+        while(reintentos>=0);
+    }
+    return retorno;
+}
+
+int isValidChar(char charRecibido)
+{
+    int retorno=1;
+    if(charRecibido != ' ' && (charRecibido < 'a' || charRecibido > 'z') && (charRecibido < 'A' || charRecibido > 'Z'))
+    {
+        retorno=0;
+    }
     return retorno;
 }

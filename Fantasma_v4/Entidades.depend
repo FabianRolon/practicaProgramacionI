@@ -125,3 +125,34 @@
 	"utn.h"
 	"fantasma.h"
 
+1557453521 source:/home/fabianrolon/Documentos/practicaProgramacionI/Fantasma_v4/fantasma.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"fantasma.h"
+
+1557453521 /home/fabianrolon/Documentos/practicaProgramacionI/Fantasma_v4/utn.h
+
+1557453521 /home/fabianrolon/Documentos/practicaProgramacionI/Fantasma_v4/fantasma.h
+
+1557453521 source:/home/fabianrolon/Documentos/practicaProgramacionI/Fantasma_v4/informes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"fantasma.h"
+
+1557453521 source:/home/fabianrolon/Documentos/practicaProgramacionI/Fantasma_v4/main.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"fantasma.h"
+
+1557453521 source:/home/fabianrolon/Documentos/practicaProgramacionI/Fantasma_v4/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

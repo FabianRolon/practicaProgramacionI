@@ -28,7 +28,7 @@
 
 1557277338 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.h
 
-1557282847 source:/home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/autores.c
+1557687846 source:/home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/autores.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -36,9 +36,9 @@
 	<ctype.h>
 	"autores.h"
 
-1557282847 /home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/autores.h
+1557685838 /home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/autores.h
 
-1557282847 source:/home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/libros.c
+1557684314 source:/home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/libros.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -49,7 +49,7 @@
 
 1557284571 /home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/libros.h
 
-1557284571 source:/home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/main.c
+1557687098 source:/home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/main.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>

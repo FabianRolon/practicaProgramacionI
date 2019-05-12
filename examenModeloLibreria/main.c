@@ -11,7 +11,8 @@ int main()
 {
     int generadorCodigoAutor = 1;
     int generadorCodigoLibro = 1;
-    char seguir = 's'; //MENU
+    char seguir = 's';
+    char salirLista = 'n'; //MENU
     int opcion; //MENU
     int valor1;
     int valor2;
@@ -29,6 +30,30 @@ int main()
     {
         printf("Sistema inicializado correctamente\n\n\n");
     }
+
+    autor[0].codigoAutor=1;
+    autor[0].isEmpty=0;
+    strcpy(autor[0].nombre,"Jose Luis");
+    strcpy(autor[0].apellido,"Borges");
+
+
+    autor[1].codigoAutor=2;
+    autor[1].isEmpty=0;
+    strcpy(autor[1].nombre,"William");
+    strcpy(autor[1].apellido,"Shakespeare");
+    generadorCodigoAutor++;
+
+    autor[2].codigoAutor=3;
+    autor[2].isEmpty=0;
+    strcpy(autor[2].nombre,"Gabriel");
+    strcpy(autor[2].apellido,"Marquez");
+    generadorCodigoAutor++;
+
+    autor[3].codigoAutor=4;
+    autor[3].isEmpty=0;
+    strcpy(autor[3].nombre,"Carl");
+    strcpy(autor[3].apellido,"Sagan");
+    generadorCodigoAutor++;
 
 
     while (seguir == 's')
@@ -82,6 +107,12 @@ int main()
             if(aut_modificacion(autor, CANTIDAD_AUTORES) == 0)
             break;
         case 4:
+            do
+            {
+                aut_mostrarArray(autor, CANTIDAD_AUTORES);
+                utn_getChar("\n\tIngrese 's' para volver al menu anterior: ", "Ingreso incorrecto",1,2,2,&salirLista);
+
+            }while(salirLista!='s');
             aut_mostrarArray(autor, CANTIDAD_AUTORES);
             break;
         case 5:
@@ -111,6 +142,9 @@ int main()
                 {
                     printf("Exito");
                 }
+            break;
+        case 8:
+            seguir = 'a';
             break;
         }
     }

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1557692681 source:/home/fabianrolon/Documentos/practicaProgramacionI/getSex/main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdio_ext.h>
+

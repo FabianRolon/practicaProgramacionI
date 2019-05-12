@@ -4,8 +4,8 @@
 typedef struct
 {
     int codigoAutor;
-    char apellido[20];
-    char nombre[20];
+    char apellido[31];
+    char nombre[31];
     int isEmpty;
 
 }Autores;
@@ -20,6 +20,8 @@ int aut_modificacion(Autores *arrayAutor, int cantidad);
 int aut_existeId (Autores *arrayAutor, int cantidad, int id);
 
 int getString(char *pResult,char *pMsg,char *pMsgError,int min,int max,int intentos);
+int utn_getChar(char* msg, char* msgError, int min, int max, int reintentos, char* resultado);
+int isValidChar(char charRecibido);
 int validarLetra (char letras[]);
 int getInt(
     char *mensaje,
