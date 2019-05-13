@@ -20,6 +20,20 @@ int soc_Inicializar(Socios *arraySocio, int cantidad)
     return retorno;
 }
 
+int fec_Inicializar(Fecha *arrayFecha, int cantidad)
+{
+    int retorno = -1;
+    int i;
+
+    for (i = 0; i < cantidad; i++)
+    {
+        arrayFecha[i].isEmpty = 1;
+        retorno=0;
+    }
+
+    return retorno;
+}
+
 int soc_buscarLibre(Socios *arraySocio, int cantidad, int *devuelve)
 {
     int retorno=-1;
@@ -47,7 +61,7 @@ int soc_alta(Socios *arraySocio, int cantidadSocio, int posLibre, int id)
         getSex("Ingrese el sexo F o M: ", "Error! Ingrese la opcion correcta", 1,2,2,&arraySocio[posLibre].sexo) == 0 &&
         getTelefono("Ingrese el numero de telefono: ", "Error, vuelva a ingresar",2, 16, 2, arraySocio[posLibre].telefono) == 0 &&
         getEmail("Ingrese la direccion de Email: ", "Error, vuelva a ingresar",2, 31, 2, arraySocio[posLibre].email) == 0 &&
-         )
+        getFecha("Ingrese la fecha MM/DD/AAAA: ", "Error, ingrese nuevamente", 1, 2019, 2,  ) )
     {
             if(aut_existeId(arrayAutor, cantidadAutor, arrayAutor[posLibre].codigoAutor) == 0)
             {
@@ -323,6 +337,84 @@ int isValidEmail(char* stringRecibido)
     {
         if((stringRecibido[i]<'-' && stringRecibido[i]!='+') || (stringRecibido[i]>'9' && stringRecibido[i]<'@') ||
            (stringRecibido[i]>'Z' && stringRecibido[i]!='_' && stringRecibido[i]<'a')|| stringRecibido[i]>'z')
+        {
+            retorno=0;
+            break;
+        }
+    }
+    return retorno;
+}
+
+int getFecha(char *msg, char *msgError, int minSize, int maxSize, int reintentos, int *resultadoMes, int *resultadoDia, int *resultadoAnio)
+{
+    int retorno=-1;
+    char bufferStr[maxSize];
+
+    if(msg!=NULL && msgError!=NULL && minSize<maxSize && reintentos>=0 && resultadoMes!=NULL && resultadoDia!=NULL && resultadoAnio!=NULL)
+    {
+        do
+        {
+            printf("%s", msg);
+            if(!getString("\nMes: ",msgError,minSize,maxSize,reintentos,bufferStr))
+            {
+                if(isValidNumber(bufferStr)==1)
+                {
+                    *resultadoMes=atoi(bufferStr);
+
+                }
+                else
+                {
+                    printf("%s",msgError);
+                    break;
+                }
+                if(!getString("\nDia: ",msgError,minSize,maxSize,reintentos,bufferStr))
+                {
+//                    printf("%d", isValidDia(resultadoMes))
+                    if(isValidNumber(bufferStr)==1 /*&& isValidDia(*resultadoMes, atoi(bufferStr)) == 0 */)
+                    {
+                        *resultadoDia=atoi(bufferStr);
+
+                    }
+                    else
+                    {
+                        printf("%s",msgError);
+                        break;
+                    }
+                }
+                else
+                {
+                    printf("%s",msgError);
+                    break;
+                }
+                if(!getString("\nAnio: ",msgError,minSize,maxSize,reintentos,bufferStr))
+                {
+                    if(isValidNumber(bufferStr)==1)
+                    {
+                        *resultadoAnio=atoi(bufferStr);
+                        retorno=0;
+                        break;
+                    }
+
+                }
+                else
+                {
+                    printf("%s",msgError);
+                    reintentos--;
+                }
+            }
+        }
+        while(reintentos>=0);
+    }
+    return retorno;
+}
+
+int isValidNumber(char* stringRecibido)
+{
+    int retorno=1;
+    int i;
+    for(i=0;stringRecibido[i]!='\0';i++)
+    {
+        if((stringRecibido[i]<'0' || stringRecibido[i]>'9'))
         {
             retorno=0;
             break;

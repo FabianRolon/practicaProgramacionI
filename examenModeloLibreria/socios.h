@@ -13,12 +13,22 @@ typedef struct
     int fechaDeAsociado;
 }Socios;
 
+typedef struct
+{
+    int isEmpty;
+    int dia;
+    int mes;
+    int anio;
+}Fecha;
+
 int getSex(char *mensaje, char *mensajeError, char minimo, char maximo, int reintentos, char *resultado);
 int isValidSex(char letra, char maximo, char minimo);
 int getTelefono(char* msg, char* msgError, int minSize, int maxSize, int reintentos, char* input);
 int isValidTelephone(char* stringRecibido);
 int isValidEmail(char* stringRecibido);
 int getEmail(char* msg, char* msgError, int minSize, int maxSize, int reintentos, char* input);
+int getFecha(char *msg, char *msgError, int minSize, int maxSize, int reintentos, int *resultadoMes, int *resultadoDia, int *resultadoAnio);
+int isValidNumber(char* stringRecibido);
 
 
 
