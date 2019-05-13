@@ -4,7 +4,7 @@
 typedef struct
 {
     int codigoAutor;
-    char titulo[20];
+    char titulo[51];
     int isEmpty;
     int codigoLibro;
 }Libros;
@@ -15,7 +15,7 @@ int lib_alta(Libros *arrayLibro, Autores *arrayAutor, int cantidadLibro, int can
 int lib_buscarEnArrayPorId (Libros *arrayLibro, int cantidad, int *libroEncontrado,char *textoAMostrar);
 void lib_mostrarArray(Libros *arrayLibro, int cantidad);
 int lib_baja(Libros *arrayLibro, int cantidad);
-
+int lib_modificacion(Libros *arrayLibro, Autores *arrayAutor, int cantidadLibro, int cantidadAutor);
 
 
 

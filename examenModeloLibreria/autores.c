@@ -210,7 +210,7 @@ void aut_mostrarArray(Autores *arrayAutor, int cantidad)
             printf("Posicion: %d\n", i);
             printf("Estado: %d\n", arrayAutor[i].isEmpty);
             printf("Nombre: %s\n", arrayAutor[i].nombre);
-            printf("Apellido: %s\n", arrayAutor[i].apellido);
+            printf("Apellido: %s\n\n", arrayAutor[i].apellido);
         }
     }
 }

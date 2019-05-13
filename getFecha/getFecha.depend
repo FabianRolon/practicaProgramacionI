@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1557708561 source:/home/fabianrolon/Documentos/practicaProgramacionI/getFecha/fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fecha.h"
+
+1557705827 source:/home/fabianrolon/Documentos/practicaProgramacionI/getFecha/main.c
+	<stdio.h>
+	<stdlib.h>
+	"fecha.h"
+
+1557707558 /home/fabianrolon/Documentos/practicaProgramacionI/getFecha/fecha.h
+

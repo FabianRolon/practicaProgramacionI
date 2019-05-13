@@ -47,7 +47,7 @@ int lib_alta(Libros *arrayLibro, Autores *arrayAutor, int cantidadLibro, int can
         aut_mostrarArray(arrayAutor, cantidadAutor);
         if(getInt("\n\t\tIngrese el codigo de autor: ", "Ingreso incorrecto\n", 1, 10, 2, &arrayLibro[posLibre].codigoAutor) == 0)
         {
-            if(aut_existeId (arrayAutor, cantidadAutor, arrayLibro[posLibre].codigoAutor) == 0)
+            if(aut_existeId(arrayAutor, cantidadAutor, arrayAutor[posLibre].codigoAutor) == 0)
             {
                 arrayLibro[posLibre].codigoLibro = id;
                 arrayLibro[posLibre].isEmpty  = 0;
@@ -101,7 +101,7 @@ int lib_baja(Libros *arrayLibro, int cantidad)
         {
             printf("Hubo coincidencia\n\n");
             arrayLibro[posicionLibro].isEmpty = 2;
-            printf("El autor borrado es: %d\n\n",arrayLibro[posicionLibro].codigoAutor);
+            printf("El libro borrado es: %d\n\n",arrayLibro[posicionLibro].codigoLibro);
             retorno = 0;
         }
         break;
@@ -127,7 +127,68 @@ void lib_mostrarArray(Libros *arrayLibro, int cantidad)
             printf("Posicion: %d\n", i);
             printf("Estado: %d\n", arrayLibro[i].isEmpty);
             printf("Titulo: %s\n", arrayLibro[i].titulo);
-            printf("Codigo de Libro: %d\n", arrayLibro[i].codigoLibro);
+            printf("Codigo de Libro: %d\n\n", arrayLibro[i].codigoLibro);
         }
     }
+}
+
+int lib_modificacion(Libros *arrayLibro, Autores *arrayAutor, int cantidadLibro, int cantidadAutor)
+{
+
+    int retorno = -1;
+    int opcion;
+    int posicionLibro;
+    char seguir = 's';
+
+    lib_mostrarArray(arrayLibro, cantidadLibro);
+
+    switch (lib_buscarEnArrayPorId(arrayLibro, cantidadLibro,&posicionLibro,"Ingrese el codigo de libro a modificar: "))
+    {
+    case 0:
+        if (arrayLibro[posicionLibro].isEmpty == 0)
+        {
+            printf("Hubo coincidencia\n\n");
+
+            while(seguir == 's')
+            {
+                printf("Elija el dato que desea modificar\n\n");
+
+                printf("\n\n1-Titiulo");
+                printf("\n\n2-Codigo de Autor");
+                printf("\n\n3-Salir de la modificacion");
+
+                getInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 3, 2, &opcion);
+
+
+                switch(opcion)
+                {
+                    case 1:
+                        if (getString(arrayLibro[posicionLibro].titulo,"Ingrese el nuevo nombre de libro: ","Error",2,20,2)==0)
+                        {
+                            printf("El dato fue modificado con exito.\n\n");
+                        }
+                        break;
+                    case 2:
+                        aut_mostrarArray(arrayAutor, cantidadAutor);
+                        if(getInt("\n\t\tIngrese el codigo de autor: ", "Ingreso incorrecto\n", 1, 10, 2, &arrayLibro[posicionLibro].codigoAutor) == 0)
+                        {
+                            printf("El dato fue modificado con exito.\n\n");
+                        }
+                        break;
+
+                    case 3:
+                        seguir = 'n';
+                        retorno = 0;
+                        break;
+                }
+            }
+        }
+        break;
+
+    case 1:
+        printf("No se encontro el codigo de libro");
+        break;
+        }
+
+    return retorno;
 }
