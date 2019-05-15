@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1557276182 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.c
+1557869146 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -8,7 +8,7 @@
 	"autores.h"
 	"libros.h"
 
-1557277140 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.c
+1557869146 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -16,17 +16,18 @@
 	<ctype.h>
 	"autores.h"
 
-1557275157 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.h
+1557869146 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/autores.h
 
-1557277596 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/main.c
+1557869265 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/main.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	<stdio_ext.h>
 	"autores.h"
 	"libros.h"
+	"socios.h"
 
-1557277338 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.h
+1557869146 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/libros.h
 
 1557696098 source:/home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/autores.c
 	<string.h>
@@ -59,4 +60,6 @@
 	"socios.h"
 
 1557702867 /home/fabianrolon/Documentos/practicaProgramacionI/examenModeloLibreria/socios.h
+
+1557869244 /home/alumno/Documentos/Rolon/practicaProgramacionI/examenModeloLibreria/socios.h
 

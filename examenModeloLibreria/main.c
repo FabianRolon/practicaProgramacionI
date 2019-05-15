@@ -21,7 +21,6 @@ int main()
     int valor1;
     int valor2;
     int valor3;
-    int valor4;
     int posicionLibreAutor;
     int posLibreLibro;
     int posicionLibreSocio;
@@ -29,14 +28,12 @@ int main()
     Autores autor[CANTIDAD_AUTORES];
     Libros libro[CANTIDAD_LIBROS];
     Socios socio[CANTIDAD_SOCIOS];
-    Fecha fecha[CANTIDAD_SOCIOS];
 
     valor1 = aut_Inicializar(autor, CANTIDAD_AUTORES);
     valor2 = lib_Inicializar(libro, CANTIDAD_LIBROS);
     valor3 = soc_Inicializar(socio, CANTIDAD_SOCIOS);
-    valor4 = fec_Inicializar(fecha, CANTIDAD_SOCIOS);
 
-    if (valor1 == 0 && valor2 == 0 && valor3 == 0 && valor4)
+    if (valor1 == 0 && valor2 == 0 && valor3 == 0)
     {
         printf("Sistema inicializado correctamente\n\n\n");
     }

@@ -10,16 +10,12 @@ typedef struct
     char sexo;
     char telefono[16];
     char email[31];
-    int fechaDeAsociado;
-}Socios;
-
-typedef struct
-{
-    int isEmpty;
     int dia;
     int mes;
     int anio;
-}Fecha;
+    int fechaDeAsociado;
+}Socios;
+
 
 int getSex(char *mensaje, char *mensajeError, char minimo, char maximo, int reintentos, char *resultado);
 int isValidSex(char letra, char maximo, char minimo);

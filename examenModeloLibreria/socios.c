@@ -20,19 +20,6 @@ int soc_Inicializar(Socios *arraySocio, int cantidad)
     return retorno;
 }
 
-int fec_Inicializar(Fecha *arrayFecha, int cantidad)
-{
-    int retorno = -1;
-    int i;
-
-    for (i = 0; i < cantidad; i++)
-    {
-        arrayFecha[i].isEmpty = 1;
-        retorno=0;
-    }
-
-    return retorno;
-}
 
 int soc_buscarLibre(Socios *arraySocio, int cantidad, int *devuelve)
 {
@@ -61,7 +48,7 @@ int soc_alta(Socios *arraySocio, int cantidadSocio, int posLibre, int id)
         getSex("Ingrese el sexo F o M: ", "Error! Ingrese la opcion correcta", 1,2,2,&arraySocio[posLibre].sexo) == 0 &&
         getTelefono("Ingrese el numero de telefono: ", "Error, vuelva a ingresar",2, 16, 2, arraySocio[posLibre].telefono) == 0 &&
         getEmail("Ingrese la direccion de Email: ", "Error, vuelva a ingresar",2, 31, 2, arraySocio[posLibre].email) == 0 &&
-        getFecha("Ingrese la fecha MM/DD/AAAA: ", "Error, ingrese nuevamente", 1, 2019, 2,  ) )
+        getFecha("Ingrese la fecha MM/DD/AAAA: ", "Error, ingrese nuevamente", 1, 2019, 2 ) )
     {
             if(aut_existeId(arrayAutor, cantidadAutor, arrayAutor[posLibre].codigoAutor) == 0)
             {
