@@ -1,0 +1,17 @@
+void setup()
+{
+  pinMode(A2, INPUT);
+  pinMode(9, OUTPUT);
+  pinMode(A1, INPUT);
+  pinMode(10, OUTPUT);
+  pinMode(A0, INPUT);
+  pinMode(11, OUTPUT);
+}
+
+void loop()
+{
+  analogWrite(9, map(analogRead(A2), 0, 1023, 0, 255));
+  analogWrite(10, map(analogRead(A1), 0, 1023, 0, 255));
+  analogWrite(11, map(analogRead(A0), 0, 1023, 0, 255));
+  delay(10); // Delay a little bit to improve simulation performance
+}
