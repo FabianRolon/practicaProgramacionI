@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1558657915 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/memoriaDinamica_clase_02/main.c
+	<stdio.h>
+	<stdlib.h>
+	"persona.h"
+	"utn.h"
+
+1558647464 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/memoriaDinamica_clase_02/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1558647464 /home/alumno/Documentos/Rolon/practicaProgramacionI/memoriaDinamica_clase_02/utn.h
+
+1558648771 source:/home/alumno/Documentos/Rolon/practicaProgramacionI/memoriaDinamica_clase_02/persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"persona.h"
+	"utn.h"
+
+1558648771 /home/alumno/Documentos/Rolon/practicaProgramacionI/memoriaDinamica_clase_02/persona.h
+
