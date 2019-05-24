@@ -1,0 +1,41 @@
+#include <Servo.h>
+
+Servo servo_10;
+
+int counter;
+
+void setup()
+{
+  pinMode(7, OUTPUT);
+  servo_10.attach(10);
+
+  pinMode(8, INPUT);
+  pinMode(4, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(2, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(7, HIGH);
+  servo_10.write(0);
+  if (digitalRead(8) == 1) 
+  {
+    delay(100);
+    digitalWrite(7, LOW);
+    digitalWrite(4, HIGH);
+    for (counter = 0; counter < 10; ++counter) 
+    {  
+      delay(1000);
+      tone(11, 523, 500); // play tone 60 (C5 = 523 Hz)
+      servo_10.write(90);
+      digitalWrite(4, LOW);
+      digitalWrite(2, HIGH);
+      delay(1000); // Wait for 1000 millisecond(s)
+    }
+    digitalWrite(2, LOW);
+    digitalWrite(4, HIGH);
+    delay(2000); // Wait for 2000 millisecond(s)
+    digitalWrite(4, LOW);
+  }
+}
