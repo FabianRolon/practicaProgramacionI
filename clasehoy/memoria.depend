@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1558650766 source:/home/profesor/Descargas/memoria/main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+
+1557879424 /home/profesor/Descargas/memoria/empleado.h
+
+1557879526 source:/home/profesor/Descargas/memoria/empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+
+1558659532 source:/home/alumno/Rolon/practicaProgramacionI/clasehoy/empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+
+1557879424 /home/alumno/Rolon/practicaProgramacionI/clasehoy/empleado.h
+
+1558652438 source:/home/alumno/Rolon/practicaProgramacionI/clasehoy/main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+
