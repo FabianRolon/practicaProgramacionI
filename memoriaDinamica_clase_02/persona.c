@@ -194,5 +194,26 @@ int Per_constructor(Persona* this,int id,int estado,char nombre,char apellido)
 
 #endif // PERSONA_C_INCLUDED
 
+int parserPersonas(char *nombreArchivo, Persona *lista, int len)
+{
+    char aux[512];
+    char auxID[512];
+    char auxNombre[512];
+    char auxApellido[512];
+    char auxEdad[512];
+    FILE* fp = fopen(nombreArchivo, "r");
+    if(fp! = NULL)
+    {
+        //fscanf(fp, "%[^\n]\n", aux); //saltea
+        fgets(aux,512,fp);
 
+        do{
+            r = fscanf(fp, "%[^,],%[^,],%[^,],%[^\n]\n,", auxID, auxNombre, auxApellido, auxEdad);
+            if(r==4)
+            {
+                printf("%s %s %s %s\n", auxId,auxNombre,auxApellido,auxEdad);
+            }
+        }while(!feof(fp));
+    }
+}
 

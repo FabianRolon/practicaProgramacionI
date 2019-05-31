@@ -10,11 +10,11 @@ int main()
   //  int ultimoElementoArrayPersona = 0;
     //int indiceActual;
    // int bufferInt;
-    char bufferId[2000];
+  /*  char bufferId[2000];
     char bufferEstado[2000];
     char bufferApellido[2000];
     char bufferNombre[2000];
-    //char bufferStr[4000];
+    char bufferStr[4000];
 
     FILE *pFile = NULL;                         /// hacer esto siempre. Siempre abro,utilizo y  cierro el archivo en el momento que lo uso xq se puede estar actualizando en ese momento y esa info no la puedo ver
     FILE *pFileBkp = NULL;                          ///para escribir en el archivo
@@ -32,7 +32,7 @@ int main()
             fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferApellido,bufferEstado);               ///Asi se crea una mascara,q va a guardar todo lo q encuentra mientras no sea una "," hasta el buffer
                                                                                 ///La coma en la mascara le indica q tiene q pasar al siguiente lugar
             printf("%s %s %s %s\n",bufferId,bufferNombre,bufferApellido,bufferEstado);                                        ///Imprimo lo que leyo de esa linea
-            //fprintf(pFile,"%s\n",bufferStr);///para mopstrar lo q escribi
+            fprintf(pFile,"%s\n",bufferStr); ///para mostrar lo q escribi
 
 
 
@@ -43,7 +43,7 @@ int main()
 
     }
 
-
+*/
 
   /*  indiceActual = ultimoElementoArrayPersona;
     pArrayPersona[indiceActual] =  Per_new();
@@ -70,6 +70,8 @@ int main()
             Per_getApellido(pArrayPersona[indiceActual],bufferApellido);
             printf("\n El nombre es %s",bufferApellido);
         }*/
+
+        parserPersonas("data.csv",arrayPersonas, )
     return 0;
 
 }

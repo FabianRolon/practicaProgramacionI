@@ -46,3 +46,20 @@
 	"persona.h"
 	"utn.h"
 
+1559261870 source:/home/alumno/Documentos/practicaProgramacionI/memoriaDinamica_clase_02/persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"persona.h"
+	"utn.h"
+
+1559261870 /home/alumno/Documentos/practicaProgramacionI/memoriaDinamica_clase_02/persona.h
+
+1559261870 /home/alumno/Documentos/practicaProgramacionI/memoriaDinamica_clase_02/utn.h
+
+1559261870 source:/home/alumno/Documentos/practicaProgramacionI/memoriaDinamica_clase_02/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
