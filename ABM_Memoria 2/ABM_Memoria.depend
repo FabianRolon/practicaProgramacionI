@@ -43,3 +43,25 @@
 	<string.h>
 	"utn_strings.h"
 
+1559684651 source:/home/alumno/Rolon/practicaProgramacionI/ABM_Memoria 2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"persona.h"
+
+1559684651 /home/alumno/Rolon/practicaProgramacionI/ABM_Memoria 2/persona.h
+
+1559684651 source:/home/alumno/Rolon/practicaProgramacionI/ABM_Memoria 2/persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"persona.h"
+	"utn_strings.h"
+
+1559684651 /home/alumno/Rolon/practicaProgramacionI/ABM_Memoria 2/utn_strings.h
+
+1559684651 source:/home/alumno/Rolon/practicaProgramacionI/ABM_Memoria 2/utn_strings.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn_strings.h"
+
