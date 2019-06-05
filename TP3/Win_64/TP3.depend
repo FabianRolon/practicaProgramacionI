@@ -53,3 +53,46 @@
 	"LinkedList.h"
 	"Employee.h"
 
+1559696647 source:c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1559696647 c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\linkedlist.h
+
+1559737297 c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\employee.h
+
+1559737770 source:c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"parser.h"
+
+1559696647 c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\controller.h
+
+1559738489 source:c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"utn_strings.h"
+
+1559696647 c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\utn_strings.h
+
+1559738546 source:c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1559696647 source:c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\utn_strings.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn_strings.h"
+
+1559696647 c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\parser.h
+

@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "parser.h"
 
 /****************************************************
     Menu:
@@ -21,7 +22,7 @@
 
 int main()
 {
-    int option = 0;
+   /* int option = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
         switch(option)
@@ -30,6 +31,35 @@ int main()
                 controller_loadFromText("data.csv",listaEmpleados);
                 break;
         }
-    }while(option != 10);
+    }while(option != 10);*/
+    FILE *pFileBkp = NULL;
+   pFileBkp = fopen("data.csv","r");
+   int i;
+   Employee *empleado;
+   char bufferNombre[1000];
+   int bufferId, bufferSueldo, bufferHoras;
+   // int option = 0;
+    LinkedList* listaEmpleados = ll_newLinkedList();
+   /* do{
+        switch(option)
+        {
+            case 1:
+                controller_loadFromText("data.csv",listaEmpleados);
+                break;
+        }
+    }while(option != 10);*/
+    parser_EmployeeFromText(pFileBkp, listaEmpleados);
+    for(i = 0; i < ll_len(listaEmpleados); i++)
+    {
+
+        empleado = (Employee*)ll_get(listaEmpleados, i);
+        employee_getNombre(empleado, bufferNombre);
+        employee_getId(empleado, &bufferId);
+        employee_getHorasTrabajadas(empleado,&bufferHoras);
+        employee_getSueldo(empleado, &bufferSueldo);
+        printf("Nombre : %s Id: %d Horas: %d Sueldo: %d\n", bufferNombre, bufferId, bufferHoras, bufferSueldo );
+    }
+
+
     return 0;
 }
