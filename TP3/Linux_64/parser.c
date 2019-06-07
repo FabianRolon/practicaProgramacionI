@@ -35,7 +35,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
             fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);               ///Asi se crea una mascara,q va a guardar todo lo q encuentra mientras no sea una "," hasta el buffer
             bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
             ll_add(pArrayListEmployee, bufferEmp);                                                                   ///La coma en la mascara le indica q tiene q pasar al siguiente lugar
-            //printf("%s %s %s %s\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);                                        ///Imprimo lo que leyo de esa linea
+//            printf("%s %s %s %s\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);                                        ///Imprimo lo que leyo de esa linea
             //fprintf(pFile,"%s\n",bufferStr); ///para mostrar lo q escribi
 
 

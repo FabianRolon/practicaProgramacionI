@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Employee.h"
-#include "utn_strings.h"
+#include "utn.h"
 
 Employee* employee_new()
 {
@@ -21,8 +21,11 @@ void employee_delete(Employee *this)
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldo)
 {
     Employee* emp=employee_new();
-    if(emp!=NULL &&
-        idStr)
+    if( emp!=NULL &&
+        idStr != NULL &&
+        nombreStr != NULL &&
+        horasTrabajadasStr != NULL &&
+        sueldo != NULL)
     {
         employee_setIdString(emp, idStr);
         employee_setNombre(emp,nombreStr);
@@ -123,9 +126,8 @@ int employee_getSueldo(Employee* this,int* sueldo)
 int employee_setIdString(Employee* this, char* idStr)
 {
     int retorno = -1;
-    if(this != NULL && idStr != NULL && (!isNumber(idStr)))
+    if(this != NULL && idStr != NULL && (isValidNumber(idStr)))
     {
-
         retorno = employee_setId(this,atoi(idStr));///si salio bien retorna 0 sino -1
     }
     return retorno;
@@ -147,7 +149,7 @@ int employee_getIdString(Employee* this, char* result)
 int employee_setHorasTrabajadasStr(Employee* this,char* horasTrabajadas)
 {
     int retorno = -1;
-    if(this != NULL && horasTrabajadas != NULL && (!isNumber(horasTrabajadas)))
+    if(this != NULL && horasTrabajadas != NULL && (isValidNumber(horasTrabajadas)))
     {
 
         retorno = employee_setHorasTrabajadas(this,atoi(horasTrabajadas));///si salio bien retorna 0 sino -1
@@ -172,7 +174,7 @@ int employee_getHorasTrabajadasStr(Employee* this,char* result)
 int employee_setSueldoStr(Employee* this,char *sueldo)
 {
     int retorno = -1;
-    if(this != NULL && sueldo != NULL && (!isNumber(sueldo)))
+    if(this != NULL && sueldo != NULL && (isValidNumber(sueldo)))
     {
 
         retorno = employee_setSueldo(this,atoi(sueldo));///si salio bien retorna 0 sino -1
@@ -192,5 +194,4 @@ int employee_getSueldoStr(Employee* this,char* result)
     }
     return retorno;
 }
-
 

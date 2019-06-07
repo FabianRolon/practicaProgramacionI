@@ -96,3 +96,46 @@
 
 1559696647 c:\users\calidad\downloads\practicaprogramacioni-master\practicaprogramacioni-master\tp3\win_64\parser.h
 
+1533133026 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1533133022 /home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/LinkedList.h
+
+1559857504 /home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/Employee.h
+
+1559857504 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"utn_strings.h"
+
+1559857504 /home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/utn_strings.h
+
+1559857504 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"parser.h"
+
+1533133022 /home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/Controller.h
+
+1533133022 /home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/parser.h
+
+1559857504 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1559857504 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Win_64/utn_strings.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn_strings.h"
+

@@ -3,6 +3,7 @@
 #include <string.h>
 #include "utn_strings.h"
 #define TAM_STRING 10
+#include "utn.h"
 
 ///ESTE PROGRAMA FUE COMPILADO EN WINDOWS. AUTOR BRAIAN BALDINO.
 /** \brief  Asks user to enter something.

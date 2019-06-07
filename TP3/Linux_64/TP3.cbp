@@ -51,10 +51,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="parser.h" />
-		<Unit filename="utn_strings.c">
+		<Unit filename="utn.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="utn_strings.h" />
+		<Unit filename="utn.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
