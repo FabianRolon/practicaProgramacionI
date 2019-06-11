@@ -109,3 +109,52 @@
 
 1559861912 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/utn.h
 
+1560223380 source:/home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"Controller.h"
+	"utn.h"
+
+1560202961 /home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/LinkedList.h
+
+1560211424 /home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/Employee.h
+
+1560202961 /home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/parser.h
+
+1560212197 /home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/Controller.h
+
+1560202961 /home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/utn.h
+
+1560211436 source:/home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1560223160 source:/home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1560202961 source:/home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560202961 source:/home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"utn.h"
+

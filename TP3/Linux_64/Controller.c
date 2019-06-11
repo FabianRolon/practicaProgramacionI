@@ -5,6 +5,7 @@
 #include "parser.h"
 #include "Controller.h"
 #include "utn.h"
+#define MAX_EMPLOYEE 9999
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
@@ -27,6 +28,8 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
         {
              if(!parser_EmployeeFromText(pFile , pArrayListEmployee))
              {
+                printf("\nCarga exitosa\n");
+                fclose(pFile);
                 retorno = 0;
              }
         }
@@ -43,8 +46,43 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno = -1;
+    int cantidadLeida;
+    Employee aEmployee;
+    Employee *pEmployee = employee_new();
+    FILE* pFile;
+    pFile = NULL;
+    if(path != NULL && pArrayListEmployee != NULL)
+    {
+        pFile = fopen(path,"rb");
+        if(pFile!=NULL)
+        {
+            while(!feof(pFile))
+            {
+                cantidadLeida = fread(&aEmployee, sizeof(Employee), 1, pFile);
+                if(cantidadLeida == 1)
+                {
+                    employee_setId(pEmployee,aEmployee.id);
+                    employee_setNombre(pEmployee,aEmployee.nombre);
+                    employee_setHorasTrabajadas(pEmployee,aEmployee.horasTrabajadas);
+                    employee_setSueldo(pEmployee,aEmployee.sueldo);
+                    if(pEmployee != NULL)
+                    {
+                        ll_add(pArrayListEmployee, pEmployee);
+                        printf("\nCarga exitosa\n");
+                    }
+                }
+
+            }
+            fclose(pFile);
+
+            printf("\nCarga exitosa\n");
+            retorno = 0;
+        }
+    }
+     return retorno;
 }
+
 
 /** \brief Alta de empleados
  *
@@ -76,17 +114,17 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
             {
                 bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
                 ll_add(pArrayListEmployee, bufferEmp);
-                retorno = 1;
+                printf("Exito, empleado agregado!\n");
+                retorno = 0;
             }else
             {
-                printf("ERROR1!\n");
+                printf("ERROR, reintentos agotados!\n");
+                retorno = -2;
             }
         }else
         {
-            printf("ERROR2!\n");
+            printf("ERROR, NULL\n");
         }
-
-
     return retorno;
 }
 
@@ -111,7 +149,41 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno = -1;
+    int idIngresado;
+    int posicionId;
+    Employee *pEmployee;
+    if (pArrayListEmployee != NULL)
+    {
+        if( !utn_getUnsignedInt("\nIngrese el ID de empleado a dar de baja: ",
+            "\nError, ID inválido.",1,MAX_EMPLOYEE, 2, &idIngresado))
+            {
+                if( findEmployeeById(pArrayListEmployee,
+                    idIngresado,
+                    &posicionId) ==0 )
+                    {
+                        pEmployee = ll_pop(pArrayListEmployee, posicionId);
+                        if(pEmployee != NULL)
+                        {
+                            employee_delete(pEmployee);
+                            printf("\n¡Empleado borrado exitosamente!\n\n");
+                            retorno = 0;
+                        }
+                    }
+                    else
+                    {
+                        printf("\nNo se encontró el ID\n\n");
+                        retorno = -2;
+                    }
+            }
+            else
+            {
+                printf("\nReintentos agotados\n\n");
+                retorno = -3;
+            }
+    }
+
+    return retorno;
 }
 
 /** \brief Listar empleados
@@ -124,20 +196,26 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
     int i;
+    char option = 'n';
     Employee *empleado;
     char bufferNombre[1000];
     int bufferId, bufferSueldo, bufferHoras;
 
-    for(i = 0; i < ll_len(pArrayListEmployee); i++)
+    do
     {
-        empleado = (Employee*)ll_get(pArrayListEmployee, i);
-        employee_getNombre(empleado, bufferNombre);
-        employee_getId(empleado, &bufferId);
-        employee_getHorasTrabajadas(empleado,&bufferHoras);
-        employee_getSueldo(empleado, &bufferSueldo);
-        printf("Nombre : %s Id: %d Horas: %d Sueldo: %d\n", bufferNombre, bufferId, bufferHoras, bufferSueldo );
-    }
-    controller_nextId(pArrayListEmployee);
+        for(i = 0; i < ll_len(pArrayListEmployee); i++)
+        {
+            empleado = (Employee*)ll_get(pArrayListEmployee, i);
+            employee_getNombre(empleado, bufferNombre);
+            employee_getId(empleado, &bufferId);
+            employee_getHorasTrabajadas(empleado,&bufferHoras);
+            employee_getSueldo(empleado, &bufferSueldo);
+            printf("Nombre : %s Id: %d Horas: %d Sueldo: %d\n", bufferNombre, bufferId, bufferHoras, bufferSueldo );
+        }
+        controller_nextId(pArrayListEmployee);
+        utn_getChar("\n\tPresione 's' para volver al menu principal: ",
+                    "Error, vuelva a intentar",1,2,2,&option);
+    }while(option == 'n');
     return 1;
 }
 
@@ -174,7 +252,25 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno = -1;
+    FILE* pFile = NULL;
+    Employee * pEmployee = NULL;
+    if(path != NULL && pArrayListEmployee != NULL)
+    {
+        pFile = fopen(path, "wb"); //wb modo de escritura en modo binario
+        if(pFile != NULL)
+        {
+            for(int i =0 ; i<ll_len(pArrayListEmployee) ; i++)
+            {
+                pEmployee = ll_get(pArrayListEmployee, i);//devuelve puntero a empleado
+                if(pEmployee != NULL)
+                    fwrite(pEmployee, sizeof(Employee), 1, pFile);//pEmployee es lo apuntado por el puntero, su contenido.
+            }
+            fclose(pFile);
+            retorno = 0;
+        }
+    }
+    return retorno;
 }
 
 
@@ -207,4 +303,18 @@ int controller_nextId(LinkedList* pArrayListEmployee)
         retorno = idMax+1;
     }
     return retorno;
+}
+void Controller_printMenu()
+{
+    printf("\t\t*MENU*");
+    printf("\n\n1-Cargar los datos de los empleados desde el archivo data.csv (modo texto).");
+    printf("\n\n2-Cargar los datos de los empleados desde el archivo data.csv (modo binario)");
+    printf("\n\n3-Alta de empleado");
+    printf("\n\n4-Modificar datos de empleado");
+    printf("\n\n5-Baja de empleado");
+    printf("\n\n6-Listar empleados");
+    printf("\n\n7-Ordenar empleados");
+    printf("\n\n8-Guardar los datos de los empleados en el archivo data.csv (modo texto)");
+    printf("\n\n9-Guardar los datos de los empleados en el archivo data.csv (modo binario)");
+    printf("\n\n10-Salir\n");
 }

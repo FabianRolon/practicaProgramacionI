@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "LinkedList.h"
 #include "Employee.h"
 #include "utn.h"
 
@@ -191,6 +192,31 @@ int employee_getSueldoStr(Employee* this,char* result)
         employee_getSueldo(this,&bufferInt);
         sprintf(result,"%d",bufferInt);
         retorno = 0;
+    }
+    return retorno;
+}
+int findEmployeeById(LinkedList* pArrayListEmployee, int id, int *posicionId)
+{
+    int retorno = -1;
+    int i;
+    int idAux;
+    Employee *pEmployee;
+    if(pArrayListEmployee != NULL && id > 0 && posicionId > 0)
+    {
+        for(i = 0; i < ll_len(pArrayListEmployee); i++)
+        {
+            pEmployee = ll_get(pArrayListEmployee, i);
+
+            if(pEmployee != NULL)
+            {
+                employee_getId(pEmployee, &idAux);
+                if(id == idAux)
+                {
+                    *posicionId = i;
+                    retorno = 0;
+                }
+            }
+        }
     }
     return retorno;
 }

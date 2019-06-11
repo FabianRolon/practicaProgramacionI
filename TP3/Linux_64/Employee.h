@@ -30,4 +30,6 @@ int employee_getSueldo(Employee* this,int* sueldo);
 int employee_setSueldoStr(Employee* this,char *sueldo);
 int employee_getSueldoStr(Employee* this,char* result);
 
+int findEmployeeById(LinkedList* pArrayListEmployee, int id, int *posicionId);
+
 #endif // employee_H_INCLUDED
