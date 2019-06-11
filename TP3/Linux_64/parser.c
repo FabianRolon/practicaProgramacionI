@@ -13,6 +13,7 @@
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
     int retorno = -1;
+    int flag = 0;
     char bufferId[2000];
     char bufferNombre[2000];
     char bufferHorasTrabajadas[2000];
@@ -30,17 +31,24 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
         while(!feof(pFile))                         ///Esta funcion me dice Verdadero cuando se termina el archivo,entonces lo niego para q lea hasta el final
         {
-
-            //fscanf(pFile,"%s",bufferStr);///para leer UNA linea.
-            fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);               ///Asi se crea una mascara,q va a guardar todo lo q encuentra mientras no sea una "," hasta el buffer
-            bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
-            ll_add(pArrayListEmployee, bufferEmp);                                                                   ///La coma en la mascara le indica q tiene q pasar al siguiente lugar
-//            printf("%s %s %s %s\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);                                        ///Imprimo lo que leyo de esa linea
-            //fprintf(pFile,"%s\n",bufferStr); ///para mostrar lo q escribi
-
-
-
-
+            if(!flag)
+            {
+                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                ll_add(pArrayListEmployee, bufferEmp);
+                bufferEmp = ll_pop(pArrayListEmployee, 0);
+                employee_delete(bufferEmp);
+                flag = 1;
+            }
+            else
+            {
+                //fscanf(pFile,"%s",bufferStr);///para leer UNA linea.
+                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);               ///Asi se crea una mascara,q va a guardar todo lo q encuentra mientras no sea una "," hasta el buffer
+                bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                ll_add(pArrayListEmployee, bufferEmp);                                                                   ///La coma en la mascara le indica q tiene q pasar al siguiente lugar
+//                printf("%s %s %s %s\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);                                        ///Imprimo lo que leyo de esa linea
+                //fprintf(pFile,"%s\n",bufferStr); ///para mostrar lo q escribi
+            }
 
         }
         fclose(pFile);///Cierro

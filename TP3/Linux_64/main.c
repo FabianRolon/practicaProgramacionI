@@ -17,7 +17,7 @@ int main()
         Controller_printMenu();
         utn_getUnsignedInt( "\n\t\tIngrese opcion: ",
                             "Ingreso incorrecto\n",1,12,2,&option);
-        system("clear");
+        system("cls");
         switch (option)
         {
         case 1:

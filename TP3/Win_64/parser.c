@@ -13,12 +13,12 @@
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
     int retorno = -1;
+    int flag = 0;
     char bufferId[2000];
     char bufferNombre[2000];
     char bufferHorasTrabajadas[2000];
     char bufferSueldo[2000];
     Employee *bufferEmp;
- //   int bufferId2, bufferSueldo2, bufferHoras;
 
     pFile = NULL;                         /// hacer esto siempre. Siempre abro,utilizo y  cierro el archivo en el momento que lo uso xq se puede estar actualizando en ese momento y esa info no la puedo ver
     //FILE *pFileBkp = NULL;                          ///para escribir en el archivo
@@ -31,22 +31,24 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
         while(!feof(pFile))                         ///Esta funcion me dice Verdadero cuando se termina el archivo,entonces lo niego para q lea hasta el final
         {
-
-            //fscanf(pFile,"%s",bufferStr);///para leer UNA linea.
-            fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);               ///Asi se crea una mascara,q va a guardar todo lo q encuentra mientras no sea una "," hasta el buffer
-            bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
-            /*employee_getNombre(bufferEmp, bufferNombre);
-            employee_getIdString(bufferEmp, bufferId);
-            employee_getHorasTrabajadasStr(bufferEmp, bufferHorasTrabajadas);
-            employee_getSueldoStr(bufferEmp, bufferSueldo);
-            printf("%s %s %s %s\n", bufferNombre, bufferId, bufferHorasTrabajadas, bufferSueldo);*/
-            ll_add(pArrayListEmployee, bufferEmp);                                                                   ///La coma en la mascara le indica q tiene q pasar al siguiente lugar
-            //printf("%s %s %s %s\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);                                        ///Imprimo lo que leyo de esa linea
-            //fprintf(pFile,"%s\n",bufferStr); ///para mostrar lo q escribi
-
-
-
-
+            if(!flag)
+            {
+                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                ll_add(pArrayListEmployee, bufferEmp);
+                bufferEmp = ll_pop(pArrayListEmployee, 0);
+                employee_delete(bufferEmp);
+                flag = 1;
+            }
+            else
+            {
+                //fscanf(pFile,"%s",bufferStr);///para leer UNA linea.
+                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);               ///Asi se crea una mascara,q va a guardar todo lo q encuentra mientras no sea una "," hasta el buffer
+                bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                ll_add(pArrayListEmployee, bufferEmp);                                                                   ///La coma en la mascara le indica q tiene q pasar al siguiente lugar
+//                printf("%s %s %s %s\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);                                        ///Imprimo lo que leyo de esa linea
+                //fprintf(pFile,"%s\n",bufferStr); ///para mostrar lo q escribi
+            }
 
         }
         fclose(pFile);///Cierro

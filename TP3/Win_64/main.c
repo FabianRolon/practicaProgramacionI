@@ -4,62 +4,65 @@
 #include "Controller.h"
 #include "Employee.h"
 #include "parser.h"
-
-/****************************************************
-    Menu:
-     1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
-     2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).
-     3. Alta de empleado
-     4. Modificar datos de empleado
-     5. Baja de empleado
-     6. Listar empleados
-     7. Ordenar empleados
-     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
-     9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
-    10. Salir
-*****************************************************/
-
+#include "utn.h"
 
 int main()
 {
-   /* int option = 0;
+    int option = 0;
+    int flag = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
-    do{
-        switch(option)
-        {
-            case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
-                break;
-        }
-    }while(option != 10);*/
-    FILE *pFileBkp = NULL;
-   pFileBkp = fopen("data.csv","r");
-   int i;
-   Employee *empleado;
-   char bufferNombre[1000];
-   int bufferId, bufferSueldo, bufferHoras;
-   // int option = 0;
-    LinkedList* listaEmpleados = ll_newLinkedList();
-   /* do{
-        switch(option)
-        {
-            case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
-                break;
-        }
-    }while(option != 10);*/
-    parser_EmployeeFromText(pFileBkp, listaEmpleados);
-    for(i = 0; i < ll_len(listaEmpleados); i++)
+
+    do
     {
+        Controller_printMenu();
+        utn_getUnsignedInt( "\n\t\tIngrese opcion: ",
+                            "Ingreso incorrecto\n",1,12,2,&option);
+        system("cls");
+        switch (option)
+        {
+        case 1:
+            if(!controller_loadFromText("data.csv", listaEmpleados))
+                flag = 1;
+            break;
+        case 2:
+             if(!controller_loadFromBinary("dataBinario.bin", listaEmpleados))
+                flag = 1;
+            break;
+        case 3:
+                if(!controller_addEmployee(listaEmpleados))
+                    flag = 1;
+            break;
+        case 4:
 
-        empleado = (Employee*)ll_get(listaEmpleados, i);
-        employee_getNombre(empleado, bufferNombre);
-        employee_getId(empleado, &bufferId);
-        employee_getHorasTrabajadas(empleado,&bufferHoras);
-        employee_getSueldo(empleado, &bufferSueldo);
-        printf("Nombre : %s Id: %d Horas: %d Sueldo: %d\n", bufferNombre, bufferId, bufferHoras, bufferSueldo );
-    }
+            break;
+        case 5:
+            controller_removeEmployee(listaEmpleados);
+            break;
+        case 6:
+            if(flag)
+            {
+                controller_ListEmployee(listaEmpleados);
+            }else{
+                printf("\nNo hay datos cargados para mostrar");}
+            break;
+        case 7:
 
+            break;
+        case 8:
 
+            break;
+        case 9:
+            if(flag)
+            {
+                controller_saveAsBinary("dataBinario.bin", listaEmpleados);
+            }else{
+                printf("\nNo hay datos cargados para guardar");}
+            break;
+        case 10:
+            option = 10;
+            break;
+        }
+
+    }while(option != 10);
     return 0;
 }

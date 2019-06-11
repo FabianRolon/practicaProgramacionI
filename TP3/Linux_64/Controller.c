@@ -47,7 +47,6 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
     int retorno = -1;
-    int cantidadLeida;
     Employee aEmployee;
     Employee *pEmployee = employee_new();
     FILE* pFile;
@@ -59,20 +58,17 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
         {
             while(!feof(pFile))
             {
-                cantidadLeida = fread(&aEmployee, sizeof(Employee), 1, pFile);
-                if(cantidadLeida == 1)
-                {
-                    employee_setId(pEmployee,aEmployee.id);
-                    employee_setNombre(pEmployee,aEmployee.nombre);
-                    employee_setHorasTrabajadas(pEmployee,aEmployee.horasTrabajadas);
-                    employee_setSueldo(pEmployee,aEmployee.sueldo);
-                    if(pEmployee != NULL)
-                    {
-                        ll_add(pArrayListEmployee, pEmployee);
-                        printf("\nCarga exitosa\n");
-                    }
-                }
+                fread(&aEmployee, sizeof(Employee), 1, pFile);
 
+                pEmployee = employee_newParametrosInt(aEmployee.id, aEmployee.nombre,aEmployee.horasTrabajadas,aEmployee.sueldo);
+                if(pEmployee != NULL)
+                {
+                    ll_add(pArrayListEmployee, pEmployee);
+                }
+                else
+                {
+                    employee_delete(pEmployee);
+                }
             }
             fclose(pFile);
 

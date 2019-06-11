@@ -139,3 +139,51 @@
 	<string.h>
 	"utn_strings.h"
 
+1560283182 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560276417 c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\linkedlist.h
+
+1560283807 c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\employee.h
+
+1560284286 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"Controller.h"
+	"utn.h"
+
+1560276417 c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\parser.h
+
+1560278566 c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\controller.h
+
+1560276417 c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\utn.h
+
+1560281595 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1560278659 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1560276867 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

@@ -38,6 +38,30 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     return emp;
 }
 
+Employee* employee_newParametrosInt(int id, char* nombreStr,int horasTrabajadas, int sueldo)
+{
+    Employee *retorno = NULL;
+    Employee* pEmployee = employee_new();
+    if( pEmployee!=NULL &&
+        id > 0 &&
+        nombreStr != NULL &&
+        horasTrabajadas > 0 &&
+        sueldo > 0)
+    {
+        if( !employee_setId(pEmployee, id) &&
+            !employee_setNombre(pEmployee,nombreStr) &&
+            !employee_setHorasTrabajadas(pEmployee,horasTrabajadas) &&
+            !employee_setSueldo(pEmployee,sueldo))
+        {
+            retorno = pEmployee;
+        }
+        else
+        {
+            employee_delete(pEmployee);
+        }
+    }
+    return retorno;
+}
 int employee_setId(Employee* this,int id)
 {
     int retorno = -1;
@@ -220,4 +244,3 @@ int findEmployeeById(LinkedList* pArrayListEmployee, int id, int *posicionId)
     }
     return retorno;
 }
-
