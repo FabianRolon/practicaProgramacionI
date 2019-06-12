@@ -14,10 +14,11 @@ int main()
 
     do
     {
+        system("clear");
         Controller_printMenu();
         utn_getUnsignedInt( "\n\t\tIngrese opcion: ",
                             "Ingreso incorrecto\n",1,12,2,&option);
-        system("cls");
+
         switch (option)
         {
         case 1:

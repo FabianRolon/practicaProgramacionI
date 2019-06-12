@@ -53,7 +53,7 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1559869020 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Controller.c
+1560291651 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -62,11 +62,11 @@
 	"Controller.h"
 	"utn.h"
 
-1533133022 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/LinkedList.h
+1560289437 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/LinkedList.h
 
-1559689567 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Employee.h
+1560289437 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Employee.h
 
-1559866105 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/main.c
+1560291581 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -75,9 +75,9 @@
 	"parser.h"
 	"utn.h"
 
-1559860638 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Controller.h
+1560289437 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Controller.h
 
-1559865595 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/parser.c
+1560289437 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -91,23 +91,24 @@
 
 1559684651 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/utn_strings.h
 
-1559868895 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Employee.c
+1560289437 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/Employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	"LinkedList.h"
 	"Employee.h"
 	"utn.h"
 
-1533133022 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/parser.h
+1560289437 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/parser.h
 
-1559861967 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/utn.c
+1560291774 source:/home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdio_ext.h>
 	"utn.h"
 
-1559861912 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/utn.h
+1560289437 /home/alumno/Rolon/practicaProgramacionI/TP3/Linux_64/utn.h
 
 1560223380 source:/home/fabianrolon/Documentos/practicaProgramacionI/TP3/Linux_64/Controller.c
 	<stdio.h>

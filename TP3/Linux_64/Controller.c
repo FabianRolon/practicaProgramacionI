@@ -58,9 +58,11 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
         {
             while(!feof(pFile))
             {
+                pEmployee = employee_newParametrosInt(  aEmployee.id,
+                                                        aEmployee.nombre,
+                                                        aEmployee.horasTrabajadas,
+                                                        aEmployee.sueldo);
                 fread(&aEmployee, sizeof(Employee), 1, pFile);
-
-                pEmployee = employee_newParametrosInt(aEmployee.id, aEmployee.nombre,aEmployee.horasTrabajadas,aEmployee.sueldo);
                 if(pEmployee != NULL)
                 {
                     ll_add(pArrayListEmployee, pEmployee);
