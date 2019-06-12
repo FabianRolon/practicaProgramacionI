@@ -25,7 +25,7 @@ int main()
                 flag = 1;
             break;
         case 2:
-             if(!controller_loadFromBinary("dataBinario.bin", listaEmpleados))
+             if(!controller_loadFromBinary("data.bin", listaEmpleados))
                 flag = 1;
             break;
         case 3:
@@ -36,7 +36,11 @@ int main()
 
             break;
         case 5:
-            controller_removeEmployee(listaEmpleados);
+            if(flag)
+            {
+                controller_removeEmployee(listaEmpleados);
+            }else{
+                printf("\nNo hay datos cargados para dar de baja");}
             break;
         case 6:
             if(flag)
@@ -49,12 +53,16 @@ int main()
 
             break;
         case 8:
-
+            if(flag)
+            {
+                controller_saveAsText("data.csv" ,listaEmpleados);
+            }else{
+                printf("\nNo hay datos cargados para guardar");}
             break;
         case 9:
             if(flag)
             {
-                controller_saveAsBinary("dataBinario.bin", listaEmpleados);
+                controller_saveAsBinary("data.bin", listaEmpleados);
             }else{
                 printf("\nNo hay datos cargados para guardar");}
             break;
@@ -62,7 +70,6 @@ int main()
             option = 10;
             break;
         }
-
     }while(option != 10);
     return 0;
 }

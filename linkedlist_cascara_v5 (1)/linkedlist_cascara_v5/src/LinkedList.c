@@ -79,7 +79,7 @@ static Node* getNode(LinkedList* this, int nodeIndex)
                         pAuxNode = pAuxNode->pNextNode;
                         i++;
                     }
-                }while(pAuxNode != NULL);
+                }while(ll_len(this) != i);
             }
         }
     }
