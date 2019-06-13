@@ -230,7 +230,6 @@ int findEmployeeById(LinkedList* pArrayListEmployee, int id, int *posicionId)
         for(i = 0; i < ll_len(pArrayListEmployee); i++)
         {
             pEmployee = ll_get(pArrayListEmployee, i);
-
             if(pEmployee != NULL)
             {
                 employee_getId(pEmployee, &idAux);
@@ -244,3 +243,4 @@ int findEmployeeById(LinkedList* pArrayListEmployee, int id, int *posicionId)
     }
     return retorno;
 }
+

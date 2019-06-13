@@ -14,11 +14,10 @@ int main()
 
     do
     {
-        system("clear");
         Controller_printMenu();
         utn_getUnsignedInt( "\n\t\tIngrese opcion: ",
                             "Ingreso incorrecto\n",1,12,2,&option);
-
+        system("clear");
         switch (option)
         {
         case 1:
@@ -26,7 +25,7 @@ int main()
                 flag = 1;
             break;
         case 2:
-             if(!controller_loadFromBinary("dataBinario.bin", listaEmpleados))
+             if(!controller_loadFromBinary("data.bin", listaEmpleados))
                 flag = 1;
             break;
         case 3:
@@ -34,28 +33,38 @@ int main()
                     flag = 1;
             break;
         case 4:
-
+            if(flag)
+            {
+                controller_editEmployee(listaEmpleados);
+            }else{printf("\nNo hay datos cargados para modificar");}
             break;
         case 5:
-            controller_removeEmployee(listaEmpleados);
+            if(flag)
+            {
+                controller_removeEmployee(listaEmpleados);
+            }else{
+                printf("\nNo hay datos cargados para dar de baja");}
             break;
         case 6:
             if(flag)
             {
                 controller_ListEmployee(listaEmpleados);
-            }else{
-                printf("\nNo hay datos cargados para mostrar");}
+            }else{printf("\nNo hay datos cargados para mostrar");}
             break;
         case 7:
 
             break;
         case 8:
-
+            if(flag)
+            {
+                controller_saveAsText("data.csv" ,listaEmpleados);
+            }else{
+                printf("\nNo hay datos cargados para guardar");}
             break;
         case 9:
             if(flag)
             {
-                controller_saveAsBinary("dataBinario.bin", listaEmpleados);
+                controller_saveAsBinary("data.bin", listaEmpleados);
             }else{
                 printf("\nNo hay datos cargados para guardar");}
             break;
@@ -63,7 +72,6 @@ int main()
             option = 10;
             break;
         }
-
     }while(option != 10);
     return 0;
 }
