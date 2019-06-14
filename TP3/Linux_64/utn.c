@@ -131,9 +131,9 @@ int utn_getUnsignedInt(char* msg,char* msgError,int min,int max,int reintentos,i
 
 int isValidNumber(char* stringRecibido)
 {
-    int retorno=1;  // para las funciones isValid arranco con verdadero y cambio cuando encuentro un error
+    int retorno = 1;
     int i;
-    for(i=0;stringRecibido[i]!='\0';i++)
+    for(i = 0; stringRecibido[i]!='\0'; i++)
     {
         if(stringRecibido[i]<'0' || stringRecibido[i]>'9')
         {

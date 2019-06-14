@@ -6,6 +6,7 @@
 #include "Controller.h"
 #include "utn.h"
 #define MAX_EMPLOYEE 9999
+#define MAX 1000
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
@@ -70,13 +71,13 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
     int retorno = -1;
     int idAux;
-    char bufferId[1000];
-    char bufferNombre[1000];
-    char bufferHorasTrabajadas[1000];
-    char bufferSueldo[1000];
+    char bufferId[MAX];
+    char bufferNombre[MAX];
+    char bufferHorasTrabajadas[MAX];
+    char bufferSueldo[MAX];
     Employee *bufferEmp;
     idAux = controller_nextId(pArrayListEmployee);
-    snprintf(bufferId,1000, "%d", idAux);
+    snprintf(bufferId,MAX, "%d", idAux);
 
     if (pArrayListEmployee != NULL)
         {
@@ -122,9 +123,9 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     int idIngresado;
     int posicionId;
     int auxId;
-    char auxNombre[1000];
-    char bufferHorasTrabajadas[1000];
-    char bufferSueldo[1000];
+    char auxNombre[MAX];
+    char bufferHorasTrabajadas[MAX];
+    char bufferSueldo[MAX];
     int auxHoras;
     int auxSueldo;
     char seguir = 's';
@@ -314,10 +315,10 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
     int bufferId;
     int bufferHorasTrabajadas;
     int bufferSueldo;
-    char bufferIdStr[1000];
-    char bufferNombre[1000];
-    char bufferHorasTrabajadasStr[1000];
-    char bufferSueldoStr[1000];
+    char bufferIdStr[MAX];
+    char bufferNombre[MAX];
+    char bufferHorasTrabajadasStr[MAX];
+    char bufferSueldoStr[MAX];
     FILE* pFile = NULL;
     Employee *pEmployee = NULL;
     if(path != NULL && pArrayListEmployee != NULL)
@@ -325,6 +326,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
         pFile = fopen(path, "w");
         if(pFile != NULL)
         {
+          //  fprintf (pFile, "id,nombre,horasTrabajadas,sueldo\n");
             for(int i =0 ; i<ll_len(pArrayListEmployee) ; i++)
             {
                 pEmployee = (Employee*)ll_get(pArrayListEmployee, i);
@@ -336,10 +338,10 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
                                                      &bufferHorasTrabajadas)&&
                         !employee_getSueldo(pEmployee, &bufferSueldo))
                         {
-                            snprintf(bufferIdStr,1000, "%d", bufferId);
-                            snprintf(bufferHorasTrabajadasStr,1000, "%d",
+                            snprintf(bufferIdStr,MAX, "%d", bufferId);
+                            snprintf(bufferHorasTrabajadasStr,MAX, "%d",
                                      bufferHorasTrabajadas);
-                            snprintf(bufferSueldoStr,1000, "%d", bufferSueldo);
+                            snprintf(bufferSueldoStr,MAX, "%d", bufferSueldo);
                             fprintf (pFile, "%s,%s,%s,%s\n",
                                      bufferIdStr,
                                      bufferNombre,
@@ -372,7 +374,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
     Employee * pEmployee = NULL;
     if(path != NULL && pArrayListEmployee != NULL)
     {
-        pFile = fopen(path, "wb"); //
+        pFile = fopen(path, "wb");
         if(pFile != NULL)
         {
             for(int i =0 ; i<ll_len(pArrayListEmployee) ; i++)

@@ -13,35 +13,20 @@
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
     int retorno = -1;
-    int flag = 0;
     char bufferId[2000];
     char bufferNombre[2000];
     char bufferHorasTrabajadas[2000];
     char bufferSueldo[2000];
     Employee *bufferEmp;
-    pFile = NULL;
-    pFile = fopen("data.csv","r");
     if(pFile!=NULL)
     {
         while(!feof(pFile))
         {
-            if(!flag)
-            {
-                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
-                bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+            bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+            if(bufferEmp != NULL)
                 ll_add(pArrayListEmployee, bufferEmp);
-                bufferEmp = ll_pop(pArrayListEmployee, 0);
-                employee_delete(bufferEmp);
-                flag = 1;
-            }
-            else
-            {
-                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
-                bufferEmp = employee_newParametros(bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
-                ll_add(pArrayListEmployee, bufferEmp);
-            }
         }
-        fclose(pFile);
         retorno = 0;
     }
     return retorno;

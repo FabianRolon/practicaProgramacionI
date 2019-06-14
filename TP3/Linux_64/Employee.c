@@ -21,26 +21,32 @@ void employee_delete(Employee *this)
 
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldo)
 {
-    Employee* emp=employee_new();
-    if( emp!=NULL &&
+    Employee* pEmployee=employee_new();
+    void *retorno = NULL;
+    if( pEmployee!=NULL &&
         idStr != NULL &&
         nombreStr != NULL &&
         horasTrabajadasStr != NULL &&
         sueldo != NULL)
     {
-        employee_setIdString(emp, idStr);
-        employee_setNombre(emp,nombreStr);
-        employee_setHorasTrabajadasStr(emp,horasTrabajadasStr);
-        employee_setSueldoStr(emp,sueldo);
+        if( !employee_setIdString(pEmployee, idStr)&&
+            !employee_setNombre(pEmployee,nombreStr)&&
+            !employee_setHorasTrabajadasStr(pEmployee,horasTrabajadasStr)&&
+            !employee_setSueldoStr(pEmployee,sueldo))
+            {
+                retorno = pEmployee;
+            }
+            else
+            {
+                employee_delete(pEmployee);
+            }
     }
-
-
-    return emp;
+    return retorno;
 }
 
 Employee* employee_newParametrosInt(int id, char* nombreStr,int horasTrabajadas, int sueldo)
 {
-    Employee *retorno = NULL;
+    void *retorno = NULL;
     Employee* pEmployee = employee_new();
     if( pEmployee!=NULL &&
         id > 0 &&
@@ -62,6 +68,7 @@ Employee* employee_newParametrosInt(int id, char* nombreStr,int horasTrabajadas,
     }
     return retorno;
 }
+
 int employee_setId(Employee* this,int id)
 {
     int retorno = -1;
@@ -151,10 +158,11 @@ int employee_getSueldo(Employee* this,int* sueldo)
 int employee_setIdString(Employee* this, char* idStr)
 {
     int retorno = -1;
-    if(this != NULL && idStr != NULL && (isValidNumber(idStr)))
-    {
-        retorno = employee_setId(this,atoi(idStr));///si salio bien retorna 0 sino -1
-    }
+    if(this != NULL && idStr != NULL)
+        if(isValidNumber(idStr))
+        {
+            retorno = employee_setId(this,atoi(idStr));
+        }
     return retorno;
 }
 int employee_getIdString(Employee* this, char* result)
