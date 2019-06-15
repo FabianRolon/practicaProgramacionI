@@ -187,3 +187,51 @@
 	<string.h>
 	"utn.h"
 
+1560550292 source:/home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"Controller.h"
+	"utn.h"
+
+1560550292 /home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/LinkedList.h
+
+1560550292 /home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/Employee.h
+
+1560550292 /home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/parser.h
+
+1560550292 /home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/Controller.h
+
+1560550292 /home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/utn.h
+
+1560550292 source:/home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1560550292 source:/home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1560550292 source:/home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560550292 source:/home/alumno/Documentos/practicaProgramacionI/TP3/Win_64/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

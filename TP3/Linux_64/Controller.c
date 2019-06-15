@@ -123,6 +123,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     int idIngresado;
     int posicionId;
     int auxId;
+    char bufferId[MAX];
     char auxNombre[MAX];
     char bufferHorasTrabajadas[MAX];
     char bufferSueldo[MAX];
@@ -139,7 +140,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                                     idIngresado,
                                     &posicionId))
                     {
-                        pEmployee = ll_pop(pArrayListEmployee, posicionId);
+                        pEmployee = ll_get(pArrayListEmployee, posicionId);
                         if(pEmployee != NULL)
                         {
                             if( !employee_getId(pEmployee, &auxId)&&
@@ -156,6 +157,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                                 }
                         }
                     }
+                    snprintf(bufferHorasTrabajadas,MAX, "%d", auxHoras);
+                    snprintf(bufferSueldo, MAX, "%d", auxSueldo);
             while(seguir == 's')
             {
                 printf("Elija el dato que desea modificar\n\n");
@@ -197,6 +200,13 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                         break;
 
                     case 4:
+                        snprintf(bufferId,MAX, "%d", auxId);
+                        pEmployee = employee_newParametros( bufferId,
+                                                            auxNombre,
+                                                            bufferHorasTrabajadas,
+                                                            bufferSueldo);
+                        if(pEmployee != NULL)
+                            ll_set(pArrayListEmployee, posicionId, pEmployee);
                         seguir = 'n';
                         retorno = 0;
                         break;
@@ -264,6 +274,8 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
     int i;
     char option = 'n';
+    char option2 = 'n';
+    int pagina = 99;
     Employee *empleado;
     char bufferNombre[1000];
     int bufferId, bufferSueldo, bufferHoras;
@@ -282,8 +294,17 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
                    bufferId,
                    bufferHoras,
                    bufferSueldo );
+            if(i == pagina)
+            {
+                do
+                {
+                    utn_getChar("\n\tPresione 's' para siguiente pagina: ",
+                    "Error, vuelva a intentar",1,2,2,&option2);
+                    pagina+=99;
+                    system("clear");
+                }while(option2 == 'n');
+            }
         }
-        controller_nextId(pArrayListEmployee);
         utn_getChar("\n\tPresione 's' para volver al menu principal: ",
                     "Error, vuelva a intentar",1,2,2,&option);
     }while(option == 'n');
