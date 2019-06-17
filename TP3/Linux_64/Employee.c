@@ -252,3 +252,28 @@ int findEmployeeById(LinkedList* pArrayListEmployee, int id, int *posicionId)
     return retorno;
 }
 
+int employee_compare(void* this1, void* this2)
+{
+    int retorno;
+    int auxCmp;
+    char nombreUno[1000];
+    char nombreDos[1000];
+    if( !employee_getNombre((Employee*)this1,nombreUno)&&
+        !employee_getNombre((Employee*)this2,nombreDos))
+        {
+            auxCmp = strcmp(nombreUno,nombreDos);
+            if(auxCmp < 0)
+            {
+                retorno = -1;
+            }
+            if(!auxCmp)
+            {
+                retorno = 0;
+            }
+            if(auxCmp > 0)
+            {
+                retorno = 1;
+            }
+        }
+    return retorno;
+}

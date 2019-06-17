@@ -11,7 +11,6 @@ int main()
     int option = 0;
     int flag = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
-
     do
     {
         Controller_printMenu();
@@ -52,7 +51,11 @@ int main()
             }else{printf("\nNo hay datos cargados para mostrar");}
             break;
         case 7:
-
+            if(flag)
+            {
+                controller_sortEmployee(listaEmpleados);
+                controller_ListEmployee(listaEmpleados);
+            }else{printf("\nNo hay datos cargados para mostrar");}
             break;
         case 8:
             if(flag)

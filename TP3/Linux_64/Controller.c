@@ -7,6 +7,9 @@
 #include "utn.h"
 #define MAX_EMPLOYEE 9999
 #define MAX 1000
+#define ASCENDENTE 1
+#define DESCENDENTE 0
+
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
@@ -54,7 +57,10 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
     {
         pFile = fopen(path, "rb");
         if(!parser_EmployeeFromBinary(pFile ,pArrayListEmployee))
+        {
+            printf("Carga exitosa\n");
             retorno = 0;
+        }
     }
      return retorno;
 }
@@ -165,7 +171,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 
                 printf("\n\n1-Nombre");
                 printf("\n\n2-Horas trabajadas");
-                printf("\n\n2-Sueldo");
+                printf("\n\n3-Sueldo");
                 printf("\n\n4-Salir de la modificacion");
 
                 utn_getUnsignedInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 4, 2, &opcion);
@@ -320,7 +326,13 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno = -1;
+    if(pArrayListEmployee != NULL)
+    {
+        ll_sort(pArrayListEmployee, employee_compare, ASCENDENTE);
+        retorno = 0;
+    }
+    return retorno;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv(modo texto)
@@ -368,14 +380,14 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
                                      bufferNombre,
                                      bufferHorasTrabajadasStr,
                                      bufferSueldoStr);
-                                     printf("Se ha guardado correctamente\n");
-                            retorno = 0;
+
                         }else{printf("Error al guardar\n");}
                 }else{printf("Error al guardar\n");}
 
             }
             fclose(pFile);
-
+            printf("Se ha guardado correctamente\n");
+            retorno = 0;
         }else{printf("Error al guardar\n");}
     }
     return retorno;
@@ -405,6 +417,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
                     fwrite(pEmployee, sizeof(Employee), 1, pFile);
             }
             fclose(pFile);
+            printf("Guardado con exito\n");
             retorno = 0;
         }
     }
