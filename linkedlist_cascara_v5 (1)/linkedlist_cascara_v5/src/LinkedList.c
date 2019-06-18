@@ -427,13 +427,16 @@ int ll_contains(LinkedList* this, void* pElement)
 int ll_containsAll(LinkedList* this,LinkedList* this2)
 {
     int returnAux = -1;
+    Node *auxNode = NULL;
     int i;
     if(this != NULL && this2 != NULL)
     {
+           auxNode = this2->pFirstNode;
            for(i = 0; i < ll_len(this); i++)
            {
-               if(ll_get(this, i) == ll_get(this2, i))
+               if(ll_contains(this,auxNode->pElement))
                {
+                    auxNode = auxNode->pNextNode;
                     returnAux = 1;
                }
                else
@@ -459,7 +462,26 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 LinkedList* ll_subList(LinkedList* this,int from,int to)
 {
     LinkedList* cloneArray = NULL;
-
+    if( this != NULL &&
+        from >=0 &&
+        from < to &&
+        to <=ll_len(this) &&
+        to > from)
+        {
+            cloneArray = ll_newLinkedList();
+            do
+            {
+                if(cloneArray != NULL)
+                {
+                    ll_add(cloneArray,ll_get(this,from));
+                    from++;
+                }
+                else
+                {
+                    cloneArray = NULL;
+                }
+            }while(from != to);
+        }
     return cloneArray;
 }
 
@@ -474,6 +496,18 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 LinkedList* ll_clone(LinkedList* this)
 {
     LinkedList* cloneArray = NULL;
+    int i;
+    if(this != NULL)
+    {
+        cloneArray = ll_newLinkedList();
+        if(cloneArray != NULL)
+        {
+            for(i= 0; i < ll_len(this); i++)
+            {
+                ll_add(cloneArray,ll_get(this, i));
+            }
+        }
+    }
 
     return cloneArray;
 }
@@ -489,8 +523,33 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
+    int i;
+    int flagSwap;
+    void *pElementA;
+    void *pElementB;
+    if( this != NULL &&
+        pFunc != NULL &&
+        (order == 1 || order == 0))
+        {
+            do
+            {
+                flagSwap=0;
+                for (i = 0; i < ll_len(this)-1; i++)
+                {
+                    pElementA = ll_get(this, i);
+                    pElementB = ll_get(this, i+1);
+                    if( (pFunc(pElementA, pElementB) < 0 && !order) ||
+                        (pFunc(pElementA, pElementB) > 0 && order) )
+                    {
+                        ll_set(this,i,pElementB);
+                        ll_set(this,i+1,pElementA);
+                        flagSwap=1;
+                    }
+                }
+            }while(flagSwap);
+            returnAux = 0;
+        }
 
     return returnAux;
-
 }
 
