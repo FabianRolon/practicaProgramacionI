@@ -74,6 +74,9 @@ int main()
         case 10:
             option = 10;
             break;
+        case 11:
+            Controller_filtrarPorHoras(listaEmpleados);
+            break;
         }
     }while(option != 10);
     return 0;

@@ -9,3 +9,5 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee);
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
 int controller_nextId(LinkedList* pArrayListEmployee);
 void Controller_printMenu();
+void Controller_filtrarPorSueldo(LinkedList *pArrayListEmployee);
+void Controller_filtrarPorHoras(LinkedList *pArrayListEmployee);

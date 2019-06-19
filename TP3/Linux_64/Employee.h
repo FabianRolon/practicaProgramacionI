@@ -33,5 +33,7 @@ int employee_getSueldoStr(Employee* this,char* result);
 
 int findEmployeeById(LinkedList* pArrayListEmployee, int id, int *posicionId);
 int employee_compare(void* this1, void* this2);
+int employee_salary(void* pEmployee);
+int employee_horas(void* pEmployee);
 
 #endif // employee_H_INCLUDED

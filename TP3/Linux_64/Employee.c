@@ -277,3 +277,29 @@ int employee_compare(void* this1, void* this2)
         }
     return retorno;
 }
+
+int employee_salary(void* pEmployee)
+{
+    int retorno = 0;
+    if(pEmployee != NULL)
+    {
+        if(((Employee*)pEmployee)->sueldo >= 50000)
+        {
+            retorno = 1;
+        }
+    }
+    return retorno;
+}
+
+int employee_horas(void* pEmployee)
+{
+    int retorno = 0;
+    if(pEmployee != NULL)
+    {
+        if(((Employee*)pEmployee)->horasTrabajadas >= 300)
+        {
+            retorno = 1;
+        }
+    }
+    return retorno;
+}

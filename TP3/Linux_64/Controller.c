@@ -468,3 +468,16 @@ void Controller_printMenu()
     printf("\n\n9-Guardar los datos de los empleados en el archivo data.bin (modo binario)");
     printf("\n\n10-Salir\n");
 }
+
+void Controller_filtrarPorSueldo(LinkedList *pArrayListEmployee)
+{
+    LinkedList *employeeSueldo  = ll_filter(pArrayListEmployee, employee_salary);
+    controller_ListEmployee(employeeSueldo);
+}
+
+void Controller_filtrarPorHoras(LinkedList *pArrayListEmployee)
+{
+    LinkedList *employeeHoras = ll_filter(pArrayListEmployee, employee_horas);
+    controller_ListEmployee(employeeHoras);
+}
+
