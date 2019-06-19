@@ -550,6 +550,12 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 }
 
+/** \brief Crea una nueva LinkedList con los elementos que filtra la funcion llamada como parametro
+ * \param this LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio
+ * \return LinkedList* Retorna  (NULL) Error: si el puntero a la listas o pFunc es NULL
+                                (puntero a la nueva lista) Si ok
+ */
 LinkedList *ll_filter(LinkedList *this, int (*pFunc)(void*))
 {
     void *retorno  = NULL;
@@ -574,5 +580,14 @@ LinkedList *ll_filter(LinkedList *this, int (*pFunc)(void*))
         }
     }
     return retorno;
+}
+
+int ll_map(LinkedList *this, int (*pFunc)(void*))
+{
+    int retorno = -1;
+    if(this != NULL && pFunc != NULL)
+    {
+
+    }
 }
 
