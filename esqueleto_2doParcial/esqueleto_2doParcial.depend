@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1561243843 source:/home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"Controller.h"
+	"utn.h"
+
+1560911132 /home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/LinkedList.h
+
+1561242509 /home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/Employee.h
+
+1561241658 /home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/parser.h
+
+1561241658 /home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/Controller.h
+
+1560911132 /home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/utn.h
+
+1561243220 source:/home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1560911132 source:/home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561241618 source:/home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+
+1561242278 source:/home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1561244330 source:/home/fabianrolon/Documentos/practicaProgramacionI/esqueleto_2doParcial/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"utn.h"
+
