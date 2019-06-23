@@ -7,6 +7,7 @@ typedef struct
     char apellido[51];
     char dni[21];
 }Cliente;
+#endif // cliente_H_INCLUDED
 
 Cliente* cliente_new();
 Cliente* cliente_newParametrosStr(char* idStr,char* nombre,char* apellido, char* dni);
@@ -32,4 +33,4 @@ int cliente_compare(void* this1, void* this2);
 int cliente_salary(void* pCliente);
 int cliente_horas(void* pCliente);
 
-#endif // cliente_H_INCLUDED
+

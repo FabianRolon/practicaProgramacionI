@@ -11,6 +11,8 @@ int main()
     int option = 0;
     int flag = 0;
     LinkedList* listaCliente = ll_newLinkedList();
+    if(!controller_loadFromText("data.csv", listaCliente))
+                flag = 1;
     do
     {
         Controller_printMenu();
@@ -20,61 +22,46 @@ int main()
         switch (option)
         {
         case 1:
-            if(!controller_loadFromText("data.csv", listaCliente))
-                flag = 1;
-            break;
-        case 2:
-             if(!controller_loadFromBinary("data.bin", listaCliente))
-                flag = 1;
-            break;
-        case 3:
-                if(!controller_addCliente(listaCliente))
+            if(!controller_addCliente(listaCliente))
                     flag = 1;
             break;
-        case 4:
+        case 2:
             if(flag)
             {
                 controller_editCliente(listaCliente);
             }else{printf("\nNo hay datos cargados para modificar");}
             break;
-        case 5:
+        case 3:
             if(flag)
             {
                 controller_removeCliente(listaCliente);
-            }else{
-                printf("\nNo hay datos cargados para dar de baja");}
+            }else{printf("\nNo hay datos cargados para dar de baja");}
+            break;
+        case 4:
+            if(flag)
+            {
+                controller_ListCliente(listaCliente);
+            }else{printf("\nNo hay datos cargados para mostrar");}
+            break;
+        case 5:
+
             break;
         case 6:
-            if(flag)
-            {
-                controller_ListCliente(listaCliente);
-            }else{printf("\nNo hay datos cargados para mostrar");}
+
             break;
         case 7:
-            if(flag)
-            {
-                controller_sortCliente(listaCliente);
-                controller_ListCliente(listaCliente);
-            }else{printf("\nNo hay datos cargados para mostrar");}
+
             break;
         case 8:
-            if(flag)
-            {
-                controller_saveAsText("data.csv" ,listaCliente);
-            }else{
-                printf("\nNo hay datos cargados para guardar");}
+
             break;
         case 9:
-            if(flag)
-            {
-                controller_saveAsBinary("data.bin", listaCliente);
-            }else{
-                printf("\nNo hay datos cargados para guardar");}
+
             break;
-        case 10:
-            option = 10;
+        case 11:
+            option = 11;
             break;
         }
-    }while(option != 10);
+    }while(option != 11);
     return 0;
 }

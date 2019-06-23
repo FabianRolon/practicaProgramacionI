@@ -91,7 +91,7 @@ int isValidName(char* stringRecibido)   //si fuera un numero podrìa necesitar p
     for(i=0;stringRecibido[i]!='\0';i++)
     {
         //printf("%d",i);
-        if((stringRecibido[i]<'A' || stringRecibido[i]>'Z') && (stringRecibido[i]<'a' || stringRecibido[i]>'z') && stringRecibido[i] != ' ')
+        if((stringRecibido[i]<'A' || stringRecibido[i]>'Z') && (stringRecibido[i]<'a' || stringRecibido[i]>'z') && stringRecibido[i] != ' ' && stringRecibido[i] != '-')
         {
             retorno=0;
             break;

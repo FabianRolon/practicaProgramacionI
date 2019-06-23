@@ -93,7 +93,7 @@ int cliente_getId(Cliente* this,int* id)
 int cliente_setNombre(Cliente* this,char* nombre)
 {
     int retorno = -1;
-    if(this != NULL && isLetter(nombre))
+    if(this != NULL && isValidName(nombre))
     {
         strncpy(this->nombre,nombre,sizeof(this->nombre));
         retorno = 0;
@@ -115,7 +115,7 @@ int cliente_getNombre(Cliente* this,char* nombre)
 int cliente_setApellido(Cliente* this,char* apellido)
 {
     int retorno = -1;
-    if(this != NULL && isLetter(apellido))
+    if(this != NULL && isValidName(apellido))
     {
         strncpy(this->apellido,apellido,sizeof(this->apellido));
         retorno = 0;
@@ -210,8 +210,8 @@ int cliente_compare(void* this1, void* this2)
     int auxCmp;
     char stringUno[1000];
     char stringDos[1000];
-    if( !cliente_getNombre((Cliente*)this1,stringUno)&&
-        !cliente_getNombre((Cliente*)this2,stringDos))
+    if( !cliente_getApellido((Cliente*)this1,stringUno)&&
+        !cliente_getApellido((Cliente*)this2,stringDos))
         {
             auxCmp = strcmp(stringUno,stringDos);
             if(auxCmp < 0)

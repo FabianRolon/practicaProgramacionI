@@ -41,31 +41,6 @@ int controller_loadFromText(char* path , LinkedList* pArrayListCliente)
      return retorno;
 }
 
-/** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
- *
- * \param path char*
- * \param pArrayListCliente LinkedList*
- * \return int
- *
- */
-int controller_loadFromBinary(char* path , LinkedList* pArrayListCliente)
-{
-    int retorno = -1;
-    FILE* pFile;
-    pFile = NULL;
-    if(path != NULL && pArrayListCliente != NULL)
-    {
-        pFile = fopen(path, "rb");
-        if(!parser_ClienteFromBinary(pFile ,pArrayListCliente))
-        {
-            printf("Carga exitosa\n");
-            retorno = 0;
-        }
-    }
-     return retorno;
-}
-
-
 /** \brief Alta de empleados
  *
  * \param path char*
@@ -112,6 +87,7 @@ int controller_addCliente(LinkedList* pArrayListCliente)
                 }
 
                 printf("Exito, cliente agregado!\n");
+                controller_saveAsText("data.csv",pArrayListCliente);
                 retorno = 0;
             }else
             {
@@ -170,60 +146,66 @@ int controller_editCliente(LinkedList* pArrayListCliente)
                                            bufferdni );
                                 }
                         }
-                    }
-            while(seguir == 's')
-            {
-                printf("Elija el dato que desea modificar\n\n");
 
-                printf("\n\n1-Nombre");
-                printf("\n\n2-Apellido");
-                printf("\n\n3-DNI");
-                printf("\n\n4-Salir de la modificacion");
-
-                utn_getUnsignedInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 4, 2, &opcion);
-
-
-                switch(opcion)
-                {
-                    case 1:
-                        if (!utn_getName("\n\nIngrese el nombre del cliente: ",
-                            "Error, vuelva a ingresar\n\n",1,50,2,
-                            auxNombre))
+                        while(seguir == 's')
                         {
-                            printf("El dato fue modificado con exito.\n\n");
-                        }
-                        break;
-                    case 2:
-                        if (!utn_getName("\n\nIngrese el apellido del cliente: ",
-                            "Error, vuelva a ingresar\n\n",1,51,2,
-                            bufferApellido))
-                        {
-                            printf("El dato fue modificado con exito.\n\n");
-                        }
-                        break;
+                            printf("Elija el dato que desea modificar\n\n");
 
-                    case 3:
-                         if (   !utn_getDNI("\n\nIngrese el DNI: ",
-                                "Error, vuelva a ingresar\n\n",1,51,2,bufferdni))
+                            printf("\n\n1-Nombre");
+                            printf("\n\n2-Apellido");
+                            printf("\n\n3-DNI");
+                            printf("\n\n4-Salir de la modificacion");
+
+                            utn_getUnsignedInt("\n\t\tIngrese opcion: ", "Ingreso incorrecto\n", 1, 4, 2, &opcion);
+
+
+                            switch(opcion)
                             {
-                                printf("El dato fue modificado con exito.\n\n");
+                                case 1:
+                                    if (!utn_getName("\n\nIngrese el nombre del cliente: ",
+                                        "Error, vuelva a ingresar\n\n",1,50,2,
+                                        auxNombre))
+                                    {
+                                        printf("El dato fue modificado con exito.\n\n");
+                                    }
+                                    break;
+                                case 2:
+                                    if (!utn_getName("\n\nIngrese el apellido del cliente: ",
+                                        "Error, vuelva a ingresar\n\n",1,51,2,
+                                        bufferApellido))
+                                    {
+                                        printf("El dato fue modificado con exito.\n\n");
+                                    }
+                                    break;
+
+                                case 3:
+                                     if (   !utn_getDNI("\n\nIngrese el DNI: ",
+                                            "Error, vuelva a ingresar\n\n",1,51,2,bufferdni))
+                                        {
+                                            printf("El dato fue modificado con exito.\n\n");
+                                        }
+
+                                    break;
+
+                                case 4:
+                                    snprintf(bufferId,MAX, "%d", auxId);
+                                    pCliente = cliente_newParametrosStr(bufferId,
+                                                                        auxNombre,
+                                                                        bufferApellido,
+                                                                        bufferdni);
+                                    if(pCliente != NULL)
+                                        ll_set(pArrayListCliente, posicionId, pCliente);
+                                    seguir = 'n';
+                                    retorno = 0;
+                                    break;
                             }
-
-                        break;
-
-                    case 4:
-                        snprintf(bufferId,MAX, "%d", auxId);
-                        pCliente = cliente_newParametrosStr(bufferId,
-                                                            auxNombre,
-                                                            bufferApellido,
-                                                            bufferdni);
-                        if(pCliente != NULL)
-                            ll_set(pArrayListCliente, posicionId, pCliente);
-                        seguir = 'n';
-                        retorno = 0;
-                        break;
-                }
-            }
+                        }
+                    }
+                    else
+                    {
+                        printf("\nNo se encontro el id");
+                        retorno = -2;
+                    }
         }
     }
     return retorno;
@@ -293,6 +275,8 @@ int controller_ListCliente(LinkedList* pArrayListCliente)
     char bufferNombre[1000];
     char bufferApellido[1000];
     char bufferDni[1000];
+    printf("Cargando lista...\n");
+    ll_sort(pArrayListCliente, cliente_compare, ASCENDENTE);
     if(pArrayListCliente != NULL)
     {
         do
@@ -468,16 +452,17 @@ int controller_nextId(LinkedList* pArrayListCliente)
 void Controller_printMenu()
 {
     printf("\t\t*MENU*");
-    printf("\n\n1-Cargar los datos de los clientes desde el archivo data.csv (modo texto).");
-    printf("\n\n2-Cargar los datos de los clientes desde el archivo data.bin (modo binario)");
-    printf("\n\n3-Alta de cliente");
-    printf("\n\n4-Modificar datos de cliente");
-    printf("\n\n5-Baja de cliente");
-    printf("\n\n6-Listar clientes");
-    printf("\n\n7-Ordenar clientes");
-    printf("\n\n8-Guardar los datos de los clientes en el archivo data.csv (modo texto)");
-    printf("\n\n9-Guardar los datos de los clientes en el archivo data.bin (modo binario)");
-    printf("\n\n10-Salir\n");
+    printf("\n\n1-Alta de cliente");
+    printf("\n\n2-Modificar datos de cliente");
+    printf("\n\n3-Baja de cliente");
+    printf("\n\n4-Listar clientes");
+    printf("\n\n5-Realizar una venta");
+    printf("\n\n6-Anular una venta");
+    printf("\n\n7-Informar ventas");
+    printf("\n\n8-Informar ventas por producto");
+    printf("\n\n9-Generar informe de ventas");
+    printf("\n\n10-Informar cantidad de ventas por cliente");
+    printf("\n\n11-Salir\n");
 }
 
 
