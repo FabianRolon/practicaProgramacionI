@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1561266615 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"cliente.h"
+	"utn.h"
+
+1560911132 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561266418 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/LinkedList.h
+
+1561266239 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"cliente.h"
+	"parser.h"
+	"Controller.h"
+	"utn.h"
+
+1561265000 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/cliente.h
+
+1561264577 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/parser.h
+
+1561264576 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/Controller.h
+
+1560911132 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/utn.h
+
+1561266439 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"cliente.h"
+
+1561264738 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"cliente.h"
+	"parser.h"
+	"utn.h"
+
+1561244330 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"utn.h"
+
