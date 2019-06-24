@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "LinkedList.h"
 #include "cliente.h"
+#include "venta.h"
 #include "parser.h"
 #include "Controller.h"
 #include "utn.h"
-#define MAX_EMPLOYEE 9999
+#define MAX_CLIENTE 9999
 #define MAX 1000
 #define ASCENDENTE 1
 #define DESCENDENTE 0
@@ -18,7 +20,7 @@
  * \return int
  *
  */
-int controller_loadFromText(char* path , LinkedList* pArrayListCliente)
+int controller_loadFromTextClientes(char* path , LinkedList* pArrayListCliente)
 {
     int retorno = -1;
 
@@ -32,7 +34,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListCliente)
         {
              if(!parser_ClienteFromText(pFile , pArrayListCliente))
              {
-                printf("\nCarga exitosa\n");
+                printf("\nCarga de clientes exitosa\n");
                 fclose(pFile);
                 retorno = 0;
              }
@@ -57,7 +59,7 @@ int controller_addCliente(LinkedList* pArrayListCliente)
     char bufferApellido[MAX];
     char bufferDni[MAX];
     Cliente *bufferCliente;
-    idAux = controller_nextId(pArrayListCliente);
+    idAux = controller_nextIdCliente(pArrayListCliente);
     snprintf(bufferId,MAX, "%d", idAux);
 
     if (pArrayListCliente != NULL)
@@ -87,7 +89,7 @@ int controller_addCliente(LinkedList* pArrayListCliente)
                 }
 
                 printf("Exito, cliente agregado!\n");
-                controller_saveAsText("data.csv",pArrayListCliente);
+                controller_saveAsTextCliente("clientes.txt",pArrayListCliente);
                 retorno = 0;
             }else
             {
@@ -124,7 +126,7 @@ int controller_editCliente(LinkedList* pArrayListCliente)
     if(pArrayListCliente != NULL)
     {
         if(!utn_getUnsignedInt("\nIngrese el ID de cliente a modificar: ",
-            "\nError, ID inválido.",1,MAX_EMPLOYEE, 2, &idIngresado))
+            "\nError, ID inválido.",1,MAX_CLIENTE, 2, &idIngresado))
         {
             if( !findClienteById(  pArrayListCliente,
                                     idIngresado,
@@ -227,7 +229,7 @@ int controller_removeCliente(LinkedList* pArrayListCliente)
     if (pArrayListCliente != NULL)
     {
         if( !utn_getUnsignedInt("\nIngrese el ID de empleado a dar de baja: ",
-            "\nError, ID inválido.",1,MAX_EMPLOYEE, 2, &idIngresado))
+            "\nError, ID inválido.",1,MAX_CLIENTE, 2, &idIngresado))
             {
                 if( !findClienteById(pArrayListCliente,
                     idIngresado,
@@ -237,6 +239,7 @@ int controller_removeCliente(LinkedList* pArrayListCliente)
                         if(pCliente != NULL)
                         {
                             cliente_delete(pCliente);
+                            controller_saveAsTextCliente("clientes.txt",pArrayListCliente);
                             printf("\n¡Cliente borrado exitosamente!\n\n");
                             retorno = 0;
                         }
@@ -345,7 +348,7 @@ int controller_sortCliente(LinkedList* pArrayListCliente)
  * \return int
  *
  */
-int controller_saveAsText(char* path , LinkedList* pArrayListCliente)
+int controller_saveAsTextCliente(char* path , LinkedList* pArrayListCliente)
 {
     int retorno = -1;
     char bufferIdStr[MAX];
@@ -395,32 +398,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListCliente)
  * \return int
  *
  */
-int controller_saveAsBinary(char* path , LinkedList* pArrayListCliente)
-{
-    int retorno = -1;
-    FILE* pFile = NULL;
-    Cliente * pCliente = NULL;
-    if(path != NULL && pArrayListCliente != NULL)
-    {
-        pFile = fopen(path, "wb");
-        if(pFile != NULL)
-        {
-            for(int i =0 ; i<ll_len(pArrayListCliente) ; i++)
-            {
-                pCliente = ll_get(pArrayListCliente, i);
-                if(pCliente != NULL)
-                    fwrite(pCliente, sizeof(Cliente), 1, pFile);
-            }
-            fclose(pFile);
-            printf("Guardado con exito\n");
-            retorno = 0;
-        }
-    }
-    return retorno;
-}
-
-
-int controller_nextId(LinkedList* pArrayListCliente)
+int controller_nextIdCliente(LinkedList* pArrayListCliente)
 {
     int retorno = -1;
     int i;
@@ -452,19 +430,280 @@ int controller_nextId(LinkedList* pArrayListCliente)
 void Controller_printMenu()
 {
     printf("\t\t*MENU*");
-    printf("\n\n1-Alta de cliente");
-    printf("\n\n2-Modificar datos de cliente");
-    printf("\n\n3-Baja de cliente");
-    printf("\n\n4-Listar clientes");
-    printf("\n\n5-Realizar una venta");
-    printf("\n\n6-Anular una venta");
-    printf("\n\n7-Informar ventas");
-    printf("\n\n8-Informar ventas por producto");
-    printf("\n\n9-Generar informe de ventas");
-    printf("\n\n10-Informar cantidad de ventas por cliente");
-    printf("\n\n11-Salir\n");
+    printf("\n1-Alta de cliente");
+    printf("\n2-Modificar datos de cliente");
+    printf("\n3-Baja de cliente");
+    printf("\n4-Listar clientes");
+    printf("\n5-Realizar una venta");
+    printf("\n6-Anular una venta");
+    printf("\n7-Informar ventas");
+    printf("\n8-Informar ventas por producto");
+    printf("\n9-Generar informe de ventas");
+    printf("\n10-Informar cantidad de ventas por cliente");
+    printf("\n11-Salir\n");
 }
 
+int controller_addVenta(LinkedList* pArrayListVenta, LinkedList *pArrayListCliente)
+{
+    int retorno = -1;
+    int idPosAux;
+    int bufferIdVenta = controller_nextIdVenta(pArrayListVenta);
+    int bufferIdCliente;
+    int bufferCodigoProducto;
+    int bufferCantidad;
+    float bufferMontoFacturado;
+    Venta *bufferVenta;
 
+    if (pArrayListCliente != NULL)
+        {
+            utn_getUnsignedInt("\n\nIngrese el ID del cliente: ",
+                "Error, vuelva a ingresar\n\n",1,50,2,
+                &bufferIdCliente);
+            if(!findClienteById(pArrayListCliente, bufferIdCliente, &idPosAux))
+            {
 
+                if( utn_getUnsignedInt("\n\n1000 - TV_LG\n"
+                    "1001 -​ ​PS4​\n"
+                    "1002 -​ IPHONE7\n"
+                    "Ingrese el codigo de producto: ",
+                    "Error, vuelva a ingresar\n\n",1,30,2,
+                    &bufferCodigoProducto) == 0 &&
+                    utn_getUnsignedInt("\n\nIngrese la cantidad: ",
+                    "Error, vuelva a ingresar\n\n",1,51,2,&bufferCantidad) == 0)
+                {
+                        bufferMontoFacturado = precioPorCantidad(bufferCodigoProducto, bufferCantidad);
+                        bufferVenta = venta_newParametros(  bufferIdVenta,
+                                                            bufferIdCliente,
+                                                            bufferCodigoProducto,
+                                                            bufferCantidad,
+                                                            bufferMontoFacturado);
+                        if(bufferVenta != NULL)
+                        {
+                            ll_add(pArrayListVenta, bufferVenta);
+                        }
+                        else
+                        {
+                            cliente_delete(bufferVenta);
+                            printf("ERROR, el cliente no se agrego!");
+                            retorno = -1;
+                        }
+
+                        printf("Exito, cliente agregado!");
+                        controller_saveAsTextVenta("ventas.txt",pArrayListVenta);
+                        retorno = 0;
+
+                }else
+                {
+                    printf("ERROR, reintentos agotados!");
+                    retorno = -2;
+                }
+            }else
+            {
+                printf("ERROR, no se encontro el id!");
+                retorno = -3;
+            }
+        }else
+        {
+            printf("ERROR, NULL");
+        }
+    return retorno;
+}
+
+int controller_ListVenta(LinkedList* pArrayListVenta)
+{
+    int retorno = -1;
+    int i;
+    char option = 'n';
+    char option2 = 'n';
+    int pagina = 99;
+    int bufferCodigoProducto;
+    Venta *venta;
+    int bufferIdVenta;
+    int bufferIdCliente;
+    int bufferCantidad;
+    float bufferMontoFacturado;
+    printf("Cargando lista...\n");
+    if(pArrayListVenta != NULL)
+    {
+        do
+        {
+            for(i = 0; i < ll_len(pArrayListVenta); i++)
+            {
+                venta = (Venta*)ll_get(pArrayListVenta, i);
+                if( !venta_getIdVenta(venta, &bufferIdVenta)&&
+                    !venta_getIdCliente(venta, &bufferIdCliente)&&
+                    !venta_getCantidad(venta, &bufferCantidad)&&
+                    !venta_getCodigoDeProducto(venta, &bufferCodigoProducto)&&
+                    !venta_getMontoFacturado(venta,&bufferMontoFacturado))
+                    {
+                        printf("IdVenta: %d IdCliente : %d  CodProducto: %d Cantidad: %d Monto Facturado: %.2f\n",
+                                bufferIdVenta,
+                                bufferIdCliente,
+                                bufferCodigoProducto,
+                                bufferCantidad,
+                                bufferMontoFacturado);
+                        retorno = 0;
+                    }
+                    else
+                    {
+                        printf("\nNo se pudo mostrar la venta\n");
+                        retorno = -1;
+                    }
+
+                if(i == pagina)
+                {
+                    do
+                    {
+                        utn_getChar("\n\tPresione 's' para siguiente pagina: ",
+                        "Error, vuelva a intentar",1,2,2,&option2);
+                        pagina+=99;
+                        system("clear");
+                    }while(option2 == 'n');
+                }
+            }
+            utn_getChar("\n\tPresione 's' para volver al menu principal: ",
+                        "Error, vuelva a intentar",1,2,2,&option);
+        }while(option == 'n');
+    }
+    return retorno;
+}
+
+int controller_saveAsTextVenta(char* path , LinkedList* pArrayListVenta)
+{
+    int retorno = -1;
+    char bufferIdVenta[MAX];
+    char bufferIdCliente[MAX];
+    char bufferCodigoProducto[MAX];
+    char bufferCantidad[MAX];
+    char bufferMontoFacturado[MAX];
+    FILE* pFile = NULL;
+    Venta *pVenta = NULL;
+    if(path != NULL && pArrayListVenta != NULL)
+    {
+        pFile = fopen(path, "w");
+        if(pFile != NULL)
+        {
+          //  fprintf (pFile, "id,nombre,horasTrabajadas,sueldo\n");
+            for(int i =0 ; i<ll_len(pArrayListVenta) ; i++)
+            {
+                pVenta = (Venta*)ll_get(pArrayListVenta, i);
+                if(pVenta != NULL)
+                {
+                    if( !venta_getIdVentaStr(pVenta, bufferIdVenta)&&
+                        !venta_getIdClienteStr(pVenta, bufferIdCliente)&&
+                        !venta_getCodigoDeProductoStr(pVenta, bufferCodigoProducto)&&
+                        !venta_getCantidadStr(pVenta, bufferCantidad)&&
+                        !venta_getMontoFacturadoStr(pVenta, bufferMontoFacturado))
+                        {
+                            fprintf (pFile, "%s,%s,%s,%s,%s\n",
+                                     bufferIdVenta,
+                                     bufferIdCliente,
+                                     bufferCodigoProducto,
+                                     bufferCantidad,
+                                     bufferMontoFacturado);
+
+                        }else{printf("Error al guardar\n");}
+                }else{printf("Error al guardar\n");}
+
+            }
+            fclose(pFile);
+            printf("Se ha guardado correctamente\n");
+            retorno = 0;
+        }else{printf("Error al guardar\n");}
+    }
+    return retorno;
+}
+
+int controller_nextIdVenta(LinkedList* pArrayListVenta)
+{
+    int retorno = -1;
+    int i;
+    int idAux;
+    int idMax;
+    Venta *pVenta;
+    if(pArrayListVenta != NULL)
+    {
+        for(i=0;i<ll_len(pArrayListVenta);i++)
+        {
+            pVenta = (Venta*)ll_get(pArrayListVenta, i);
+            if(i == 0)
+            {
+                venta_getIdVenta(pVenta, &idMax);
+            }
+            else
+            {
+                venta_getIdVenta(pVenta, &idAux);
+                if(idAux > idMax)
+                {
+                    idMax = idAux;
+                }
+            }
+        }
+        retorno = idMax+1;
+    }
+    return retorno;
+}
+
+int controller_loadFromTextVentas(char* path , LinkedList* pArrayListVenta)
+{
+    int retorno = -1;
+
+    FILE* pFile;
+    pFile = NULL;
+    pFile = fopen(path,"r");
+
+    if(pFile!=NULL)
+    {
+        if(path != NULL && pArrayListVenta != NULL)
+        {
+             if(!parser_VentaFromText(pFile , pArrayListVenta))
+             {
+                printf("\nCarga de ventas exitosa\n");
+                fclose(pFile);
+                retorno = 0;
+             }
+        }
+     }
+     return retorno;
+}
+
+int controller_removeVenta(LinkedList* pArrayListVenta)
+{
+    int retorno = -1;
+    int idIngresado;
+    int posicionId;
+    Venta *pVenta;
+    if (pArrayListVenta != NULL)
+    {
+        if( !utn_getUnsignedInt("\nIngrese el ID de venta a anular: ",
+            "\nError, ID inválido.",1,MAX_CLIENTE, 2, &idIngresado))
+            {
+                if( !findVentaById(pArrayListVenta,
+                    idIngresado,
+                    &posicionId))
+                    {
+                        pVenta = ll_pop(pArrayListVenta, posicionId);
+                        if(pVenta != NULL)
+                        {
+                            venta_delete(pVenta);
+                            controller_saveAsTextVenta("ventas.txt",pArrayListVenta);
+                            printf("\n¡Venta anulada exitosamente!\n\n");
+                            retorno = 0;
+                        }
+                    }
+                    else
+                    {
+                        printf("\nNo se encontró el ID\n\n");
+                        retorno = -2;
+                    }
+            }
+            else
+            {
+                printf("\nReintentos agotados\n\n");
+                retorno = -3;
+            }
+    }
+
+    return retorno;
+}
 

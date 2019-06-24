@@ -18,7 +18,7 @@ void venta_delete(Venta *this)
     }
 }
 
-Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto, char* cantidad)
+Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto, char* cantidad, char *montoFacturado)
 {
     Venta* pVenta=venta_new();
     void *retorno = NULL;
@@ -26,12 +26,41 @@ Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto
         idVenta != NULL &&
         idCliente != NULL &&
         codigoProducto != NULL &&
-        cantidad != NULL)
+        cantidad != NULL &&
+        montoFacturado != NULL)
+    {
+        if( !venta_setIdVentaStr(pVenta, idVenta)&&
+            !venta_setIdClienteStr(pVenta,idCliente)&&
+            !venta_setCodigoDeProductoStr(pVenta,codigoProducto)&&
+            !venta_setCantidadStr(pVenta,cantidad) &&
+            !venta_getMontoFacturadoStr(pVenta, montoFacturado))
+            {
+                retorno = pVenta;
+            }
+            else
+            {
+                venta_delete(pVenta);
+            }
+    }
+    return retorno;
+}
+
+Venta* venta_newParametros(int idVenta,int idCliente,int codigoProducto, int cantidad, float montoFacturado)
+{
+    Venta* pVenta=venta_new();
+    void *retorno = NULL;
+    if( pVenta!=NULL &&
+        idVenta > 0 &&
+        idCliente > 0 &&
+        codigoProducto > 0 &&
+        cantidad > 0 &&
+        montoFacturado > 0)
     {
         if( !venta_setIdVenta(pVenta, idVenta)&&
             !venta_setIdCliente(pVenta,idCliente)&&
             !venta_setCodigoDeProducto(pVenta,codigoProducto)&&
-            !venta_setCantidad(pVenta,cantidad))
+            !venta_setCantidad(pVenta,cantidad)&&
+            !venta_setMontoFacturado(pVenta, montoFacturado))
             {
                 retorno = pVenta;
             }
@@ -65,23 +94,23 @@ int venta_getIdVenta(Venta* this,int* idVenta)
     return retorno;
 }
 
-int venta_setIdVenta(Venta* this,int idVenta)
+int venta_setIdCliente(Venta* this,int idCliente)
 {
     int retorno = -1;
-    if(this != NULL && idVenta >= 0)
+    if(this != NULL && idCliente >= 0)
     {
-        this->idVenta = idVenta;
+        this->idCliente = idCliente;
         retorno = 0;
     }
     return retorno;
 }
 
-int venta_getIdVenta(Venta* this,int* idVenta)
+int venta_getIdCliente(Venta* this,int* idCliente)
 {
     int retorno = -1;
     if(this != NULL)
     {
-        *idVenta = this->idVenta;
+        *idCliente = this->idCliente;
         retorno = 0;
     }
     return retorno;
@@ -131,13 +160,35 @@ int venta_getCantidad(Venta* this,int* cantidad)
     return retorno;
 }
 
+int venta_setMontoFacturado(Venta* this,float montoFacturado)
+{
+    int retorno = -1;
+    if(this != NULL && montoFacturado >= 0)
+    {
+        this->montoFacturado = montoFacturado;
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int venta_getMontoFacturado(Venta* this,float* montoFacturado)
+{
+    int retorno = -1;
+    if(this != NULL)
+    {
+        *montoFacturado = this->montoFacturado;
+        retorno = 0;
+    }
+    return retorno;
+}
+
 int venta_setIdVentaStr(Venta* this, char* idStr)
 {
     int retorno = -1;
     if(this != NULL && idStr != NULL)
         if(isValidNumber(idStr))
         {
-            retorno = venta_setId(this,atoi(idStr));
+            retorno = venta_setIdVenta(this,atoi(idStr));
         }
     return retorno;
 }
@@ -148,7 +199,57 @@ int venta_getIdVentaStr(Venta* this, char* result)
 
     if(this != NULL && result != NULL)
     {
-        venta_getId(this,&bufferInt);
+        venta_getIdVenta(this,&bufferInt);
+        sprintf(result,"%d",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int venta_setIdClienteStr(Venta* this, char* idStr)
+{
+    int retorno = -1;
+    if(this != NULL && idStr != NULL)
+        if(isValidNumber(idStr))
+        {
+            retorno = venta_setIdCliente(this,atoi(idStr));
+        }
+    return retorno;
+}
+
+int venta_getIdClienteStr(Venta* this, char* result)
+{
+    int retorno = -1;
+    int bufferInt;
+
+    if(this != NULL && result != NULL)
+    {
+        venta_getIdCliente(this,&bufferInt);
+        sprintf(result,"%d",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int venta_setCodigoDeProductoStr(Venta* this, char* codigoProducto)
+{
+    int retorno = -1;
+    if(this != NULL && codigoProducto != NULL)
+        if(isValidNumber(codigoProducto))
+        {
+            retorno = venta_setCodigoDeProducto(this,atoi(codigoProducto));
+        }
+    return retorno;
+}
+
+int venta_getCodigoDeProductoStr(Venta* this, char* result)
+{
+    int retorno = -1;
+    int bufferInt;
+
+    if(this != NULL && result != NULL)
+    {
+        venta_getCodigoDeProducto(this,&bufferInt);
         sprintf(result,"%d",bufferInt);
         retorno = 0;
     }
@@ -156,3 +257,95 @@ int venta_getIdVentaStr(Venta* this, char* result)
 }
 
 
+int venta_setCantidadStr(Venta* this, char* cantidad)
+{
+    int retorno = -1;
+    if(this != NULL && cantidad != NULL)
+        if(isValidNumber(cantidad))
+        {
+            retorno = venta_setCantidad(this,atoi(cantidad));
+        }
+    return retorno;
+}
+
+int venta_getCantidadStr(Venta* this, char* result)
+{
+    int retorno = -1;
+    int bufferInt;
+
+    if(this != NULL && result != NULL)
+    {
+        venta_getCantidad(this,&bufferInt);
+        sprintf(result,"%d",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int venta_setMontoFacturadoStr(Venta* this, char* montoFacturado)
+{
+    int retorno = -1;
+    if(this != NULL && montoFacturado != NULL)
+        if(isValidFloatNumber(montoFacturado))
+        {
+            retorno = venta_setCantidad(this,atof(montoFacturado));
+        }
+    return retorno;
+}
+
+int venta_getMontoFacturadoStr(Venta* this, char* result)
+{
+    int retorno = -1;
+    float bufferInt;
+
+    if(this != NULL && result != NULL)
+    {
+        venta_getMontoFacturado(this,&bufferInt);
+        sprintf(result,"%f",bufferInt);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int findVentaById(LinkedList* pArrayListVenta, int id, int *posicionId)
+{
+    int retorno = -1;
+    int i;
+    int idAux;
+    Venta *pVenta;
+    if(pArrayListVenta != NULL && id > 0 && posicionId > 0)
+    {
+        for(i = 0; i < ll_len(pArrayListVenta); i++)
+        {
+            pVenta = ll_get(pArrayListVenta, i);
+            if(pVenta != NULL)
+            {
+                venta_getIdVenta(pVenta, &idAux);
+                if(id == idAux)
+                {
+                    *posicionId = i;
+                    retorno = 0;
+                }
+            }
+        }
+    }
+    return retorno;
+}
+
+float precioPorCantidad (int codigoProducto, int cantidad)
+{
+    float retorno = 0;
+    switch(codigoProducto)
+    {
+        case 1000:
+            retorno =(float) 8999.99*cantidad;
+            break;
+        case 1001:
+            retorno =(float) 12999.99*cantidad;
+            break;
+        case 1002:
+            retorno =(float) 19480.99*cantidad;
+            break;
+    }
+    return retorno;
+}

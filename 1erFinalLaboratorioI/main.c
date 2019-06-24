@@ -11,7 +11,9 @@ int main()
     int option = 0;
     int flag = 0;
     LinkedList* listaCliente = ll_newLinkedList();
-    if(!controller_loadFromText("data.csv", listaCliente))
+    LinkedList* listaVenta = ll_newLinkedList();
+    if( !controller_loadFromTextClientes("clientes.txt", listaCliente)&&
+        !controller_loadFromTextVentas("ventas.txt", listaVenta))
                 flag = 1;
     do
     {
@@ -44,18 +46,21 @@ int main()
             }else{printf("\nNo hay datos cargados para mostrar");}
             break;
         case 5:
-
+            controller_addVenta(listaVenta,listaCliente);
             break;
         case 6:
-
+            controller_removeVenta(listaVenta);
             break;
         case 7:
-
+            controller_ListVenta(listaVenta);
             break;
         case 8:
 
             break;
         case 9:
+            controller_saveAsTextVenta("informes.txt",listaVenta);
+            break;
+        case 10:
 
             break;
         case 11:

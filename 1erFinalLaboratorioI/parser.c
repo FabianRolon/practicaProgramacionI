@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "cliente.h"
+#include "venta.h"
 
 /** \brief Parsea los datos los datos de los clientes desde el archivo data.csv (modo texto).
  *
@@ -39,36 +40,25 @@ int parser_ClienteFromText(FILE* pFile , LinkedList* pArrayListCliente)
  * \return int
  *
  */
-int parser_ClienteFromBinary(FILE* pFile , LinkedList* pArrayListCliente)
+int parser_VentaFromText(FILE* pFile , LinkedList* pArrayListVenta)
 {
     int retorno = -1;
-    Cliente aCliente;
-    Cliente *pCliente = cliente_new();
-    if(pArrayListCliente != NULL)
+    char bufferIdVenta[2000];
+    char bufferIdCliente[2000];
+    char bufferCodigoProducto[2000];
+    char bufferCantidad[2000];
+    char bufferMontoFacturado[2000];
+    Venta *bufferVenta;
+    if(pFile!=NULL)
     {
-        if(pFile!=NULL)
+        while(!feof(pFile))
         {
-            while(!feof(pFile))
-            {
-                pCliente = cliente_newParametros(aCliente.id,
-                                                    aCliente.nombre,
-                                                    aCliente.apellido,
-                                                    aCliente.dni);
-                fread(&aCliente, sizeof(Cliente), 1, pFile);
-                if(pCliente != NULL)
-                {
-                    ll_add(pArrayListCliente, pCliente);
-                }
-                else
-                {
-                    cliente_delete(pCliente);
-                }
-            }
-            fclose(pFile);
-
-            printf("\nCarga exitosa\n");
-            retorno = 0;
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",bufferIdVenta,bufferIdCliente,bufferCodigoProducto,bufferCantidad,bufferMontoFacturado);
+            bufferVenta = venta_newParametrosStr(bufferIdVenta,bufferIdCliente,bufferCodigoProducto,bufferCantidad,bufferMontoFacturado);
+            if(bufferVenta != NULL)
+                ll_add(pArrayListVenta, bufferVenta);
         }
+        retorno = 0;
     }
-     return retorno;
+    return retorno;
 }
