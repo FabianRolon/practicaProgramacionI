@@ -18,7 +18,7 @@ void venta_delete(Venta *this)
     }
 }
 
-Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto, char* cantidad, char *montoFacturado)
+Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto, char* cantidad, char *precioUnitario)
 {
     Venta* pVenta=venta_new();
     void *retorno = NULL;
@@ -27,13 +27,13 @@ Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto
         idCliente != NULL &&
         codigoProducto != NULL &&
         cantidad != NULL &&
-        montoFacturado != NULL)
+        precioUnitario != NULL)
     {
         if( !venta_setIdVentaStr(pVenta, idVenta)&&
             !venta_setIdClienteStr(pVenta,idCliente)&&
             !venta_setCodigoDeProductoStr(pVenta,codigoProducto)&&
             !venta_setCantidadStr(pVenta,cantidad) &&
-            !venta_getMontoFacturadoStr(pVenta, montoFacturado))
+            !venta_getPrecioUnitarioStr(pVenta, precioUnitario))
             {
                 retorno = pVenta;
             }
@@ -45,7 +45,7 @@ Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto
     return retorno;
 }
 
-Venta* venta_newParametros(int idVenta,int idCliente,int codigoProducto, int cantidad, float montoFacturado)
+Venta* venta_newParametros(int idVenta,int idCliente,int codigoProducto, int cantidad, float precioUnitario)
 {
     Venta* pVenta=venta_new();
     void *retorno = NULL;
@@ -54,13 +54,13 @@ Venta* venta_newParametros(int idVenta,int idCliente,int codigoProducto, int can
         idCliente > 0 &&
         codigoProducto > 0 &&
         cantidad > 0 &&
-        montoFacturado > 0)
+        precioUnitario > 0)
     {
         if( !venta_setIdVenta(pVenta, idVenta)&&
             !venta_setIdCliente(pVenta,idCliente)&&
             !venta_setCodigoDeProducto(pVenta,codigoProducto)&&
             !venta_setCantidad(pVenta,cantidad)&&
-            !venta_setMontoFacturado(pVenta, montoFacturado))
+            !venta_setPrecioUnitario(pVenta, precioUnitario))
             {
                 retorno = pVenta;
             }
@@ -160,23 +160,23 @@ int venta_getCantidad(Venta* this,int* cantidad)
     return retorno;
 }
 
-int venta_setMontoFacturado(Venta* this,float montoFacturado)
+int venta_setPrecioUnitario(Venta* this,float precioUnitario)
 {
     int retorno = -1;
-    if(this != NULL && montoFacturado >= 0)
+    if(this != NULL && precioUnitario >= 0)
     {
-        this->montoFacturado = montoFacturado;
+        this->precioUnitario = precioUnitario;
         retorno = 0;
     }
     return retorno;
 }
 
-int venta_getMontoFacturado(Venta* this,float* montoFacturado)
+int venta_getPrecioUnitario(Venta* this,float* precioUnitario)
 {
     int retorno = -1;
     if(this != NULL)
     {
-        *montoFacturado = this->montoFacturado;
+        *precioUnitario = this->precioUnitario;
         retorno = 0;
     }
     return retorno;
@@ -282,25 +282,25 @@ int venta_getCantidadStr(Venta* this, char* result)
     return retorno;
 }
 
-int venta_setMontoFacturadoStr(Venta* this, char* montoFacturado)
+int venta_setprecioUnitarioStr(Venta* this, char* precioUnitario)
 {
     int retorno = -1;
-    if(this != NULL && montoFacturado != NULL)
-        if(isValidFloatNumber(montoFacturado))
+    if(this != NULL && precioUnitario != NULL)
+        if(isValidFloatNumber(precioUnitario))
         {
-            retorno = venta_setCantidad(this,atof(montoFacturado));
+            retorno = venta_setCantidad(this,atof(precioUnitario));
         }
     return retorno;
 }
 
-int venta_getMontoFacturadoStr(Venta* this, char* result)
+int venta_getPrecioUnitarioStr(Venta* this, char* result)
 {
     int retorno = -1;
     float bufferInt;
 
     if(this != NULL && result != NULL)
     {
-        venta_getMontoFacturado(this,&bufferInt);
+        venta_getPrecioUnitario(this,&bufferInt);
         sprintf(result,"%f",bufferInt);
         retorno = 0;
     }
@@ -349,3 +349,22 @@ float precioPorCantidad (int codigoProducto, int cantidad)
     }
     return retorno;
 }
+
+float precioUnitario (int codigoProducto)
+{
+    float retorno = 0;
+    switch(codigoProducto)
+    {
+        case 1000:
+            retorno =(float) 8999.99;
+            break;
+        case 1001:
+            retorno =(float) 12999.99;
+            break;
+        case 1002:
+            retorno =(float) 19480.99;
+            break;
+    }
+    return retorno;
+}
+

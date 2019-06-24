@@ -10,11 +10,13 @@ int main()
 {
     int option = 0;
     int flag = 0;
+    int flag2 = 0;
     LinkedList* listaCliente = ll_newLinkedList();
     LinkedList* listaVenta = ll_newLinkedList();
-    if( !controller_loadFromTextClientes("clientes.txt", listaCliente)&&
-        !controller_loadFromTextVentas("ventas.txt", listaVenta))
-                flag = 1;
+    if( !controller_loadFromTextClientes("clientes.txt", listaCliente))
+            flag = 1;
+    if(!controller_loadFromTextVentas("ventas.txt", listaVenta))
+            flag2 = 1;
     do
     {
         Controller_printMenu();
@@ -40,7 +42,7 @@ int main()
             }else{printf("\nNo hay datos cargados para dar de baja");}
             break;
         case 4:
-            if(flag)
+            if(flag2)
             {
                 controller_ListCliente(listaCliente);
             }else{printf("\nNo hay datos cargados para mostrar");}
@@ -52,13 +54,13 @@ int main()
             controller_removeVenta(listaVenta);
             break;
         case 7:
-            controller_ListVenta(listaVenta);
+            controller_ListVenta(listaVenta, listaCliente);
             break;
         case 8:
 
             break;
         case 9:
-            controller_saveAsTextVenta("informes.txt",listaVenta);
+             controller_saveAsTextInformeVenta("informes.txt" ,listaVenta, listaCliente);
             break;
         case 10:
 

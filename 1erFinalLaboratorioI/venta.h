@@ -6,15 +6,15 @@ typedef struct
     int idCliente;
     int codigoDeProducto;
     int cantidad;
-    float montoFacturado;
+    float precioUnitario;
 }Venta;
 #endif // VENTA_H_INCLUDED
 
 Venta* venta_new();
 void venta_delete(Venta *this);
 
-Venta* venta_newParametros(int idVenta,int idCliente,int codigoProducto, int cantidad, float montoFacturado);
-Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto, char* cantidad, char *montoFacturado);
+Venta* venta_newParametros(int idVenta,int idCliente,int codigoProducto, int cantidad, float precioUnitario);
+Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto, char* cantidad, char *precioUnitario);
 
 int venta_setIdVenta(Venta* this,int idVenta);
 int venta_getIdVenta(Venta* this,int* idVenta);
@@ -28,8 +28,8 @@ int venta_getCodigoDeProducto(Venta* this,int* codigoProducto);
 int venta_setCantidad(Venta* this,int cantidad);
 int venta_getCantidad(Venta* this,int* cantidad);
 
-int venta_setMontoFacturado(Venta* this,float montoFacturado);
-int venta_getMontoFacturado(Venta* this,float* montoFacturado);
+int venta_setPrecioUnitario(Venta* this,float precioUnitario);
+int venta_getPrecioUnitario(Venta* this,float* precioUnitario);
 
 int venta_setIdVentaStr(Venta* this, char* idStr);
 int venta_getIdVentaStr(Venta* this, char* result);
@@ -43,11 +43,12 @@ int venta_getCodigoDeProductoStr(Venta* this, char* result);
 int venta_setCantidadStr(Venta* this, char* cantidad);
 int venta_getCantidadStr(Venta* this, char* result);
 
-int venta_setMontoFacturadoStr(Venta* this, char* montoFacturado);
-int venta_getMontoFacturadoStr(Venta* this, char* result);
+int venta_setPrecioUnitarioStr(Venta* this, char* precioUnitario);
+int venta_getPrecioUnitarioStr(Venta* this, char* result);
 
 int findVentaById(LinkedList* pArrayListVenta, int id, int *posicionId);
 float precioPorCantidad (int codigoProducto, int cantidad);
+float precioUnitario (int codigoProducto);
 
 
 

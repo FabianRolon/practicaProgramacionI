@@ -67,3 +67,70 @@
 
 1561342064 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/venta.h
 
+1561385355 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"cliente.h"
+	"utn.h"
+
+1561385355 c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\linkedlist.h
+
+1561385355 c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\cliente.h
+
+1561385355 c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\utn.h
+
+1561409240 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"cliente.h"
+	"venta.h"
+	"parser.h"
+	"Controller.h"
+	"utn.h"
+
+1561399223 c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\venta.h
+
+1561385355 c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\parser.h
+
+1561409500 c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\controller.h
+
+1561385355 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561401826 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"cliente.h"
+	"parser.h"
+	"utn.h"
+
+1561385355 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"cliente.h"
+	"venta.h"
+
+1561399223 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\venta.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"LinkedList.h"
+	"venta.h"
+
+1561385648 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

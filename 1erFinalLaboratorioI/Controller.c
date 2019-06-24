@@ -451,7 +451,7 @@ int controller_addVenta(LinkedList* pArrayListVenta, LinkedList *pArrayListClien
     int bufferIdCliente;
     int bufferCodigoProducto;
     int bufferCantidad;
-    float bufferMontoFacturado;
+    float bufferPrecioUnitario;
     Venta *bufferVenta;
 
     if (pArrayListCliente != NULL)
@@ -471,12 +471,12 @@ int controller_addVenta(LinkedList* pArrayListVenta, LinkedList *pArrayListClien
                     utn_getUnsignedInt("\n\nIngrese la cantidad: ",
                     "Error, vuelva a ingresar\n\n",1,51,2,&bufferCantidad) == 0)
                 {
-                        bufferMontoFacturado = precioPorCantidad(bufferCodigoProducto, bufferCantidad);
+                        bufferPrecioUnitario = precioUnitario(bufferCodigoProducto);
                         bufferVenta = venta_newParametros(  bufferIdVenta,
                                                             bufferIdCliente,
                                                             bufferCodigoProducto,
                                                             bufferCantidad,
-                                                            bufferMontoFacturado);
+                                                            bufferPrecioUnitario);
                         if(bufferVenta != NULL)
                         {
                             ll_add(pArrayListVenta, bufferVenta);
@@ -509,19 +509,25 @@ int controller_addVenta(LinkedList* pArrayListVenta, LinkedList *pArrayListClien
     return retorno;
 }
 
-int controller_ListVenta(LinkedList* pArrayListVenta)
+int controller_ListVenta(LinkedList* pArrayListVenta, LinkedList *pArrayListCliente)
 {
     int retorno = -1;
     int i;
+    int auxPosicion;
     char option = 'n';
     char option2 = 'n';
     int pagina = 99;
     int bufferCodigoProducto;
     Venta *venta;
+    Cliente *cliente;
     int bufferIdVenta;
     int bufferIdCliente;
     int bufferCantidad;
-    float bufferMontoFacturado;
+    char bufferNombre[MAX];
+    char bufferApellido[MAX];
+    char bufferDni[MAX];
+    float bufferPrecioUnitario;
+    float montoFacturado;
     printf("Cargando lista...\n");
     if(pArrayListVenta != NULL)
     {
@@ -534,15 +540,24 @@ int controller_ListVenta(LinkedList* pArrayListVenta)
                     !venta_getIdCliente(venta, &bufferIdCliente)&&
                     !venta_getCantidad(venta, &bufferCantidad)&&
                     !venta_getCodigoDeProducto(venta, &bufferCodigoProducto)&&
-                    !venta_getMontoFacturado(venta,&bufferMontoFacturado))
+                    !venta_getPrecioUnitario(venta,&bufferPrecioUnitario))
                     {
-                        printf("IdVenta: %d IdCliente : %d  CodProducto: %d Cantidad: %d Monto Facturado: %.2f\n",
+                        montoFacturado = precioPorCantidad(bufferCodigoProducto, bufferCantidad);
+                        findClienteById(pArrayListCliente, bufferIdCliente, &auxPosicion);
+                        cliente = (Cliente*)ll_get(pArrayListCliente, auxPosicion);
+                        if( !cliente_getNombre(cliente, bufferNombre)&&
+                            !cliente_getApellido(cliente, bufferApellido)&&
+                            !cliente_getDni(cliente, bufferDni))
+                        {
+                        printf("IdVenta: %d Nombre: %s Apellido: %s DNI: %s  CodProducto: %d Monto Facturado: %.2f\n",
                                 bufferIdVenta,
-                                bufferIdCliente,
+                                bufferNombre,
+                                bufferApellido,
+                                bufferDni,
                                 bufferCodigoProducto,
-                                bufferCantidad,
-                                bufferMontoFacturado);
+                                montoFacturado);
                         retorno = 0;
+                        }
                     }
                     else
                     {
@@ -575,7 +590,7 @@ int controller_saveAsTextVenta(char* path , LinkedList* pArrayListVenta)
     char bufferIdCliente[MAX];
     char bufferCodigoProducto[MAX];
     char bufferCantidad[MAX];
-    char bufferMontoFacturado[MAX];
+    char bufferPrecioUnitario[MAX];
     FILE* pFile = NULL;
     Venta *pVenta = NULL;
     if(path != NULL && pArrayListVenta != NULL)
@@ -593,14 +608,14 @@ int controller_saveAsTextVenta(char* path , LinkedList* pArrayListVenta)
                         !venta_getIdClienteStr(pVenta, bufferIdCliente)&&
                         !venta_getCodigoDeProductoStr(pVenta, bufferCodigoProducto)&&
                         !venta_getCantidadStr(pVenta, bufferCantidad)&&
-                        !venta_getMontoFacturadoStr(pVenta, bufferMontoFacturado))
+                        !venta_getPrecioUnitarioStr(pVenta, bufferPrecioUnitario))
                         {
                             fprintf (pFile, "%s,%s,%s,%s,%s\n",
                                      bufferIdVenta,
                                      bufferIdCliente,
                                      bufferCodigoProducto,
                                      bufferCantidad,
-                                     bufferMontoFacturado);
+                                     bufferPrecioUnitario);
 
                         }else{printf("Error al guardar\n");}
                 }else{printf("Error al guardar\n");}
@@ -706,4 +721,65 @@ int controller_removeVenta(LinkedList* pArrayListVenta)
 
     return retorno;
 }
+
+int controller_saveAsTextInformeVenta(char* path ,LinkedList *pArrayListVenta , LinkedList* pArrayListCliente)
+{
+    int retorno = -1;
+    int i;
+    int auxPosicion;
+    char bufferNombre[MAX];
+    char bufferApellido[MAX];
+    char bufferDni[MAX];
+    Venta *pVenta;
+    char bufferIdVenta[MAX];
+    int bufferIdCliente;
+    int bufferCantidad;
+    int bufferCodigoProducto;
+    char bufferCodigoProductoStr[MAX];
+    float bufferPrecioUnitario;
+    float montoFacturado;
+    char montoFacturadoStr[MAX];
+    FILE* pFile = NULL;
+    Cliente *pCliente = NULL;
+    if(path != NULL && pArrayListCliente != NULL && pArrayListVenta != NULL)
+    {
+        pFile = fopen(path, "w");
+        if(pFile != NULL)
+        {
+            for(i = 0; i < ll_len(pArrayListVenta); i++)
+            {
+                pVenta = (Venta*)ll_get(pArrayListVenta, i);
+                if( !venta_getIdVentaStr(pVenta, bufferIdVenta)&&
+                    !venta_getIdCliente(pVenta, &bufferIdCliente)&&
+                    !venta_getCantidad(pVenta, &bufferCantidad)&&
+                    !venta_getCodigoDeProducto(pVenta, &bufferCodigoProducto)&&
+                    !venta_getPrecioUnitario(pVenta,&bufferPrecioUnitario))
+                    {
+                        montoFacturado = precioPorCantidad(bufferCodigoProducto, bufferCantidad);
+                        findClienteById(pArrayListCliente, bufferIdCliente, &auxPosicion);
+                        pCliente = (Cliente*)ll_get(pArrayListCliente, auxPosicion);
+                        if( !cliente_getNombre(pCliente, bufferNombre)&&
+                            !cliente_getApellido(pCliente, bufferApellido)&&
+                            !cliente_getDni(pCliente, bufferDni))
+                        {
+                            sprintf(montoFacturadoStr, ".2%f", montoFacturado);
+                        printf("%s,%s,%s,%s,%s,%s\n",
+                                bufferIdVenta,
+                                bufferNombre,
+                                bufferApellido,
+                                bufferDni,
+                                bufferCodigoProductoStr,
+                                montoFacturadoStr);
+                        fclose(pFile);
+                        printf("Se ha guardado correctamente\n");
+                        retorno = 0;
+                        }
+                    }else{printf("Error al guardar\n");}
+                }
+            }else{printf("Error al guardar\n");}
+        }
+        return retorno;
+}
+
+
 
