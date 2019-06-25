@@ -13,7 +13,7 @@ int main()
     int flag2 = 0;
     LinkedList* listaCliente = ll_newLinkedList();
     LinkedList* listaVenta = ll_newLinkedList();
-    if( !controller_loadFromTextClientes("clientes.txt", listaCliente))
+    if(!controller_loadFromTextClientes("clientes.txt", listaCliente))
             flag = 1;
     if(!controller_loadFromTextVentas("ventas.txt", listaVenta))
             flag2 = 1;
@@ -42,25 +42,39 @@ int main()
             }else{printf("\nNo hay datos cargados para dar de baja");}
             break;
         case 4:
-            if(flag2)
+            if(flag)
             {
                 controller_ListCliente(listaCliente);
             }else{printf("\nNo hay datos cargados para mostrar");}
             break;
         case 5:
-            controller_addVenta(listaVenta,listaCliente);
+            if(flag)
+            {
+                if(!controller_addVenta(listaVenta,listaCliente))
+                    flag2 = 1;
+            }else{printf("\nNo hay clientes cargados para realizar la venta");}
             break;
         case 6:
-            controller_removeVenta(listaVenta);
-            break;
-        case 7:
-            controller_ListVenta(listaVenta, listaCliente);
-            break;
-        case 8:
+            if(flag2)
+            {
+                controller_removeVenta(listaVenta);
+            }else{printf("\nNo hay datos cargados para remover");}
 
             break;
+        case 7:
+            if(flag2)
+            {
+                controller_ListVenta(listaVenta, listaCliente);
+            }else{printf("\nNo hay datos de ventas para listar\n");}
+            break;
+        case 8:
+            controller_ventasPorProducto(listaCliente, listaVenta);
+            break;
         case 9:
-             controller_saveAsTextInformeVenta("informes.txt" ,listaVenta, listaCliente);
+            if(flag2)
+            {
+                controller_saveAsTextInformeVenta("informes.txt" ,listaVenta, listaCliente);
+            }else{printf("\nNo hay datos de ventas para informar\n");}
             break;
         case 10:
 

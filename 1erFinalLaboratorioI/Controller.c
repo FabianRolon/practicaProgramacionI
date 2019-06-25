@@ -292,7 +292,7 @@ int controller_ListCliente(LinkedList* pArrayListCliente)
                     !cliente_getApellido(cliente,bufferApellido)&&
                     !cliente_getDni(cliente, bufferDni))
                     {
-                        printf("Id: %d Nombre : %s  Apellido: %s DNI: %s\n",
+                        printf("Id: %d\t Nombre : %s\t  Apellido: %s\t DNI: %s\n",
                                 bufferId,
                                 bufferNombre,
                                 bufferApellido,
@@ -549,13 +549,14 @@ int controller_ListVenta(LinkedList* pArrayListVenta, LinkedList *pArrayListClie
                             !cliente_getApellido(cliente, bufferApellido)&&
                             !cliente_getDni(cliente, bufferDni))
                         {
-                        printf("IdVenta: %d Nombre: %s Apellido: %s DNI: %s  CodProducto: %d Monto Facturado: %.2f\n",
+                        printf("IdVenta: %d\t Nombre: %s\t Apellido: %s\t DNI: %s\t  CodProducto: %d\t Monto Facturado: %.2f\t PU: %f\n",
                                 bufferIdVenta,
                                 bufferNombre,
                                 bufferApellido,
                                 bufferDni,
                                 bufferCodigoProducto,
-                                montoFacturado);
+                                montoFacturado,
+                                bufferPrecioUnitario);
                         retorno = 0;
                         }
                     }
@@ -762,24 +763,70 @@ int controller_saveAsTextInformeVenta(char* path ,LinkedList *pArrayListVenta , 
                             !cliente_getApellido(pCliente, bufferApellido)&&
                             !cliente_getDni(pCliente, bufferDni))
                         {
-                            sprintf(montoFacturadoStr, ".2%f", montoFacturado);
-                        printf("%s,%s,%s,%s,%s,%s\n",
+                            sprintf(montoFacturadoStr, "%.2f", montoFacturado);
+                            sprintf(bufferCodigoProductoStr, "%d", bufferCodigoProducto);
+                        fprintf(pFile,"%s,%s,%s,%s,%s,%s\n",
                                 bufferIdVenta,
                                 bufferNombre,
                                 bufferApellido,
                                 bufferDni,
                                 bufferCodigoProductoStr,
                                 montoFacturadoStr);
-                        fclose(pFile);
-                        printf("Se ha guardado correctamente\n");
-                        retorno = 0;
+
+                        }else
+                        {
+                            printf("Error al guardar\n");
+                            break;
                         }
-                    }else{printf("Error al guardar\n");}
+                    }else
+                    {
+                        printf("Error al guardar\n");
+                        break;
+                    }
                 }
+                printf("Se ha guardado correctamente\n");
+                retorno = 0;
+                fclose(pFile);
             }else{printf("Error al guardar\n");}
         }
         return retorno;
 }
 
+int controller_ventasPorProducto(LinkedList *pArrayListCliente, LinkedList *pArrayListVenta)
+{
+    int retorno = -1;
+    int bufferCodigoProducto;
+    LinkedList *filtradaCodigo = NULL;
+    if(pArrayListCliente != NULL && pArrayListVenta != NULL)
+    {
+        utn_getUnsignedInt("\n\n1000 - TV_LG\n"
+                    "1001 -​ ​PS4​\n"
+                    "1002 -​ IPHONE7\n"
+                    "Ingrese el codigo de producto: ",
+                    "Error, vuelva a ingresar\n\n",1,30,2,
+                    &bufferCodigoProducto);
+        switch(bufferCodigoProducto)
+        {
+            case 1000:
+                filtradaCodigo = ll_filter(pArrayListVenta, venta_1000);
+                controller_ListVenta(filtradaCodigo, pArrayListCliente);
+                retorno = 0;
+                break;
+            case 1001:
+                filtradaCodigo = ll_filter(pArrayListVenta, venta_1001);
+                controller_ListVenta(filtradaCodigo, pArrayListCliente);
+                retorno = 0;
+                break;
+            case 1002:
+                filtradaCodigo = ll_filter(pArrayListVenta, venta_1002);
+                controller_ListVenta(filtradaCodigo, pArrayListCliente);
+                retorno = 0;
+                break;
+            default:
+                printf("\n\nNo se encontro el codigo de producto ingresado");
+        }
+    }
+    return retorno;
+}
 
 

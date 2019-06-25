@@ -50,6 +50,10 @@ int findVentaById(LinkedList* pArrayListVenta, int id, int *posicionId);
 float precioPorCantidad (int codigoProducto, int cantidad);
 float precioUnitario (int codigoProducto);
 
+int venta_1000(void* pVenta);
+int venta_1001(void* pVenta);
+int venta_1002(void* pVenta);
+
 
 
 

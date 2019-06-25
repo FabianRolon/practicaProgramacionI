@@ -33,7 +33,7 @@ Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto
             !venta_setIdClienteStr(pVenta,idCliente)&&
             !venta_setCodigoDeProductoStr(pVenta,codigoProducto)&&
             !venta_setCantidadStr(pVenta,cantidad) &&
-            !venta_getPrecioUnitarioStr(pVenta, precioUnitario))
+            !venta_setPrecioUnitarioStr(pVenta, precioUnitario))
             {
                 retorno = pVenta;
             }
@@ -47,7 +47,7 @@ Venta* venta_newParametrosStr(char* idVenta,char* idCliente,char* codigoProducto
 
 Venta* venta_newParametros(int idVenta,int idCliente,int codigoProducto, int cantidad, float precioUnitario)
 {
-    Venta* pVenta=venta_new();
+    Venta* pVenta = venta_new();
     void *retorno = NULL;
     if( pVenta!=NULL &&
         idVenta > 0 &&
@@ -282,13 +282,13 @@ int venta_getCantidadStr(Venta* this, char* result)
     return retorno;
 }
 
-int venta_setprecioUnitarioStr(Venta* this, char* precioUnitario)
+int venta_setPrecioUnitarioStr(Venta* this, char* precioUnitario)
 {
     int retorno = -1;
     if(this != NULL && precioUnitario != NULL)
         if(isValidFloatNumber(precioUnitario))
         {
-            retorno = venta_setCantidad(this,atof(precioUnitario));
+            retorno = venta_setPrecioUnitario(this,atof(precioUnitario));
         }
     return retorno;
 }
@@ -296,12 +296,12 @@ int venta_setprecioUnitarioStr(Venta* this, char* precioUnitario)
 int venta_getPrecioUnitarioStr(Venta* this, char* result)
 {
     int retorno = -1;
-    float bufferInt;
+    float bufferFloat;
 
     if(this != NULL && result != NULL)
     {
-        venta_getPrecioUnitario(this,&bufferInt);
-        sprintf(result,"%f",bufferInt);
+        venta_getPrecioUnitario(this,&bufferFloat);
+        sprintf(result,"%.2f",bufferFloat);
         retorno = 0;
     }
     return retorno;
@@ -368,3 +368,75 @@ float precioUnitario (int codigoProducto)
     return retorno;
 }
 
+int findVentaByProducto(LinkedList* pArrayListVenta, int codProducto, int *index)
+{
+    int retorno = -1;
+    int i;
+    int codAux;
+    Venta *pVenta;
+    if(pArrayListVenta != NULL && codProducto > 0 && index != NULL)
+    {
+        for(i = 0; i < ll_len(pArrayListVenta); i++)
+        {
+            pVenta = ll_get(pArrayListVenta, i);
+            if(pVenta != NULL)
+            {
+                venta_getCodigoDeProducto(pVenta, &codAux);
+                if(codProducto == codAux)
+                {
+                    *index = i;
+                    retorno = 0;
+                }
+            }
+        }
+    }
+    return retorno;
+}
+
+int venta_1000(void* pVenta)
+{
+    int retorno = 0;
+    int auxCod;
+
+    if(pVenta != NULL)
+    {
+        venta_getCodigoDeProducto(((Venta*)pVenta),&auxCod);
+        if(auxCod == 1000)
+        {
+            retorno = 1;
+        }
+    }
+    return retorno;
+}
+
+int venta_1001(void* pVenta)
+{
+    int retorno = 0;
+    int auxCod;
+
+    if(pVenta != NULL)
+    {
+        venta_getCodigoDeProducto(((Venta*)pVenta),&auxCod);
+        if(auxCod == 1001)
+        {
+            retorno = 1;
+        }
+    }
+    return retorno;
+}
+
+int venta_1002(void* pVenta)
+{
+    int retorno = 0;
+    int auxCod;
+
+    if(pVenta != NULL)
+    {
+        venta_getCodigoDeProducto(((Venta*)pVenta),&auxCod);
+        if(auxCod == 1002)
+        {
+            retorno = 1;
+        }
+    }
+    return retorno;
+}

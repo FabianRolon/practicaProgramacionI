@@ -18,3 +18,4 @@ int controller_nextIdVenta(LinkedList* pArrayListVenta);
 int controller_loadFromTextVentas(char* path , LinkedList* pArrayListCliente);
 int controller_removeVenta(LinkedList* pArrayListVenta);
 int controller_saveAsTextInformeVenta(char* path ,LinkedList *pArrayListVenta , LinkedList* pArrayListCliente);
+int controller_ventasPorProducto(LinkedList *pArrayListCliente, LinkedList *pArrayListVenta);

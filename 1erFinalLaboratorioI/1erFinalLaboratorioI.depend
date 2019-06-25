@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1561306311 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/cliente.c
+1561415321 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/cliente.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -7,15 +7,15 @@
 	"cliente.h"
 	"utn.h"
 
-1560911132 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/LinkedList.c
+1561415321 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/LinkedList.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 
-1561266418 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/LinkedList.h
+1561415321 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/LinkedList.h
 
-1561343117 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/Controller.c
+1561430737 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/Controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -26,22 +26,22 @@
 	"Controller.h"
 	"utn.h"
 
-1561305175 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/cliente.h
+1561415321 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/cliente.h
 
-1561336866 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/parser.h
+1561415321 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/parser.h
 
-1561337278 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/Controller.h
+1561425981 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/Controller.h
 
-1560911132 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/utn.h
+1561415321 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/utn.h
 
-1561341974 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/parser.c
+1561431013 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"cliente.h"
 	"venta.h"
 
-1561342232 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/main.c
+1561428299 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -50,14 +50,14 @@
 	"parser.h"
 	"utn.h"
 
-1561300681 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/utn.c
+1561418957 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdio_ext.h>
 	"utn.h"
 
-1561342572 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/venta.c
+1561432036 source:/home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/venta.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -65,7 +65,7 @@
 	"LinkedList.h"
 	"venta.h"
 
-1561342064 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/venta.h
+1561424063 /home/fabianrolon/Documentos/practicaProgramacionI/1erFinalLaboratorioI/venta.h
 
 1561385355 source:c:\users\calidad\desktop\programas\program\practicaprogramacioni\1erfinallaboratorioi\cliente.c
 	<stdio.h>

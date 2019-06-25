@@ -1,4 +1,9 @@
-4,Sergio,Aguero,33112232
-2,Analia,Juarez,21345122
-3,Loco,Rodriguez,13333222
-1,Fabian,Rolon,34158249
+5,Sergio,Aguero,21154775
+4,Angel,Di Maria,31111219
+2,Lionel,Messi,32111222
+3,Roman,Riquelme,12324354
+1,Fabian,Rolon,33111233
+6,Nicolas,Tagliafico,30987465
+7,Matias,Suarez,29122033
+8,Franco,Armani,28123565
+9,Paulo,Dybala,32543123

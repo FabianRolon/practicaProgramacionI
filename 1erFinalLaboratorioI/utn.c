@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <stdio_ext.h>
+#include <stdio_ext.h>
 #include "utn.h"
 
 /*
@@ -36,8 +36,8 @@ int getString(char* msg, char* msgError, int min, int max, int reintentos, char*
         do
         {
             printf("%s",msg);
-//            __fpurge(stdin);
-            fflush(stdin);
+            __fpurge(stdin);
+//            fflush(stdin);
             fgets(bufferStr,sizeof(bufferStr),stdin);
             bufferStr[strlen(bufferStr)-1]='\0';
 

@@ -47,14 +47,16 @@ int parser_VentaFromText(FILE* pFile , LinkedList* pArrayListVenta)
     char bufferIdCliente[2000];
     char bufferCodigoProducto[2000];
     char bufferCantidad[2000];
-    char bufferMontoFacturado[2000];
+    char bufferPrecioUnitario[2000];
+    float pU;
     Venta *bufferVenta;
     if(pFile!=NULL)
     {
         while(!feof(pFile))
         {
-            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",bufferIdVenta,bufferIdCliente,bufferCodigoProducto,bufferCantidad,bufferMontoFacturado);
-            bufferVenta = venta_newParametrosStr(bufferIdVenta,bufferIdCliente,bufferCodigoProducto,bufferCantidad,bufferMontoFacturado);
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",bufferIdVenta,bufferIdCliente,bufferCodigoProducto,bufferCantidad,bufferPrecioUnitario);
+            bufferVenta = venta_newParametrosStr(bufferIdVenta,bufferIdCliente,bufferCodigoProducto,bufferCantidad,bufferPrecioUnitario);
+            venta_getPrecioUnitario(bufferVenta, &pU);
             if(bufferVenta != NULL)
                 ll_add(pArrayListVenta, bufferVenta);
         }
