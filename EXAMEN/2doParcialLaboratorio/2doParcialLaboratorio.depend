@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1561500083 source:/home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561500083 /home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/LinkedList.h
+
+1561504689 source:/home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"data.h"
+	"parser.h"
+	"utn.h"
+
+1561504393 /home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/Controller.h
+
+1561503391 /home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/data.h
+
+1561501734 /home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/parser.h
+
+1561500083 /home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/utn.h
+
+1561504894 source:/home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/data.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"data.h"
+	"utn.h"
+
+1561500083 source:/home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+	"utn.h"
+
+1561501568 source:/home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"data.h"
+
+1561505592 source:/home/alumno/Rolon/practicaProgramacionI/EXAMEN/2doParcialLaboratorio/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"data.h"
+	"parser.h"
+	"Controller.h"
+	"utn.h"
+
